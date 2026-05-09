@@ -1692,3 +1692,70 @@ h3 { font-size: 1.1rem; }
         right: -10px;
     }
 }
+
+/* ============================================ */
+/* সাপোর্ট লিংক - পপআপ + পেজ লিংক স্টাইল */
+/* ============================================ */
+
+.footer-links ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.footer-links ul li a:first-child {
+    flex: 1;
+}
+
+.page-link {
+    background: rgba(255,255,255,0.1);
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+    margin-left: 5px;
+}
+
+.page-link:hover {
+    background: #2d6a4f;
+    transform: translateY(-2px);
+}
+
+.policy-note {
+    margin-top: 15px !important;
+    padding: 8px 10px;
+    background: rgba(45,106,79,0.15);
+    border-radius: 8px;
+    font-size: 0.65rem !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.policy-note i {
+    color: #e76f51;
+}
+
+.policy-note span {
+    color: #aaa;
+    line-height: 1.4;
+}
+
+/* মোবাইলে পেজ লিংক বাটন ছোট */
+@media (max-width: 768px) {
+    .page-link {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    .policy-note {
+        font-size: 0.6rem;
+    }
+}

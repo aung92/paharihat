@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নিরাপত্তা নীতি - পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f8f9fa; color: #2d2d2d; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .navbar { background-color: #ffffff; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; }
+        .logo a { display: flex; align-items: center; gap: 6px; font-size: 1.3rem; font-weight: 700; text-decoration: none; color: #2d6a4f; }
+        .logo i { font-size: 1.5rem; }
+        .back-link a { color: #2d6a4f; text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .back-link a:hover { color: #e76f51; }
+        .page-header { background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%); color: white; padding: 60px 0 40px; text-align: center; }
+        .page-header h1 { font-size: 2rem; margin-bottom: 15px; }
+        .page-header p { font-size: 1rem; opacity: 0.9; }
+        .policy-content { padding: 60px 0; }
+        .policy-card { background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 30px; }
+        .policy-header { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 20px 30px; border-bottom: 1px solid #d0e8d0; }
+        .policy-header h2 { color: #2d6a4f; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .policy-body { padding: 30px; }
+        .policy-section { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .policy-section:last-child { border-bottom: none; }
+        .policy-section h3 { color: #2d6a4f; font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .policy-section h3 i { color: #e76f51; }
+        .policy-section p, .policy-section ul { color: #555; font-size: 0.9rem; margin-bottom: 10px; }
+        .policy-section ul { margin-left: 25px; }
+        .policy-section li { margin-bottom: 8px; }
+        .highlight-box { background: #e8f5e9; padding: 20px; border-radius: 12px; margin: 20px 0; border-left: 4px solid #e76f51; }
+        .security-badge { display: inline-flex; align-items: center; gap: 8px; background: #2d6a4f; color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.7rem; margin-right: 10px; margin-bottom: 10px; }
+        .footer { background: linear-gradient(180deg, #0d2b1e 0%, #0a1f15 100%); color: #999; padding: 40px 0 20px; }
+        .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-bottom p { font-size: 0.75rem; color: #777; }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.5rem; }
+            .policy-header { padding: 15px 20px; }
+            .policy-body { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-mountain"></i>
+                <span>পাহাড়ি হাট</span>
+            </a>
+        </div>
+        <div class="back-link">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> হোমে ফিরুন</a>
+        </div>
+    </div>
+</nav>
+
+<section class="page-header">
+    <div class="container">
+        <h1><i class="fas fa-shield-alt"></i> নিরাপত্তা নীতি</h1>
+        <p>আপনার তথ্য ও লেনদেনের নিরাপত্তা আমাদের প্রথম অগ্রাধিকার</p>
+    </div>
+</section>
+
+<section class="policy-content">
+    <div class="container">
+        <div class="policy-card">
+            <div class="policy-header">
+                <h2><i class="fas fa-lock"></i> আপনার নিরাপত্তা আমাদের দায়িত্ব</h2>
+            </div>
+            <div class="policy-body">
+                <div class="policy-section">
+                    <h3><i class="fas fa-ssl"></i> ১. SSL নিরাপত্তা (SSL Security)</h3>
+                    <p>পাহাড়ি হাট ২৫৬-বিট SSL এনক্রিপশন ব্যবহার করে। আপনার ব্যক্তিগত তথ্য, পেমেন্ট ডিটেইল এবং লগইন তথ্য এনক্রিপ্ট হয়ে আমাদের সার্ভারে যায়। এটি হ্যাকার বা তৃতীয় পক্ষের কাছ থেকে আপনার তথ্য সুরক্ষিত রাখে।</p>
+                    <div><span class="security-badge"><i class="fas fa-check-circle"></i> SSL সক্রিয়</span><span class="security-badge"><i class="fas fa-shield-virus"></i> ম্যালওয়্যার প্রটেক্টেড</span></div>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-user-lock"></i> ২. পাসওয়ার্ড নিরাপত্তা</h3>
+                    <ul>
+                        <li>আপনার পাসওয়ার্ড এনক্রিপ্টেড আকারে সংরক্ষণ করা হয় (কেউ দেখতে পায় না)</li>
+                        <li>শক্তিশালী পাসওয়ার্ড ব্যবহারের পরামর্শ দেওয়া হয় (অন্তত ৮ ক্যারেক্টার, বড় হাতের/ছোট হাতের অক্ষর, সংখ্যা ও বিশেষ ক্যারেক্টার)</li>
+                        <li>নিয়মিত পাসওয়ার্ড পরিবর্তন করার পরামর্শ দেওয়া হয়</li>
+                        <li>কখনো অন্যের সাথে পাসওয়ার্ড শেয়ার করবেন না</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-credit-card"></i> ৩. পেমেন্ট নিরাপত্তা</h3>
+                    <p>আমরা বিকাশ ও নগদ পেমেন্ট সিস্টেম ব্যবহার করি, যা বাংলাদেশের সবচেয়ে নিরাপদ মোবাইল আর্থিক সেবা। পেমেন্ট সংক্রান্ত তথ্য সরাসরি এনক্রিপ্টেড চ্যানেলের মাধ্যমে প্রসেস করা হয়।</p>
+                    <div class="highlight-box">
+                        <p><i class="fas fa-exclamation-triangle"></i> <strong>সতর্কতা:</strong> পাহাড়ি হাট কখনো আপনার কাছে পিন নম্বর, OTP বা পাসওয়ার্ড চাইবে না। যদি কেউ চায়, সাথে সাথে আমাদের জানান।</p>
+                    </div>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-database"></i> ৪. ডাটা সুরক্ষা</h3>
+                    <ul>
+                        <li><strong>নিয়মিত ব্যাকআপ:</strong> আপনার অর্ডার তথ্য নিয়মিত ব্যাকআপ করা হয়</li>
+                        <li><strong>ডাটা এনক্রিপশন:</strong> সংরক্ষিত সকল তথ্য এনক্রিপ্টেড</li>
+                        <li><strong>এক্সেস কন্ট্রোল:</strong> শুধুমাত্র অনুমোদিত কর্মীরা তথ্য অ্যাক্সেস করতে পারে</li>
+                        <li><strong>সিকিউর সার্ভার:</strong> আমাদের সার্ভার ২৪/৭ মনিটরিং এর আওতায়</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-shield-virus"></i> ৫. প্রতারণা সুরক্ষা</h3>
+                    <ul>
+                        <li>আমাদের অফিসিয়াল নাম্বার <strong>০১৯১৮৪৮১২৩২</strong> ছাড়া অন্য কোনো নাম্বারে পেমেন্ট করবেন না</li>
+                        <li>কোনো ব্যক্তি যদি আপনার কাছে অতিরিক্ত ফি দাবি করে, সাথে সাথে আমাদের জানান</li>
+                        <li>আমরা কখনো অফার বা লটারির নামে অগ্রিম টাকা চাই না</li>
+                        <li>সন্দেহজনক কোনো কার্যকলাপ দেখলে আমাদের হোয়াটসঅ্যাপে জানান</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-child"></i> ৬. শিশুদের নিরাপত্তা</h3>
+                    <p>আমাদের ওয়েবসাইট ১৮ বছরের নিচে শিশুদের জন্য নয়। আমরা ইচ্ছাকৃতভাবে শিশুদের কাছ থেকে তথ্য সংগ্রহ করি না। যদি কোনো অভিভাবক জানতে পারেন তাদের শিশু আমাদের সাইটে তথ্য দিয়েছে, অনুগ্রহ করে আমাদের জানান।</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-bug"></i> ৭. নিরাপত্তা ঘটনা রিপোর্টিং</h3>
+                    <p>আপনি যদি কোনো নিরাপত্তা সংক্রান্ত দুর্বলতা বা সন্দেহজনক কার্যকলাপ খুঁজে পান, অনুগ্রহ করে আমাদের ইমেইল করুন: <strong>security@paharihat.com</strong> অথবা হোয়াটসঅ্যাপ: <strong>০১৯১৮৪৮১২৩২</strong></p>
+                    <div class="highlight-box">
+                        <p><i class="fas fa-trophy"></i> <strong>বাগ বাউন্টি প্রোগ্রাম:</strong> যেকোনো নিরাপত্তা দুর্বলতা রিপোর্ট করার জন্য আমরা পুরস্কার প্রদান করি।</p>
+                    </div>
+                </div>
+
+                <div class="policy-section">
+                    <h3><i class="fas fa-mobile-alt"></i> ৮. মোবাইল অ্যাপ নিরাপত্তা</h3>
+                    <p>আমাদের মোবাইল সাইট ও ওয়েবসাইট সমানভাবে সুরক্ষিত। সর্বদা সর্বশেষ ভার্সনের ব্রাউজার ব্যবহার করুন এবং অজানা উৎস থেকে অ্যাপ ডাউনলোড করা থেকে বিরত থাকুন।</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p><i class="fas fa-phone-alt"></i> <strong>জরুরি যোগাযোগ:</strong> নিরাপত্তা সংক্রান্ত যেকোনো সমস্যায় ২৪/৭ যোগাযোগ করুন: <strong>০১৯১৮৪৮১২৩২</strong> (হোয়াটসঅ্যাপ)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; ২০২৬ পাহাড়ি হাট — সব অধিকার সংরক্ষিত</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

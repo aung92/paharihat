@@ -973,13 +973,14 @@
             <!-- সাপোর্ট -->
             <div class="footer-links">
                 <h4><i class="fas fa-headset"></i> সাপোর্ট</h4>
-                <ul>
-                    <li><a href="#"><i class="fas fa-angle-right"></i> প্রি-অর্ডার নীতিমালা</a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i> রিটার্ন ও রিফান্ড</a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i> গোপনীয়তা নীতি</a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i> শর্তাবলী</a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i> যোগাযোগ</a></li>
-                </ul>
+                <!-- সাপোর্ট সেকশনের লিংক -->
+            <ul>
+                <li><a href="preorder-policy.html"><i class="fas fa-angle-right"></i> প্রি-অর্ডার নীতিমালা</a></li>
+                <li><a href="return-refund.html"><i class="fas fa-angle-right"></i> রিটার্ন ও রিফান্ড</a></li>
+                <li><a href="privacy-policy.html"><i class="fas fa-angle-right"></i> গোপনীয়তা নীতি</a></li>
+                <li><a href="terms-conditions.html"><i class="fas fa-angle-right"></i> শর্তাবলী</a></li>
+                <li><a href="contact.html"><i class="fas fa-angle-right"></i> যোগাযোগ</a></li>
+            </ul>
             </div>
             
             <!-- যোগাযোগ -->
@@ -996,14 +997,520 @@
                 </div>
             </div>
         </div>
+
+    <style>
+/* ============================================ */
+/* পপআপ মডাল স্টাইল - সব নীতিমালার জন্য ইউনিফাইড */
+/* ============================================ */
+.policy-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+    z-index: 10001;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+.policy-modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 700px;
+    max-height: 85vh;
+    border-radius: 20px;
+    overflow: hidden;
+    animation: modalSlideIn 0.3s ease;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.policy-modal-header {
+    background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+    color: white;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.policy-modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.policy-modal-header h3 i {
+    font-size: 1.3rem;
+}
+
+.policy-modal-close {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.policy-modal-close:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.05);
+}
+
+.policy-modal-body {
+    padding: 25px;
+    max-height: 55vh;
+    overflow-y: auto;
+}
+
+.policy-modal-body h4 {
+    color: #2d6a4f;
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.policy-modal-body h4 i {
+    color: #e76f51;
+    font-size: 0.9rem;
+}
+
+.policy-modal-body p {
+    font-size: 0.85rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.policy-modal-body ul {
+    margin: 0 0 12px 20px;
+    font-size: 0.85rem;
+    color: #4a5568;
+}
+
+.policy-modal-body li {
+    margin-bottom: 5px;
+}
+
+.policy-highlight {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 15px 0;
+    border-left: 4px solid #e76f51;
+}
+
+.policy-highlight p {
+    margin-bottom: 0;
+}
+
+.policy-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 15px 0;
+}
+
+/* আরও বিস্তারিত লিংক স্টাইল */
+.policy-more-link {
+    text-align: center;
+    margin: 20px 0 10px;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.policy-more-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.policy-more-link a:hover {
+    transform: translateX(5px);
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+}
+
+.policy-more-link a i {
+    font-size: 0.8rem;
+}
+
+.policy-modal-footer {
+    padding: 15px 25px;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+    background: #f8fafc;
+}
+
+.policy-modal-footer button {
+    background: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.policy-modal-footer button:hover {
+    background: #1b4332;
+}
+
+/* মোবাইল রেস্পন্সিভ */
+@media (max-width: 768px) {
+    .policy-modal-content {
+        width: 95%;
+    }
+    .policy-modal-header {
+        padding: 15px 20px;
+    }
+    .policy-modal-body {
+        padding: 20px;
+        max-height: 50vh;
+    }
+    .policy-more-link a {
+        padding: 8px 16px;
+        font-size: 0.75rem;
+    }
+}
+</style>
+
+<!-- পপআপ মডাল HTML -->
+<div id="policyModal" class="policy-modal">
+    <div class="policy-modal-content">
+        <div class="policy-modal-header">
+            <h3 id="modalTitle"><i class="fas fa-info-circle"></i> তথ্য</h3>
+            <button class="policy-modal-close" onclick="closePolicyModal()">&times;</button>
+        </div>
+        <div class="policy-modal-body" id="modalBody">
+            <!-- কন্টেন্ট ডাইনামিকভাবে লোড হবে -->
+            <div id="modalContentArea"></div>
+            <!-- আরও বিস্তারিত লিংক এখানে যুক্ত হবে -->
+            <div id="moreLinkArea" class="policy-more-link"></div>
+        </div>
+        <div class="policy-modal-footer">
+            <button onclick="closePolicyModal()">বুঝলাম, ধন্যবাদ</button>
+        </div>
+    </div>
+</div>
+
+        <script>
+        // ============================================
+        // সব নীতিমালার পপআপ ডাটা (পেজ লিংক সহ)
+        // ============================================
+        const policyData = {
+            'preorder-policy': {
+                title: '<i class="fas fa-clock"></i> প্রি-অর্ডার নীতিমালা',
+                pageLink: 'preorder-policy.html',
+                content: `
+                    <div class="policy-highlight">
+                        <p><strong>📦 প্রি-অর্ডার কী?</strong><br>প্রি-অর্ডার হলো সেই অর্ডার, যেখানে পণ্যটি বর্তমানে আমাদের হাতে স্টকে নেই। আমরা আপনার অর্ডার পাওয়ার পর পণ্যটি সরাসরি পাহাড়ি এলাকা থেকে সংগ্রহ করি এবং নির্ধারিত তারিখে ডেলিভারি করি।</p>
+                    </div>
+                    
+                    <h4><i class="fas fa-money-bill-wave"></i> পেমেন্ট পদ্ধতি</h4>
+                    <p>আপনি দুইভাবে পেমেন্ট করতে পারবেন: <strong>আংশিক পেমেন্ট (৫০% অগ্রিম)</strong> অথবা <strong>পূর্ণ পেমেন্ট (৫% ছাড়)</strong>। আমাদের বিকাশ/নগদ নম্বর: <strong style="color:#e76f51;">০১৯১৮৪৮১২৩২</strong></p>
+                    
+                    <div class="policy-divider"></div>
+                    
+                    <h4><i class="fas fa-truck"></i> ডেলিভারি সময়সীমা</h4>
+                    <p>প্রি-অর্ডার সম্পন্ন হওয়ার পর সাধারণত <strong>৭-১৫ কার্যদিবসের মধ্যে</strong> ডেলিভারি সম্পন্ন করা হয়। আবহাওয়া বা যাতায়াত সমস্যায় দেরি হতে পারে।</p>
+                    
+                    <h4><i class="fas fa-ban"></i> অর্ডার বাতিল নীতি</h4>
+                    <ul>
+                        <li><strong>অর্ডারের ২৪ ঘণ্টার মধ্যে:</strong> বিনা মূল্যে বাতিল ও পূর্ণ টাকা ফেরত</li>
+                        <li><strong>২৪ ঘণ্টা থেকে ডেলিভারির ৭ দিন আগে পর্যন্ত:</strong> ১০% চার্জ কেটে বাকি টাকা ফেরত</li>
+                        <li><strong>ডেলিভারির ৭ দিনের মধ্যে:</strong> অর্ডার বাতিল করা যাবে না</li>
+                    </ul>
+                `
+            },
+            
+            'return-refund': {
+                title: '<i class="fas fa-exchange-alt"></i> রিটার্ন ও রিফান্ড নীতি',
+                pageLink: 'return-refund.html',
+                content: `
+                    <div class="policy-highlight">
+                        <p><strong>✅ ফরমালিন মুক্ত নিশ্চয়তা</strong><br>পাহাড়ি হাট-এর প্রতিটি পণ্য ১০০% ফরমালিন মুক্ত। এটি আমাদের প্রতিশ্রুতি।</p>
+                    </div>
+                    
+                    <h4><i class="fas fa-clock"></i> রিটার্ন সময়সীমা</h4>
+                    <ul>
+                        <li><strong>ফরমালিন সন্দেহে:</strong> ডেলিভারির ২৪ ঘণ্টার মধ্যে</li>
+                        <li><strong>ভাঙা/নষ্ট/ভুল পণ্য:</strong> ডেলিভারির ৪৮ ঘণ্টার মধ্যে</li>
+                        <li><strong>পণ্যের মান নিয়ে সন্তুষ্ট না হলে:</strong> ডেলিভারির ৭ দিনের মধ্যে (অব্যবহৃত ও সিল করা)</li>
+                    </ul>
+                    
+                    <h4><i class="fas fa-money-bill-wave"></i> রিফান্ড পদ্ধতি</h4>
+                    <ul>
+                        <li><strong>ফরমালিন প্রমাণিত হলে:</strong> পূর্ণ টাকা ফেরত + অতিরিক্ত ১০০ টাকা ক্ষতিপূরণ</li>
+                        <li><strong>ভাঙা/নষ্ট/ভুল পণ্য:</strong> পূর্ণ টাকা ফেরত বা রিপ্লেসমেন্ট</li>
+                        <li><strong>অব্যবহৃত পণ্য ফেরত দিলে:</strong> ১০% রিস্টকিং ফি কেটে বাকি টাকা ফেরত</li>
+                    </ul>
+                `
+            },
+            
+            'privacy-policy': {
+                title: '<i class="fas fa-lock"></i> গোপনীয়তা নীতি',
+                pageLink: 'privacy-policy.html',
+                content: `
+                    <div class="policy-highlight">
+                        <p><strong>🔒 আপনার তথ্যের গোপনীয়তা</strong><br>আমরা আপনার ব্যক্তিগত তথ্যকে সর্বোচ্চ গুরুত্ব দেই এবং কখনো তৃতীয় পক্ষের কাছে বিক্রি করি না।</p>
+                    </div>
+                    
+                    <h4><i class="fas fa-database"></i> আমরা কী কী তথ্য সংগ্রহ করি?</h4>
+                    <ul>
+                        <li><strong>ব্যক্তিগত তথ্য:</strong> নাম, মোবাইল নম্বর, ইমেইল, ডেলিভারি ঠিকানা</li>
+                        <li><strong>অর্ডার তথ্য:</strong> পণ্যের তথ্য, পেমেন্টের বিবরণ</li>
+                        <li><strong>প্রযুক্তিগত তথ্য:</strong> আইপি অ্যাড্রেস, ব্রাউজারের ধরন</li>
+                    </ul>
+                    
+                    <h4><i class="fas fa-share-alt"></i> কীভাবে তথ্য শেয়ার করি?</h4>
+                    <ul>
+                        <li>ডেলিভারি পার্টনারকে শুধুমাত্র প্রয়োজনীয় ঠিকানা</li>
+                        <li>পেমেন্ট প্রক্রিয়াকরণের জন্য পেমেন্ট গেটওয়ে</li>
+                        <li>আইনি বাধ্যবাধকতা পালনে</li>
+                    </ul>
+                `
+            },
+            
+            'terms-conditions': {
+                title: '<i class="fas fa-file-contract"></i> শর্তাবলী',
+                pageLink: 'terms-conditions.html',
+                content: `
+                    <div class="policy-highlight">
+                        <p><strong>📋 ব্যবহারের শর্তাবলী</strong><br>পাহাড়ি হাট ব্যবহারের মাধ্যমে আপনি নিম্নলিখিত শর্তাবলীতে সম্মত হচ্ছেন।</p>
+                    </div>
+                    
+                    <h4><i class="fas fa-user-check"></i> অ্যাকাউন্ট ও নিবন্ধন</h4>
+                    <ul>
+                        <li>প্রি-অর্ডার করতে নিবন্ধন আবশ্যক</li>
+                        <li>আপনি সঠিক ও বাস্তব তথ্য প্রদান করতে বাধ্য</li>
+                        <li>আপনার অ্যাকাউন্টের নিরাপত্তার দায়িত্ব আপনার</li>
+                    </ul>
+                    
+                    <h4><i class="fas fa-shopping-cart"></i> অর্ডার ও প্রি-অর্ডার নিয়ম</h4>
+                    <ul>
+                        <li>প্রি-অর্ডারের জন্য অগ্রিম পেমেন্ট বাধ্যতামূলক</li>
+                        <li>প্রদত্ত ডেলিভারি তারিখ আনুমানিক, বিলম্ব হতে পারে</li>
+                        <li>আমরা যেকোনো সময় প্রি-অর্ডার বাতিলের অধিকার রাখি</li>
+                    </ul>
+                `
+            },
+            
+            'contact': {
+                title: '<i class="fas fa-address-card"></i> যোগাযোগের তথ্য',
+                pageLink: 'contact.html',
+                content: `
+                    <div class="policy-highlight">
+                        <p><strong>📞 আমরা ২৪/৭ আপনার সাথে আছি</strong><br>যেকোনো প্রশ্ন বা সমস্যায় আমাদের সাথে যোগাযোগ করুন।</p>
+                    </div>
+                    
+                    <h4><i class="fab fa-whatsapp"></i> হোয়াটসঅ্যাপ</h4>
+                    <p><strong style="color:#2d6a4f;">০১৯১৮৪৮১২৩২</strong> - সরাসরি চ্যাট করুন (২৪/৭)</p>
+                    
+                    <h4><i class="fas fa-phone-alt"></i> কল করুন</h4>
+                    <p><strong style="color:#2d6a4f;">০১৯১৮৪৮১২৩২</strong> - সকাল ১০টা - রাত ৮টা</p>
+                    
+                    <h4><i class="far fa-envelope"></i> ইমেইল</h4>
+                    <p><strong style="color:#2d6a4f;">info@paharihat.com</strong> - ২৪ ঘণ্টার মধ্যে রিপ্লাই</p>
+                    
+                    <h4><i class="fas fa-map-marker-alt"></i> অফিস ঠিকানা</h4>
+                    <p>বান্দরবান সদর, বান্দরবান, পার্বত্য চট্টগ্রাম, বাংলাদেশ</p>
+                `
+            },
+            
+            'security': {
+                title: '<i class="fas fa-shield-alt"></i> নিরাপত্তা নীতি',
+                pageLink: 'security.html',
+                content: `
+                    <div class="policy-highlight">
+                        <p><strong>🛡️ আপনার নিরাপত্তা আমাদের অগ্রাধিকার</strong><br>পাহাড়ি হাট ২৫৬-বিট SSL এনক্রিপশন ব্যবহার করে।</p>
+                    </div>
+                    
+                    <h4><i class="fas fa-lock"></i> SSL নিরাপত্তা</h4>
+                    <p>আমাদের ওয়েবসাইট ২৫৬-বিট SSL সার্টিফিকেট দ্বারা সুরক্ষিত। আপনার সব তথ্য এনক্রিপ্ট হয়।</p>
+                    
+                    <h4><i class="fas fa-credit-card"></i> পেমেন্ট নিরাপত্তা</h4>
+                    <p>আমরা বিকাশ ও নগদ ব্যবহার করি - বাংলাদেশের সবচেয়ে নিরাপদ মোবাইল আর্থিক সেবা।</p>
+                    
+                    <h4><i class="fas fa-exclamation-triangle"></i> সতর্ক বার্তা</h4>
+                    <p>আমাদের অফিসিয়াল নাম্বার <strong>০১৯১৮৪৮১২৩২</strong> ছাড়া অন্য কোনো নাম্বারে পেমেন্ট করবেন না।</p>
+                `
+            },
+            'sitemap': {
+                title: '<i class="fas fa-sitemap"></i> সাইটম্যাপ',
+                pageLink: 'sitemap.html',
+                content: `
+                    <div class="policy-highlight">
+                        <p><strong>🗺️ ওয়েবসাইটের সম্পূর্ণ মানচিত্র</strong><br>নিচের লিংকে ক্লিক করে সব পৃষ্ঠা দেখুন।</p>
+                    </div>
+                    
+                    <h4><i class="fas fa-home"></i> প্রধান পৃষ্ঠা</h4>
+                    <p>হোমপেজ, প্রি-অর্ডার, ক্যাটাগরি, পণ্য রিকুয়েস্ট, অর্ডার ট্র্যাক</p>
+                    
+                    <h4><i class="fas fa-headset"></i> গ্রাহক সেবা</h4>
+                    <p>প্রি-অর্ডার নীতিমালা, রিটার্ন ও রিফান্ড, গোপনীয়তা নীতি, শর্তাবলী, নিরাপত্তা, যোগাযোগ</p>
+                    
+                    <h4><i class="fas fa-store"></i> ভেন্ডর পৃষ্ঠা</h4>
+                    <p>ভেন্ডর লগইন, ভেন্ডর রেজিস্টার, অ্যাডমিন লগইন</p>
+                `
+            },
+
+            
+        };
+
+        // পপআপ খোলার ফাংশন
+        function openPolicyModal(type) {
+            const modal = document.getElementById('policyModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContentArea = document.getElementById('modalContentArea');
+            const moreLinkArea = document.getElementById('moreLinkArea');
+            
+            const data = policyData[type];
+            if (data) {
+                modalTitle.innerHTML = data.title;
+                modalContentArea.innerHTML = data.content;
+                
+                // আরও বিস্তারিত লিংক যোগ করুন
+                moreLinkArea.innerHTML = `
+                    <a href="${data.pageLink}" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> 
+                        আরও বিস্তারিত জানতে পূর্ণ পৃষ্ঠা দেখুন
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                `;
+                
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else {
+                console.error('পলিসি টাইপ পাওয়া যায়নি:', type);
+            }
+        }
+
+        // পপআপ বন্ধের ফাংশন
+        function closePolicyModal() {
+            const modal = document.getElementById('policyModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESC কী প্রেস করলে পপআপ বন্ধ
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('policyModal');
+                if (modal && modal.style.display === 'flex') {
+                    closePolicyModal();
+                }
+            }
+        });
+
+        // মডালের বাইরে ক্লিক করলে বন্ধ
+        window.onclick = function(e) {
+            const modal = document.getElementById('policyModal');
+            if (e.target === modal) {
+                closePolicyModal();
+            }
+        };
+
+        // ============================================
+        // ফুটারের লিংক গুলোতে ক্লিক ইভেন্ট যোগ করুন
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // ফুটারের সাপোর্ট সেকশনের লিংক গুলো সিলেক্ট করুন
+            const supportLinks = document.querySelectorAll('.footer-links ul li a');
+            
+            supportLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === 'preorder-policy.html') {
+                    link.addEventListener('click', (e) => { 
+                        e.preventDefault(); 
+                        openPolicyModal('preorder-policy'); 
+                    });
+                } else if (href === 'return-refund.html') {
+                    link.addEventListener('click', (e) => { 
+                        e.preventDefault(); 
+                        openPolicyModal('return-refund'); 
+                    });
+                } else if (href === 'privacy-policy.html') {
+                    link.addEventListener('click', (e) => { 
+                        e.preventDefault(); 
+                        openPolicyModal('privacy-policy'); 
+                    });
+                } else if (href === 'terms-conditions.html') {
+                    link.addEventListener('click', (e) => { 
+                        e.preventDefault(); 
+                        openPolicyModal('terms-conditions'); 
+                    });
+                } else if (href === 'contact.html') {
+                    link.addEventListener('click', (e) => { 
+                        e.preventDefault(); 
+                        openPolicyModal('contact'); 
+                    });
+                }
+            });
+            
+            // যদি লিংক গুলো অন্য জায়গায় থাকে, সেখানেও যোগ করুন
+            const allPolicyLinks = document.querySelectorAll('a[href="preorder-policy.html"], a[href="return-refund.html"], a[href="privacy-policy.html"], a[href="terms-conditions.html"], a[href="contact.html"]');
+            allPolicyLinks.forEach(link => {
+                // ডুপ্লিকেট ইভেন্ট এড়াতে
+                if (!link.hasAttribute('data-modal-bound')) {
+                    link.setAttribute('data-modal-bound', 'true');
+                    const href = link.getAttribute('href');
+                    let modalType = '';
+                    if (href === 'preorder-policy.html') modalType = 'preorder-policy';
+                    else if (href === 'return-refund.html') modalType = 'return-refund';
+                    else if (href === 'privacy-policy.html') modalType = 'privacy-policy';
+                    else if (href === 'terms-conditions.html') modalType = 'terms-conditions';
+                    else if (href === 'contact.html') modalType = 'contact';
+                    
+                    if (modalType) {
+                        link.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            openPolicyModal(modalType);
+                        });
+                    }
+                }
+            });
+        });
+        </script>
         
         <!-- ফুটার বটম -->
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p>&copy; ২০২৬ পাহাড়ি হাট — সব অধিকার সংরক্ষিত</p>
                 <div class="footer-bottom-links">
-                    <a href="#"><i class="fas fa-shield-alt"></i> নিরাপত্তা</a>
-                    <a href="#"><i class="fas fa-sitemap"></i> সাইটম্যাপ</a>
+                    <a href="security.html"><i class="fas fa-shield-alt"></i> নিরাপত্তা</a>
+                    <a href="sitemap.html"><i class="fas fa-sitemap"></i> সাইটম্যাপ</a>
                     <a href="admin/admin-login.html" target="_blank"><i class="fas fa-user-shield"></i> অ্যাডমিন</a>
                     <a href="vendor/vendor-login.html" target="_blank"><i class="fas fa-sign-in-alt"></i> ভেন্ডর লগইন</a>
                     <a href="vendor/vendor-register.html" target="_blank"><i class="fas fa-user-plus"></i> ভেন্ডর রেজিস্টার</a>
@@ -1047,5 +1554,276 @@
 
 <!-- Custom JS -->
 <script src="js/main.js"></script>
+<!-- প্রোডাক্ট ডাইনামিক লোডিং -->
+<script src="js/products.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // products.js থেকে ফাংশন কল করুন
+        if (typeof renderProducts === 'function') {
+            renderProducts();
+            initCountdownTimers(); // কাউন্টডাউন রি-ইনিশিয়ালাইজ
+            initProductCardEvents(); // কার্ড ইভেন্ট রি-ইনিশিয়ালাইজ
+        }
+    });
+</script>
+
+<!-- ওয়েবসাইটে ডাইনামিক প্রোডাক্ট লোডিং -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ওয়েবসাইটের প্রোডাক্ট লোড করুন
+    function loadWebsiteProducts() {
+        // প্রথমে website_products চেক করুন, না থাকলে master_products চেক করুন
+        let products = JSON.parse(localStorage.getItem('website_products'));
+        
+        if (!products || products.length === 0) {
+            products = JSON.parse(localStorage.getItem('master_products'));
+            if (products && products.length > 0) {
+                // master_products কে website_products ফরম্যাটে রূপান্তর করুন
+                products = products.map(p => ({
+                    id: p.id,
+                    name: p.name,
+                    category: p.category,
+                    estimatePrice: p.estimatePrice,
+                    actualPrice: p.actualPrice,
+                    image: p.image,
+                    source: p.source || 'পার্বত্য চট্টগ্রাম',
+                    stock: p.stock || 50,
+                    unit: p.category === 'fruits' ? 'কেজি' : (p.category === 'meat' ? 'কেজি' : 'প্যাক'),
+                    deliveryDate: p.deliveryDate || '৭-১৫ দিনের মধ্যে',
+                    rating: p.rating || 4,
+                    discount: p.discount || 0,
+                    status: 'active'
+                }));
+            }
+        }
+        
+        if (products && products.length > 0) {
+            const activeProducts = products.filter(p => p.status !== 'inactive');
+            renderProductsToWebsite(activeProducts);
+        }
+    }
+    
+    // প্রোডাক্ট কার্ড রেন্ডার করুন
+    function renderProductsToWebsite(products) {
+        const productGrid = document.getElementById('preorderProductGrid');
+        if (!productGrid) return;
+        
+        productGrid.innerHTML = '';
+        
+        products.slice(0, 6).forEach(product => {
+            const productCard = createProductCard(product);
+            productGrid.appendChild(productCard);
+        });
+        
+        // কাউন্টডাউন টাইমার রি-ইনিশিয়ালাইজ
+        if (typeof initCountdownTimers === 'function') {
+            initCountdownTimers();
+        }
+    }
+    
+    // প্রোডাক্ট কার্ড HTML তৈরি করুন
+    function createProductCard(product) {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.setAttribute('data-id', product.id);
+        card.setAttribute('data-name', product.name);
+        
+        const discountHtml = product.discount > 0 ? 
+            `<div class="product-discount-badge"><span>-${product.discount}%</span></div>` : '';
+        
+        const actualPriceHtml = product.actualPrice ? 
+            `<span class="current-price">৳${product.actualPrice}</span>` : 
+            `<span class="estimate-price">৳${product.estimatePrice}</span>`;
+        
+        card.innerHTML = `
+            <div class="product-badge preorder"><span>🔵 প্রি-অর্ডার</span></div>
+            ${discountHtml}
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='https://placehold.co/300x250/2d6a4f/white?text=পণ্য'">
+            </div>
+            <div class="product-content">
+                <div class="product-source">
+                    <i class="fas fa-location-dot"></i> উৎস: ${product.source}
+                </div>
+                <h3 class="product-title">${product.name}</h3>
+                <div class="product-rating">
+                    ${generateStars(product.rating)}
+                    <span>(${product.reviews || 0} রিভিউ)</span>
+                </div>
+                <div class="product-price">
+                    ${actualPriceHtml}
+                    <span class="per-unit">/${product.unit || 'কেজি'}</span>
+                </div>
+                <div class="product-preorder-info">
+                    <div class="delivery-date">
+                        <i class="far fa-calendar-alt"></i> ডেলিভারি: ${product.deliveryDate}
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="qty-minus">-</button>
+                        <input type="number" value="1" min="1" max="${product.stock || 10}" step="1">
+                        <button class="qty-plus">+</button>
+                    </div>
+                    <button class="btn-add-to-cart">প্রি-বুক <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        `;
+        
+        return card;
+    }
+    
+    function generateStars(rating) {
+        let stars = '';
+        const fullStars = Math.floor(rating);
+        for (let i = 0; i < fullStars; i++) stars += '<i class="fas fa-star"></i>';
+        if (rating % 1 !== 0) stars += '<i class="fas fa-star-half-alt"></i>';
+        const emptyStars = 5 - Math.ceil(rating);
+        for (let i = 0; i < emptyStars; i++) stars += '<i class="far fa-star"></i>';
+        return stars;
+    }
+    
+    // স্টোরেজ চেঞ্জ লিসেনার (যখন অ্যাডমিন প্যানেল থেকে আপডেট হবে)
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'master_products' || e.key === 'website_products') {
+            console.log('প্রোডাক্ট আপডেট detected, রিলোডিং...');
+            loadWebsiteProducts();
+            showNotification('📦 পণ্যের তালিকা আপডেট হয়েছে!', 'info');
+        }
+    });
+    
+    // নোটিফিকেশন ফাংশন
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = 'notification-toast';
+        notification.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i> ${message}`;
+        notification.style.cssText = 'position:fixed; bottom:80px; right:20px; background:#2d6a4f; color:white; padding:12px 20px; border-radius:10px; z-index:9999; animation:slideIn 0.3s ease;';
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+    }
+    
+    // প্রারম্ভিক লোড
+    loadWebsiteProducts();
+});
+</script>
+
+<!-- ওয়েবসাইটে ডাইনামিক প্রোডাক্ট লোডিং -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ওয়েবসাইটের প্রোডাক্ট লোড করুন
+    function loadWebsiteProducts() {
+        let products = JSON.parse(localStorage.getItem('website_products'));
+        
+        if (!products || products.length === 0) {
+            products = JSON.parse(localStorage.getItem('master_products'));
+            if (products && products.length > 0) {
+                products = products.map(p => ({
+                    id: p.id,
+                    name: p.name,
+                    category: p.category,
+                    estimatePrice: p.estimatePrice,
+                    actualPrice: p.actualPrice,
+                    image: p.image,
+                    source: p.source || 'পার্বত্য চট্টগ্রাম',
+                    stock: p.stock || 50,
+                    unit: p.category === 'fruits' ? 'কেজি' : (p.category === 'meat' ? 'কেজি' : 'প্যাক'),
+                    deliveryDate: p.deliveryDate || '৭-১৫ দিনের মধ্যে',
+                    rating: p.rating || 4,
+                    reviews: p.reviews || 0,
+                    discount: p.discount || 0
+                }));
+            }
+        }
+        
+        if (products && products.length > 0) {
+            renderProductsToWebsite(products);
+        }
+    }
+    
+    function renderProductsToWebsite(products) {
+        const productGrid = document.getElementById('preorderProductGrid');
+        if (!productGrid) return;
+        
+        productGrid.innerHTML = '';
+        const displayProducts = products.slice(0, 6);
+        
+        displayProducts.forEach(product => {
+            const productCard = createProductCard(product);
+            productGrid.appendChild(productCard);
+        });
+        
+        if (typeof initCountdownTimers === 'function') initCountdownTimers();
+        if (typeof initProductCardEvents === 'function') initProductCardEvents();
+    }
+    
+    function createProductCard(product) {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.setAttribute('data-id', product.id);
+        card.setAttribute('data-name', product.name);
+        
+        const discountHtml = product.discount > 0 ? 
+            `<div class="product-discount-badge"><span>-${product.discount}%</span></div>` : '';
+        
+        const priceHtml = product.actualPrice ? 
+            `<span class="current-price">৳${product.actualPrice}</span>` : 
+            `<span class="estimate-price">৳${product.estimatePrice}</span>`;
+        
+        const stars = generateStars(product.rating || 4);
+        
+        card.innerHTML = `
+            <div class="product-badge preorder"><span>🔵 প্রি-অর্ডার</span></div>
+            ${discountHtml}
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='https://placehold.co/300x250/2d6a4f/white?text=পণ্য'">
+            </div>
+            <div class="product-content">
+                <div class="product-source"><i class="fas fa-location-dot"></i> উৎস: ${product.source}</div>
+                <h3 class="product-title">${product.name}</h3>
+                <div class="product-rating">${stars}<span>(${product.reviews || 0} রিভিউ)</span></div>
+                <div class="product-price">${priceHtml}<span class="per-unit">/${product.unit || 'কেজি'}</span></div>
+                <div class="product-preorder-info"><div class="delivery-date"><i class="far fa-calendar-alt"></i> ডেলিভারি: ${product.deliveryDate}</div></div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="qty-minus">-</button>
+                        <input type="number" value="1" min="1" max="${product.stock || 10}">
+                        <button class="qty-plus">+</button>
+                    </div>
+                    <button class="btn-add-to-cart">প্রি-বুক <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        `;
+        return card;
+    }
+    
+    function generateStars(rating) {
+        let stars = '';
+        const fullStars = Math.floor(rating);
+        for (let i = 0; i < fullStars; i++) stars += '<i class="fas fa-star"></i>';
+        if (rating % 1 !== 0) stars += '<i class="fas fa-star-half-alt"></i>';
+        const emptyStars = 5 - Math.ceil(rating);
+        for (let i = 0; i < emptyStars; i++) stars += '<i class="far fa-star"></i>';
+        return stars;
+    }
+    
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'master_products' || e.key === 'website_products') {
+            loadWebsiteProducts();
+        }
+    });
+    
+    loadWebsiteProducts();
+});
+</script>
+
+<style>
+.notification-toast {
+    animation: slideIn 0.3s ease;
+}
+@keyframes slideIn {
+    from { transform: translateX(100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+</style>
 </body>
 </html>

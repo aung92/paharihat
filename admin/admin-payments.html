@@ -34,7 +34,7 @@
             position: fixed;
             height: 100vh;
             overflow-y: auto;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
             z-index: 100;
         }
         
@@ -129,6 +129,7 @@
             flex-wrap: wrap;
             gap: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: relative;
         }
         
         .page-title h2 {
@@ -169,6 +170,17 @@
         .logout-btn:hover {
             background: #d45a3a;
             transform: translateY(-2px);
+        }
+        
+        /* মেনু টগল বাটন */
+        .menu-toggle {
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: none;
         }
         
         /* ============================================ */
@@ -257,10 +269,6 @@
             padding: 8px;
             width: 100%;
             font-family: inherit;
-        }
-        
-        .search-box input:focus {
-            outline: none;
         }
         
         .filter-group {
@@ -582,7 +590,64 @@
             margin: 0 3px;
         }
         
-        /* রেস্পন্সিভ */
+        /* ============================================ */
+        /* মোবাইল বটম নেভিগেশন                         */
+        /* ============================================ */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .mobile-bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #888;
+            font-size: 0.6rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        
+        .mobile-bottom-nav a i {
+            font-size: 1.3rem;
+            margin-bottom: 3px;
+        }
+        
+        .mobile-bottom-nav a.active {
+            color: #2d6a4f;
+            background: #e8f5e9;
+        }
+        
+        /* সাইডবার ওভারলে */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+        }
+        
+        .sidebar-overlay.active {
+            display: block;
+        }
+        
+        /* ============================================ */
+        /* রেস্পন্সিভ মিডিয়া কুয়েরি                   */
+        /* ============================================ */
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -595,10 +660,20 @@
             
             .main-content {
                 margin-left: 0;
+                padding-bottom: 70px;
+            }
+            
+            .mobile-bottom-nav {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: block;
             }
             
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
             
             .filter-bar {
@@ -640,27 +715,52 @@
             .footer-links {
                 justify-content: center;
             }
-        }
-        
-        @media (min-width: 769px) {
-            .menu-toggle {
-                display: none;
+            
+            .section-card {
+                padding: 15px;
+            }
+            
+            .stat-card {
+                padding: 12px;
+            }
+            
+            .stat-icon {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .stat-icon i {
+                font-size: 1.5rem;
+            }
+            
+            .stat-info h3 {
+                font-size: 1.3rem;
             }
         }
         
-        .menu-toggle {
-            background: #2d6a4f;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .admin-info {
+                justify-content: center;
+            }
+            
+            .page-title h2 {
+                font-size: 1.1rem;
+            }
         }
         
         .notification-toast {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 80px;
+            right: 20px;
             background: #2d6a4f;
             color: white;
             padding: 12px 20px;
@@ -738,6 +838,9 @@
         </div>
     </div>
     
+    <!-- সাইডবার ওভারলে -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
     <!-- মেইন কন্টেন্ট -->
     <div class="main-content">
         <div class="topbar">
@@ -803,10 +906,44 @@
                 <span class="separator">|</span>
                 <i class="fas fa-version"></i> ভার্সন 2.0
                 <span class="separator">|</span>
-                <i class="fas fa-shield-alt"></i> সিকিউর প্যানেল
+                <i class="fas fa-shield-alt"></i> সিকিউর প্যানEL
             </div>
         </div>
     </div>
+</div>
+
+<!-- ============================================ -->
+<!-- মোবাইল বটম নেভিগেশন                         -->
+<!-- ============================================ -->
+<div class="mobile-bottom-nav">
+    <a href="admin-dashboard.html" class="mobile-nav-item">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>ড্যাশবোর্ড</span>
+    </a>
+    <a href="admin-vendors.html" class="mobile-nav-item">
+        <i class="fas fa-store"></i>
+        <span>ভেন্ডর</span>
+    </a>
+    <a href="admin-payments.html" class="mobile-nav-item active">
+        <i class="fas fa-money-bill"></i>
+        <span>পেমেন্ট</span>
+    </a>
+    <a href="admin-orders.html" class="mobile-nav-item">
+        <i class="fas fa-shopping-cart"></i>
+        <span>অর্ডার</span>
+    </a>
+    <a href="admin-products.html" class="mobile-nav-item">
+        <i class="fas fa-box"></i>
+        <span>পণ্য</span>
+    </a>
+    <a href="admin-customers.html" class="mobile-nav-item">
+        <i class="fas fa-users"></i>
+        <span>কাস্টমার</span>
+    </a>
+    <a href="admin-settings.html" class="mobile-nav-item">
+        <i class="fas fa-cog"></i>
+        <span>সেটিংস</span>
+    </a>
 </div>
 
 <script>
@@ -820,6 +957,27 @@
     }
     
     document.getElementById('adminName').innerText = currentAdmin.name || 'অ্যাডমিন';
+    
+    // ============================================
+    // মোবাইল মেনু টগল
+    // ============================================
+    document.getElementById('menuToggle')?.addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('open');
+        document.getElementById('sidebarOverlay').classList.toggle('active');
+    });
+    
+    document.getElementById('sidebarOverlay')?.addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('open');
+        this.classList.remove('active');
+    });
+    
+    // বর্তমান পেজ অনুযায়ী মোবাইল নেভ অ্যাক্টিভ ক্লাস
+    const currentPage = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.mobile-nav-item').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
     
     // ============================================
     // ডাটা লোড
@@ -886,7 +1044,7 @@
     // ============================================
     // পেমেন্ট লিস্ট ভেরিয়েবল
     // ============================================
-    let currentPage = 1;
+    let currentPageNum = 1;
     let itemsPerPage = 10;
     let searchTerm = '';
     let statusFilter = 'all';
@@ -918,12 +1076,11 @@
         const totalRequests = paymentRequests.length;
         const pendingAmount = paymentRequests.filter(p => p.status === 'pending').reduce((sum, p) => sum + p.amount, 0);
         const approvedAmount = paymentRequests.filter(p => p.status === 'approved').reduce((sum, p) => sum + p.amount, 0);
-        const totalAmount = paymentRequests.reduce((sum, p) => sum + p.amount, 0);
         const pendingCount = paymentRequests.filter(p => p.status === 'pending').length;
         
         // পেজিনেশন
         const totalPages = Math.ceil(filteredPayments.length / itemsPerPage);
-        const startIndex = (currentPage - 1) * itemsPerPage;
+        const startIndex = (currentPageNum - 1) * itemsPerPage;
         const paginatedPayments = filteredPayments.slice(startIndex, startIndex + itemsPerPage);
         
         const container = document.getElementById('dynamicContent');
@@ -1044,11 +1201,11 @@
                     
                     ${totalPages > 1 ? `
                         <div class="pagination">
-                            <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>« আগে</button>
+                            <button onclick="changePage(${currentPageNum - 1})" ${currentPageNum === 1 ? 'disabled' : ''}>« আগে</button>
                             ${[...Array(totalPages)].map((_, i) => `
-                                <button class="${currentPage === i + 1 ? 'active' : ''}" onclick="changePage(${i + 1})">${i + 1}</button>
+                                <button class="${currentPageNum === i + 1 ? 'active' : ''}" onclick="changePage(${i + 1})">${i + 1}</button>
                             `).join('')}
-                            <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>পরে »</button>
+                            <button onclick="changePage(${currentPageNum + 1})" ${currentPageNum === totalPages ? 'disabled' : ''}>পরে »</button>
                         </div>
                     ` : ''}
                 `}
@@ -1058,13 +1215,13 @@
         // ইভেন্ট লিসেনার
         document.getElementById('searchPayment')?.addEventListener('input', (e) => {
             searchTerm = e.target.value;
-            currentPage = 1;
+            currentPageNum = 1;
             loadPayments();
         });
         
         document.getElementById('statusFilterSelect')?.addEventListener('change', (e) => {
             statusFilter = e.target.value;
-            currentPage = 1;
+            currentPageNum = 1;
             loadPayments();
         });
     }
@@ -1072,7 +1229,7 @@
     // স্ট্যাটাস ফিল্টার ফাংশন
     function filterByStatus(status) {
         statusFilter = status;
-        currentPage = 1;
+        currentPageNum = 1;
         loadPayments();
         const select = document.getElementById('statusFilterSelect');
         if (select) select.value = status;
@@ -1080,7 +1237,7 @@
     
     // পেজিনেশন চেঞ্জ
     function changePage(page) {
-        currentPage = page;
+        currentPageNum = page;
         loadPayments();
     }
     

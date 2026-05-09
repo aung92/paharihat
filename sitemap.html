@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সাইটম্যাপ - পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f8f9fa; color: #2d2d2d; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .navbar { background-color: #ffffff; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; }
+        .logo a { display: flex; align-items: center; gap: 6px; font-size: 1.3rem; font-weight: 700; text-decoration: none; color: #2d6a4f; }
+        .logo i { font-size: 1.5rem; }
+        .back-link a { color: #2d6a4f; text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .back-link a:hover { color: #e76f51; }
+        .page-header { background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%); color: white; padding: 60px 0 40px; text-align: center; }
+        .page-header h1 { font-size: 2rem; margin-bottom: 15px; }
+        .page-header p { font-size: 1rem; opacity: 0.9; }
+        .sitemap-content { padding: 60px 0; }
+        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .sitemap-card { background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); overflow: hidden; transition: transform 0.3s ease; }
+        .sitemap-card:hover { transform: translateY(-5px); }
+        .sitemap-header { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 18px 20px; border-bottom: 1px solid #d0e8d0; }
+        .sitemap-header h2 { color: #2d6a4f; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; margin: 0; }
+        .sitemap-header h2 i { font-size: 1.2rem; }
+        .sitemap-list { padding: 20px; }
+        .sitemap-list ul { list-style: none; }
+        .sitemap-list li { margin-bottom: 12px; }
+        .sitemap-list a { text-decoration: none; color: #4a5568; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; transition: all 0.2s; }
+        .sitemap-list a i { color: #2d6a4f; width: 20px; font-size: 0.8rem; }
+        .sitemap-list a:hover { color: #e76f51; transform: translateX(5px); }
+        .sitemap-list a:hover i { color: #e76f51; }
+        .sub-links { margin-left: 30px; margin-top: 8px; }
+        .sub-links li { margin-bottom: 8px; }
+        .sub-links a { font-size: 0.8rem; }
+        .footer { background: linear-gradient(180deg, #0d2b1e 0%, #0a1f15 100%); color: #999; padding: 40px 0 20px; }
+        .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-bottom p { font-size: 0.75rem; color: #777; }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.5rem; }
+            .sitemap-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-mountain"></i>
+                <span>পাহাড়ি হাট</span>
+            </a>
+        </div>
+        <div class="back-link">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> হোমে ফিরুন</a>
+        </div>
+    </div>
+</nav>
+
+<section class="page-header">
+    <div class="container">
+        <h1><i class="fas fa-sitemap"></i> সাইটম্যাপ</h1>
+        <p>ওয়েবসাইটের সকল পৃষ্ঠার তালিকা - দ্রুত নেভিগেট করুন</p>
+    </div>
+</section>
+
+<section class="sitemap-content">
+    <div class="container">
+        <div class="sitemap-grid">
+            
+            <!-- প্রধান পৃষ্ঠা -->
+            <div class="sitemap-card">
+                <div class="sitemap-header">
+                    <h2><i class="fas fa-home"></i> প্রধান পৃষ্ঠা</h2>
+                </div>
+                <div class="sitemap-list">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> হোমপেজ</a></li>
+                        <li><a href="#preorder"><i class="fas fa-clock"></i> প্রি-অর্ডার</a></li>
+                        <li><a href="#categories"><i class="fas fa-tags"></i> ক্যাটাগরি</a></li>
+                        <li><a href="#requestSection"><i class="fas fa-gem"></i> পণ্য রিকুয়েস্ট</a></li>
+                        <li><a href="#track"><i class="fas fa-chart-line"></i> অর্ডার ট্র্যাক</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট পৃষ্ঠা -->
+            <div class="sitemap-card">
+                <div class="sitemap-header">
+                    <h2><i class="fas fa-apple-alt"></i> প্রোডাক্ট পৃষ্ঠা</h2>
+                </div>
+                <div class="sitemap-list">
+                    <ul>
+                        <li><a href="preorder.html"><i class="fas fa-clock"></i> সব প্রি-অর্ডার</a></li>
+                        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> শপিং কার্ট</a></li>
+                        <li><a href="my-orders.html"><i class="fas fa-box"></i> আমার অর্ডার</a></li>
+                    </ul>
+                    <div class="sub-links">
+                        <ul>
+                            <li><a href="#"><i class="fas fa-apple-alt"></i> মৌসুমি ফল</a></li>
+                            <li><a href="#"><i class="fas fa-fish"></i> সামুদ্রিক মাছ</a></li>
+                            <li><a href="#"><i class="fas fa-jar"></i> মধু</a></li>
+                            <li><a href="#"><i class="fas fa-drumstick-bite"></i> মাংস</a></li>
+                            <li><a href="#"><i class="fas fa-mortar-pestle"></i> মশলা</a></li>
+                            <li><a href="#"><i class="fas fa-leaf"></i> শাক-সবজি</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- গ্রাহক সেবা -->
+            <div class="sitemap-card">
+                <div class="sitemap-header">
+                    <h2><i class="fas fa-headset"></i> গ্রাহক সেবা</h2>
+                </div>
+                <div class="sitemap-list">
+                    <ul>
+                        <li><a href="preorder-policy.html"><i class="fas fa-clock"></i> প্রি-অর্ডার নীতিমালা</a></li>
+                        <li><a href="return-refund.html"><i class="fas fa-exchange-alt"></i> রিটার্ন ও রিফান্ড</a></li>
+                        <li><a href="privacy-policy.html"><i class="fas fa-lock"></i> গোপনীয়তা নীতি</a></li>
+                        <li><a href="terms-conditions.html"><i class="fas fa-file-contract"></i> শর্তাবলী</a></li>
+                        <li><a href="security.html"><i class="fas fa-shield-alt"></i> নিরাপত্তা নীতি</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> যোগাযোগ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ভেন্ডর পৃষ্ঠা -->
+            <div class="sitemap-card">
+                <div class="sitemap-header">
+                    <h2><i class="fas fa-store"></i> ভেন্ডর পৃষ্ঠা</h2>
+                </div>
+                <div class="sitemap-list">
+                    <ul>
+                        <li><a href="vendor/vendor-login.html"><i class="fas fa-sign-in-alt"></i> ভেন্ডর লগইন</a></li>
+                        <li><a href="vendor/vendor-register.html"><i class="fas fa-user-plus"></i> ভেন্ডর রেজিস্টার</a></li>
+                        <li><a href="admin/admin-login.html"><i class="fas fa-user-shield"></i> অ্যাডমিন লগইন</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- সাপোর্ট ও হেল্প -->
+            <div class="sitemap-card">
+                <div class="sitemap-header">
+                    <h2><i class="fas fa-question-circle"></i> সাপোর্ট ও হেল্প</h2>
+                </div>
+                <div class="sitemap-list">
+                    <ul>
+                        <li><a href="#"><i class="fas fa-question"></i> FAQ (সচরাচর জিজ্ঞাসা)</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> হোয়াটসঅ্যাপ সাপোর্ট</a></li>
+                        <li><a href="#"><i class="fas fa-phone-alt"></i> হটলাইন নম্বর</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> ইমেইল সাপোর্ট</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- আইনি পৃষ্ঠা -->
+            <div class="sitemap-card">
+                <div class="sitemap-header">
+                    <h2><i class="fas fa-gavel"></i> আইনি পৃষ্ঠা</h2>
+                </div>
+                <div class="sitemap-list">
+                    <ul>
+                        <li><a href="terms-conditions.html"><i class="fas fa-file-contract"></i> ব্যবহারের শর্তাবলী</a></li>
+                        <li><a href="privacy-policy.html"><i class="fas fa-lock"></i> গোপনীয়তা নীতি</a></li>
+                        <li><a href="security.html"><i class="fas fa-shield-alt"></i> নিরাপত্তা নীতি</a></li>
+                        <li><a href="return-refund.html"><i class="fas fa-undo-alt"></i> রিটার্ন নীতি</a></li>
+                        <li><a href="preorder-policy.html"><i class="fas fa-clock"></i> প্রি-অর্ডার নীতি</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- কুইক লিংক -->
+        <div class="sitemap-card" style="margin-top: 30px;">
+            <div class="sitemap-header">
+                <h2><i class="fas fa-link"></i> কুইক লিংক</h2>
+            </div>
+            <div class="sitemap-list">
+                <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                    <a href="index.html" style="background: #e8f5e9; padding: 8px 16px; border-radius: 50px; text-decoration: none; color: #2d6a4f;"><i class="fas fa-home"></i> হোম</a>
+                    <a href="preorder.html" style="background: #e8f5e9; padding: 8px 16px; border-radius: 50px; text-decoration: none; color: #2d6a4f;"><i class="fas fa-clock"></i> প্রি-অর্ডার</a>
+                    <a href="cart.html" style="background: #e8f5e9; padding: 8px 16px; border-radius: 50px; text-decoration: none; color: #2d6a4f;"><i class="fas fa-shopping-cart"></i> কার্ট</a>
+                    <a href="my-orders.html" style="background: #e8f5e9; padding: 8px 16px; border-radius: 50px; text-decoration: none; color: #2d6a4f;"><i class="fas fa-box"></i> আমার অর্ডার</a>
+                    <a href="contact.html" style="background: #e8f5e9; padding: 8px 16px; border-radius: 50px; text-decoration: none; color: #2d6a4f;"><i class="fas fa-envelope"></i> যোগাযোগ</a>
+                    <a href="security.html" style="background: #e8f5e9; padding: 8px 16px; border-radius: 50px; text-decoration: none; color: #2d6a4f;"><i class="fas fa-shield-alt"></i> নিরাপত্তা</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; ২০২৬ পাহাড়ি হাট — সব অধিকার সংরক্ষিত</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

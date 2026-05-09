@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>যোগাযোগ - পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f8f9fa; color: #2d2d2d; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .navbar { background-color: #ffffff; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; }
+        .logo a { display: flex; align-items: center; gap: 6px; font-size: 1.3rem; font-weight: 700; text-decoration: none; color: #2d6a4f; }
+        .logo i { font-size: 1.5rem; }
+        .back-link a { color: #2d6a4f; text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .back-link a:hover { color: #e76f51; }
+        .page-header { background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%); color: white; padding: 60px 0 40px; text-align: center; }
+        .page-header h1 { font-size: 2rem; margin-bottom: 15px; }
+        .page-header p { font-size: 1rem; opacity: 0.9; }
+        .contact-content { padding: 60px 0; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .contact-info-card { background: white; border-radius: 12px; padding: 30px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .contact-info-card i { font-size: 2.5rem; color: #2d6a4f; margin-bottom: 15px; }
+        .contact-info-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: #2d6a4f; }
+        .contact-info-card p { color: #555; margin-bottom: 5px; }
+        .contact-info-card a { color: #e76f51; text-decoration: none; }
+        .contact-info-card a:hover { text-decoration: underline; }
+        .contact-form-card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .contact-form-card h3 { font-size: 1.2rem; margin-bottom: 20px; color: #2d6a4f; display: flex; align-items: center; gap: 10px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.9rem; font-family: inherit; }
+        .form-group textarea { resize: vertical; }
+        .btn-submit { background: #2d6a4f; color: white; border: none; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: 600; width: 100%; font-size: 1rem; }
+        .btn-submit:hover { background: #1b4332; }
+        .highlight-box { background: #e8f5e9; padding: 20px; border-radius: 12px; margin-top: 30px; border-left: 4px solid #e76f51; }
+        .footer { background: linear-gradient(180deg, #0d2b1e 0%, #0a1f15 100%); color: #999; padding: 40px 0 20px; }
+        .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-bottom p { font-size: 0.75rem; color: #777; }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.5rem; }
+            .contact-info-card, .contact-form-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-mountain"></i>
+                <span>পাহাড়ি হাট</span>
+            </a>
+        </div>
+        <div class="back-link">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> হোমে ফিরুন</a>
+        </div>
+    </div>
+</nav>
+
+<section class="page-header">
+    <div class="container">
+        <h1><i class="fas fa-address-card"></i> যোগাযোগ করুন</h1>
+        <p>আমরা ২৪/৭ আপনার সাথে আছি</p>
+    </div>
+</section>
+
+<section class="contact-content">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info-card">
+                <i class="fab fa-whatsapp"></i>
+                <h3>হোয়াটসঅ্যাপ</h3>
+                <p><a href="https://wa.me/8801918481232" target="_blank">০১৯১৮৪৮১২৩২</a></p>
+                <p>সরাসরি চ্যাট করুন</p>
+            </div>
+            <div class="contact-info-card">
+                <i class="fas fa-phone-alt"></i>
+                <h3>কল করুন</h3>
+                <p><a href="tel:01918481232">০১৯১৮৪৮১২৩২</a></p>
+                <p>সকাল ১০টা - রাত ৮টা</p>
+            </div>
+            <div class="contact-info-card">
+                <i class="far fa-envelope"></i>
+                <h3>ইমেইল</h3>
+                <p><a href="mailto:info@paharihat.com">info@paharihat.com</a></p>
+                <p>২৪ ঘণ্টার মধ্যে রিপ্লাই</p>
+            </div>
+            <div class="contact-info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>অফিস ঠিকানা</h3>
+                <p>বান্দরবান সদর, বান্দরবান</p>
+                <p>পার্বত্য চট্টগ্রাম, বাংলাদেশ</p>
+            </div>
+        </div>
+
+        <div class="contact-form-card">
+            <h3><i class="fas fa-paper-plane"></i> সরাসরি বার্তা পাঠান</h3>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="contactName" placeholder="আপনার নাম *" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="contactMobile" placeholder="মোবাইল নম্বর *" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="contactEmail" placeholder="ইমেইল (ঐচ্ছিক)">
+                </div>
+                <div class="form-group">
+                    <textarea id="contactMessage" rows="5" placeholder="আপনার বার্তা লিখুন *" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> বার্তা পাঠান</button>
+            </form>
+            <div class="highlight-box">
+                <p><i class="fas fa-clock"></i> <strong>সাপোর্ট সময়:</strong> সকাল ১০টা থেকে রাত ৮টা (শুক্রবার বন্ধ)। জরুরি প্রয়োজনে হোয়াটসঅ্যাপ করুন ২৪/৭।</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; ২০২৬ পাহাড়ি হাট — সব অধিকার সংরক্ষিত</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('আপনার বার্তা সফলভাবে পাঠানো হয়েছে। আমরা খুব শীঘ্রই যোগাযোগ করবো। ধন্যবাদ!');
+        this.reset();
+    });
+</script>
+
+</body>
+</html>

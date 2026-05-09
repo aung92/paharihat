@@ -1201,3 +1201,45 @@ document.addEventListener('DOMContentLoaded', function() {
     initHelpdesk();
 });
 
+// ============================================
+// সাপোর্ট নীতি পপআপ ফাংশন
+// ============================================
+function initPolicyModals() {
+    const policyLinks = document.querySelectorAll('.policy-link');
+    
+    policyLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const modalId = this.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    const closeBtns = document.querySelectorAll('.policy-modal-close, .close-policy-modal');
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const modal = this.closest('.policy-modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+    
+    window.addEventListener('click', function(e) {
+        if (e.target.classList.contains('policy-modal')) {
+            e.target.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// DOM লোডে কল করুন
+document.addEventListener('DOMContentLoaded', function() {
+    // ... আপনার অন্যান্য ফাংশন
+    initPolicyModals();
+});

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>অর্ডার ম্যানেজমেন্ট | ভেন্ডর প্যানেল | পাহাড়ি হাট</title>
+    <title>পেমেন্ট রিকোয়েস্ট | ভেন্ডর প্যানেল | পাহাড়ি হাট</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -76,26 +76,12 @@
         .stat-info h3 { font-size: 1.8rem; font-weight: 700; color: #2d6a4f; }
         .stat-info p { color: #666; font-size: 0.8rem; }
         
-        .filter-bar {
-            background: white;
-            border-radius: 15px;
-            padding: 15px 20px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .search-box { display: flex; align-items: center; gap: 10px; flex: 1; max-width: 300px; }
-        .search-box input { flex: 1; padding: 8px 15px; border: 1px solid #ddd; border-radius: 25px; font-family: inherit; }
-        .filter-group select { padding: 8px 15px; border: 1px solid #ddd; border-radius: 25px; background: white; }
-        
         .section-card { background: white; border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
         .section-header h3 { color: #2d6a4f; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        
+        .request-payment-btn { background: #2d6a4f; color: white; border: none; padding: 10px 25px; border-radius: 25px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .request-payment-btn:hover { background: #1b4332; }
         
         .data-table { width: 100%; border-collapse: collapse; overflow-x: auto; display: block; }
         .data-table th, .data-table td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
@@ -103,11 +89,7 @@
         
         .status-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 500; }
         .status-pending { background: #fff3e0; color: #e76f51; }
-        .status-processing { background: #e3f2fd; color: #2196f3; }
-        .status-delivered { background: #e8f5e9; color: #2d6a4f; }
-        
-        .btn-status { background: #2d6a4f; color: white; border: none; padding: 5px 12px; border-radius: 15px; cursor: pointer; font-size: 0.7rem; margin: 2px; }
-        .btn-status:hover { background: #1b4332; }
+        .status-approved { background: #e8f5e9; color: #2d6a4f; }
         
         .modal {
             display: none;
@@ -127,18 +109,17 @@
             padding: 30px;
             border-radius: 20px;
             width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
+            max-width: 450px;
         }
         
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
         .modal-header h3 { color: #2d6a4f; }
         .modal-close { font-size: 1.5rem; cursor: pointer; color: #999; }
         
-        .detail-row { display: flex; padding: 10px 0; border-bottom: 1px solid #eee; }
-        .detail-label { font-weight: 600; color: #2d6a4f; width: 40%; }
-        .detail-value { color: #555; width: 60%; }
+        .modal-form-group { margin-bottom: 20px; }
+        .modal-form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #333; }
+        .modal-form-group input, .modal-form-group select { width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 10px; font-family: inherit; }
+        .modal-form-group input:focus { outline: none; border-color: #2d6a4f; }
         
         .modal-buttons { display: flex; gap: 10px; margin-top: 25px; }
         .modal-submit-btn { flex: 1; padding: 12px; background: #2d6a4f; color: white; border: none; border-radius: 10px; cursor: pointer; }
@@ -146,6 +127,7 @@
         
         .empty-state { text-align: center; padding: 60px; background: white; border-radius: 20px; }
         .empty-state i { font-size: 4rem; color: #ddd; margin-bottom: 15px; }
+        .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: #666; }
         
         .vendor-footer {
             background: linear-gradient(180deg, #0d2b1e 0%, #0a1f15 100%);
@@ -289,10 +271,9 @@
             .sidebar.open { transform: translateX(0); }
             .main-content { margin-left: 0; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .filter-bar { flex-direction: column; }
-            .search-box { max-width: 100%; width: 100%; }
             .footer-content { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
+            .footer-developer { flex-direction: column; gap: 8px; }
         }
         
         .notification-toast {
@@ -340,8 +321,8 @@
         <div class="sidebar-menu">
             <div class="sidebar-menu-item" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> ড্যাশবোর্ড</div>
             <div class="sidebar-menu-item" data-tab="products"><i class="fas fa-box"></i> পণ্য</div>
-            <div class="sidebar-menu-item active" data-tab="orders"><i class="fas fa-shopping-cart"></i> অর্ডার</div>
-            <div class="sidebar-menu-item" data-tab="payments"><i class="fas fa-money-bill"></i> পেমেন্ট</div>
+            <div class="sidebar-menu-item" data-tab="orders"><i class="fas fa-shopping-cart"></i> অর্ডার</div>
+            <div class="sidebar-menu-item active" data-tab="payments"><i class="fas fa-money-bill"></i> পেমেন্ট</div>
             <div class="sidebar-menu-item" data-tab="reports"><i class="fas fa-chart-line"></i> রিপোর্টস</div>
             <div class="sidebar-menu-item" data-tab="requests"><i class="fas fa-gem"></i> রিকুয়েস্ট</div>
             <div class="sidebar-menu-item" data-tab="profile"><i class="fas fa-user"></i> প্রোফাইল</div>
@@ -355,7 +336,7 @@
     <div class="main-content">
         <div class="topbar">
             <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-            <div class="page-title"><h2><i class="fas fa-shopping-cart"></i> আমার অর্ডার</h2></div>
+            <div class="page-title"><h2><i class="fas fa-money-bill"></i> পেমেন্ট রিকোয়েস্ট</h2></div>
             <button class="logout-btn" onclick="vendorLogout()"><i class="fas fa-sign-out-alt"></i> লগআউট</button>
         </div>
         
@@ -407,6 +388,7 @@
 
 <script>
     let currentVendor = JSON.parse(localStorage.getItem('currentVendor'));
+    let paymentRequests = JSON.parse(localStorage.getItem('payment_requests') || '[]');
     let allOrders = JSON.parse(localStorage.getItem('orders') || '[]');
     
     if (!currentVendor) window.location.href = 'vendor-login.html';
@@ -419,56 +401,54 @@
         setTimeout(() => notification.remove(), 3000);
     }
     
-    let searchTerm = '';
-    let statusFilter = 'all';
+    function getVendorEarnings() {
+        const vendorOrders = allOrders.filter(o => o.vendorId === currentVendor.id && o.status === 'delivered');
+        return vendorOrders.reduce((sum, o) => sum + (o.total || 0), 0);
+    }
     
-    function loadOrders() {
-        let vendorOrders = allOrders.filter(o => o.vendorId === currentVendor.id);
-        let filtered = [...vendorOrders];
-        if (searchTerm) filtered = filtered.filter(o => o.id.toLowerCase().includes(searchTerm.toLowerCase()) || o.customerName?.toLowerCase().includes(searchTerm.toLowerCase()));
-        if (statusFilter !== 'all') filtered = filtered.filter(o => o.status === statusFilter);
+    function getApprovedPayments() {
+        return paymentRequests.filter(p => p.vendorId === currentVendor.id && p.status === 'approved').reduce((sum, p) => sum + p.amount, 0);
+    }
+    
+    function loadPayments() {
+        let vendorPayments = paymentRequests.filter(p => p.vendorId === currentVendor.id);
+        vendorPayments.sort((a, b) => new Date(b.date) - new Date(a.date));
         
-        const pendingCount = vendorOrders.filter(o => o.status === 'pending').length;
-        const processingCount = vendorOrders.filter(o => o.status === 'processing').length;
-        const deliveredCount = vendorOrders.filter(o => o.status === 'delivered').length;
-        const totalEarnings = vendorOrders.filter(o => o.status === 'delivered').reduce((sum, o) => sum + (o.total || 0), 0);
+        const totalEarnings = getVendorEarnings();
+        const approvedAmount = getApprovedPayments();
+        const pendingAmount = totalEarnings - approvedAmount;
+        const pendingCount = vendorPayments.filter(p => p.status === 'pending').length;
         
         const container = document.getElementById('dynamicContent');
         container.innerHTML = `
             <div class="stats-grid">
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-hourglass-half"></i></div><div class="stat-info"><h3>${pendingCount}</h3><p>pending অর্ডার</p></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-spinner"></i></div><div class="stat-info"><h3>${processingCount}</h3><p>প্রক্রিয়াকরণে</p></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-check-double"></i></div><div class="stat-info"><h3>${deliveredCount}</h3><p>ডেলিভারি সম্পন্ন</p></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-money-bill-wave"></i></div><div class="stat-info"><h3>৳${totalEarnings.toLocaleString()}</h3><p>মোট আয়</p></div></div>
-            </div>
-            
-            <div class="filter-bar">
-                <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchOrders" placeholder="অর্ডার আইডি বা নাম খুঁজুন..."></div>
-                <div class="filter-group"><select id="statusFilter"><option value="all">সব অর্ডার</option><option value="pending">⏳ pending</option><option value="processing">🔄 প্রক্রিয়াকরণে</option><option value="delivered">✅ ডেলিভারি সম্পন্ন</option></select></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-info"><h3>৳${totalEarnings.toLocaleString()}</h3><p>মোট আয়</p></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-info"><h3>৳${approvedAmount.toLocaleString()}</h3><p>অনুমোদিত পেমেন্ট</p></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-info"><h3>৳${pendingAmount.toLocaleString()}</h3><p>pending পেমেন্ট</p></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-file-invoice"></i></div><div class="stat-info"><h3>${pendingCount}</h3><p>pending রিকোয়েস্ট</p></div></div>
             </div>
             
             <div class="section-card">
-                <div class="section-header"><h3><i class="fas fa-list"></i> অর্ডার তালিকা</h3><span>মোট ${filtered.length} টি অর্ডার</span></div>
-                ${filtered.length === 0 ? `
-                    <div class="empty-state"><i class="fas fa-inbox"></i><h3>কোনো অর্ডার নেই</h3><p>আপনার এখনও কোনো অর্ডার আসেনি</p></div>
+                <div class="section-header">
+                    <h3><i class="fas fa-history"></i> পেমেন্ট রিকোয়েস্ট ইতিহাস</h3>
+                    <button class="request-payment-btn" onclick="openRequestModal()"><i class="fas fa-hand-holding-usd"></i> নতুন রিকোয়েস্ট</button>
+                </div>
+                ${vendorPayments.length === 0 ? `
+                    <div class="empty-state"><i class="fas fa-receipt"></i><h3>কোনো পেমেন্ট রিকোয়েস্ট নেই</h3><p>পেমেন্ট রিকোয়েস্ট করতে উপরের বাটনে ক্লিক করুন</p></div>
                 ` : `
                     <div style="overflow-x: auto;">
                         <table class="data-table">
-                            <thead><tr><th>অর্ডার আইডি</th><th>তারিখ</th><th>গ্রাহক</th><th>মোট</th><th>স্ট্যাটাস</th><th>অ্যাকশন</th></thead>
+                            <thead><tr><th>রিকোয়েস্ট আইডি</th><th>তারিখ</th><th>পরিমাণ</th><th>মোবাইল</th><th>স্ট্যাটাস</th></thead>
                             <tbody>
-                                ${filtered.map(o => `
+                                ${vendorPayments.map(p => `
                                     <tr>
-                                        <td><strong>${o.id}</strong></small></td>
-                                        <td>${o.date || new Date(o.createdAt).toLocaleDateString('bn-BD')}</td>
-                                        <td>${o.customerName || 'গ্রাহক'}${o.customerMobile ? `<br><small>${o.customerMobile}</small>` : ''}</td>
-                                        <td>৳${o.total}</td>
-                                        <td><span class="status-badge ${o.status === 'delivered' ? 'status-delivered' : (o.status === 'processing' ? 'status-processing' : 'status-pending')}">
-                                            ${o.status === 'delivered' ? '✅ ডেলিভারি সম্পন্ন' : (o.status === 'processing' ? '🔄 প্রক্রিয়াকরণে' : '⏳ pending')}
-                                        </span></small></td>
-                                        <td><button class="btn-status" onclick="viewOrderDetails('${o.id}')">👁️ বিস্তারিত</button>
-                                            ${o.status !== 'delivered' ? `<button class="btn-status" onclick="updateOrderStatus('${o.id}', 'processing')">🚚 প্রক্রিয়াকরণ</button>` : ''}
-                                            ${o.status === 'processing' ? `<button class="btn-status" onclick="updateOrderStatus('${o.id}', 'delivered')">✅ ডেলিভারি সম্পন্ন</button>` : ''}
-                                        </td>
+                                        <td>${p.id}</td>
+                                        <td>${new Date(p.date).toLocaleDateString('bn-BD')}</td>
+                                        <td>৳${p.amount.toLocaleString()}</td>
+                                        <td>${p.mobile}</td>
+                                        <td><span class="status-badge ${p.status === 'approved' ? 'status-approved' : 'status-pending'}">
+                                            ${p.status === 'approved' ? '✅ অনুমোদিত' : '⏳ pending'}
+                                        </span></td>
                                     </tr>
                                 `).join('')}
                             </tbody>
@@ -476,44 +456,71 @@
                     </div>
                 `}
             </div>
+            
+            <div class="section-card">
+                <div class="section-header"><h3><i class="fas fa-info-circle"></i> পেমেন্ট তথ্য</h3></div>
+                <div class="detail-row" style="display: flex; padding: 10px 0;"><div style="font-weight: 600; width: 40%;">পেমেন্ট পদ্ধতি:</div><div>বিকাশ / নগদ</div></div>
+                <div class="detail-row" style="display: flex; padding: 10px 0;"><div style="font-weight: 600; width: 40%;">অ্যাকাউন্ট নম্বর:</div><div><strong>০১৯১৮৪৮১২৩২</strong></div></div>
+                <div class="detail-row" style="display: flex; padding: 10px 0;"><div style="font-weight: 600; width: 40%;">পেমেন্ট সময়:</div><div>অ্যাডমিন অনুমোদনের ৩-৫ দিনের মধ্যে</div></div>
+            </div>
         `;
-        
-        document.getElementById('searchOrders')?.addEventListener('input', (e) => { searchTerm = e.target.value; loadOrders(); });
-        document.getElementById('statusFilter')?.addEventListener('change', (e) => { statusFilter = e.target.value; loadOrders(); });
     }
     
-    function viewOrderDetails(orderId) {
-        const order = allOrders.find(o => o.id === orderId);
-        if (!order) return;
+    function openRequestModal() {
+        const totalEarnings = getVendorEarnings();
+        const approvedAmount = getApprovedPayments();
+        const availableAmount = totalEarnings - approvedAmount;
+        
+        if (availableAmount <= 0) {
+            alert('আপনার বর্তমানে কোনো pending পেমেন্ট নেই!');
+            return;
+        }
         
         const modal = document.createElement('div');
         modal.className = 'modal';
         modal.innerHTML = `
             <div class="modal-content">
-                <div class="modal-header"><h3><i class="fas fa-info-circle"></i> অর্ডার বিস্তারিত - ${order.id}</h3><span class="modal-close" onclick="closeModal(this)">&times;</span></div>
-                <div class="detail-row"><div class="detail-label">অর্ডার আইডি:</div><div class="detail-value">${order.id}</div></div>
-                <div class="detail-row"><div class="detail-label">তারিখ:</div><div class="detail-value">${order.date || new Date(order.createdAt).toLocaleDateString('bn-BD')}</div></div>
-                <div class="detail-row"><div class="detail-label">গ্রাহকের নাম:</div><div class="detail-value">${order.customerName || '—'}</div></div>
-                <div class="detail-row"><div class="detail-label">মোবাইল:</div><div class="detail-value">${order.customerMobile || '—'}</div></div>
-                <div class="detail-row"><div class="detail-label">ডেলিভারি ঠিকানা:</div><div class="detail-value">${order.deliveryAddress || '—'}</div></div>
-                <div class="detail-row"><div class="detail-label">পণ্য:</div><div class="detail-value">${order.items?.map(i => `${i.name} x ${i.quantity}`).join(', ') || '—'}</div></div>
-                <div class="detail-row"><div class="detail-label">মোট টাকা:</div><div class="detail-value">৳${order.total}</div></div>
-                <div class="detail-row"><div class="detail-label">স্ট্যাটাস:</div><div class="detail-value">${order.status === 'delivered' ? '✅ ডেলিভারি সম্পন্ন' : (order.status === 'processing' ? '🔄 প্রক্রিয়াকরণে' : '⏳ pending')}</div></div>
+                <div class="modal-header"><h3><i class="fas fa-hand-holding-usd"></i> পেমেন্ট রিকোয়েস্ট</h3><span class="modal-close" onclick="closeModal(this)">&times;</span></div>
+                <div class="modal-form-group"><label><i class="fas fa-money-bill"></i> রিকোয়েস্ট পরিমাণ (টাকা)</label><input type="number" id="requestAmount" placeholder="পরিমাণ লিখুন" value="${availableAmount}"><small>উপলব্ধ: ৳${availableAmount.toLocaleString()}</small></div>
+                <div class="modal-form-group"><label><i class="fas fa-mobile-alt"></i> বিকাশ/নগদ নম্বর *</label><input type="text" id="requestMobile" placeholder="০১XXXXXXXXX" value="${currentVendor.mobile || ''}"></div>
+                <div class="modal-buttons"><button class="modal-submit-btn" onclick="submitPaymentRequest()">📤 রিকোয়েস্ট পাঠান</button><button class="modal-cancel-btn" onclick="closeModal(this)">❌ বাতিল</button></div>
             </div>
         `;
         document.body.appendChild(modal);
         modal.style.display = 'flex';
     }
     
-    function updateOrderStatus(orderId, newStatus) {
-        const index = allOrders.findIndex(o => o.id === orderId);
-        if (index !== -1) {
-            const statusText = newStatus === 'delivered' ? 'ডেলিভারি সম্পন্ন' : (newStatus === 'processing' ? 'প্রক্রিয়াকরণে' : 'pending');
-            allOrders[index].status = newStatus;
-            localStorage.setItem('orders', JSON.stringify(allOrders));
-            showNotification(`✅ অর্ডার স্ট্যাটাস "${statusText}" এ আপডেট করা হয়েছে!`);
-            loadOrders();
+    function submitPaymentRequest() {
+        const amount = document.getElementById('requestAmount')?.value;
+        const mobile = document.getElementById('requestMobile')?.value;
+        
+        if (!amount || amount <= 0) { alert('সঠিক পরিমাণ দিন!'); return; }
+        if (!mobile || mobile.length !== 11) { alert('সঠিক মোবাইল নম্বর দিন!'); return; }
+        
+        const totalEarnings = getVendorEarnings();
+        const approvedAmount = getApprovedPayments();
+        const availableAmount = totalEarnings - approvedAmount;
+        
+        if (parseInt(amount) > availableAmount) {
+            alert(`আপনি সর্বোচ্চ ৳${availableAmount} পর্যন্ত রিকোয়েস্ট করতে পারেন!`);
+            return;
         }
+        
+        const newRequest = {
+            id: 'PAY-' + Date.now(),
+            vendorId: currentVendor.id,
+            vendorName: currentVendor.shopName,
+            amount: parseInt(amount),
+            mobile: mobile,
+            status: 'pending',
+            date: new Date().toISOString()
+        };
+        
+        paymentRequests.push(newRequest);
+        localStorage.setItem('payment_requests', JSON.stringify(paymentRequests));
+        showNotification(`✅ ৳${amount} পেমেন্ট রিকোয়েস্ট সফল হয়েছে!`);
+        closeModal(document.querySelector('.modal'));
+        loadPayments();
     }
     
     function closeModal(element) { const modal = element.closest('.modal'); if (modal) modal.remove(); }
@@ -536,13 +543,13 @@
     document.querySelectorAll('.sidebar-menu-item').forEach(item => item.addEventListener('click', () => switchTab(item.getAttribute('data-tab'))));
     document.getElementById('clearCacheBtn')?.addEventListener('click', (e) => { e.preventDefault(); if(confirm('ক্যাশ ক্লিয়ার করবেন?')) { localStorage.clear(); sessionStorage.clear(); location.reload(); } });
     
-    window.viewOrderDetails = viewOrderDetails;
-    window.updateOrderStatus = updateOrderStatus;
+    window.openRequestModal = openRequestModal;
+    window.submitPaymentRequest = submitPaymentRequest;
     window.closeModal = closeModal;
     window.vendorLogout = vendorLogout;
     window.switchTab = switchTab;
     
-    loadOrders();
+    loadPayments();
 </script>
 </body>
 </html>

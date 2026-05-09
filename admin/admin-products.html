@@ -19,9 +19,6 @@
             min-height: 100vh;
         }
         
-        /* ============================================ */
-        /* সাইডবার স্টাইল                               */
-        /* ============================================ */
         .admin-wrapper {
             display: flex;
             min-height: 100vh;
@@ -86,7 +83,6 @@
             font-size: 1.1rem;
         }
         
-        /* সাইডবার ফুটার */
         .sidebar-footer {
             padding: 20px;
             text-align: center;
@@ -104,9 +100,6 @@
             text-decoration: none;
         }
         
-        /* ============================================ */
-        /* মেইন কন্টেন্ট                               */
-        /* ============================================ */
         .main-content {
             flex: 1;
             margin-left: 280px;
@@ -117,7 +110,6 @@
             min-height: 100vh;
         }
         
-        /* টপবার */
         .topbar {
             background: white;
             border-radius: 15px;
@@ -171,9 +163,6 @@
             transform: translateY(-2px);
         }
         
-        /* ============================================ */
-        /* স্ট্যাটস কার্ড                              */
-        /* ============================================ */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -224,9 +213,6 @@
             font-size: 0.8rem;
         }
         
-        /* ============================================ */
-        /* ফিল্টার বার                                 */
-        /* ============================================ */
         .filter-bar {
             background: white;
             border-radius: 15px;
@@ -278,9 +264,6 @@
             background: white;
         }
         
-        /* ============================================ */
-        /* পণ্য টেবিল                                  */
-        /* ============================================ */
         .section-card {
             background: white;
             border-radius: 20px;
@@ -340,7 +323,6 @@
             color: #2d6a4f;
         }
         
-        /* প্রোডাক্ট ইমেজ */
         .product-image {
             width: 50px;
             height: 50px;
@@ -348,7 +330,6 @@
             border-radius: 10px;
         }
         
-        /* স্ট্যাটাস ব্যাজ */
         .status-badge {
             display: inline-block;
             padding: 4px 12px;
@@ -367,7 +348,6 @@
             color: #e76f51;
         }
         
-        /* বাটন */
         .btn-edit {
             background: #2196f3;
             color: white;
@@ -401,7 +381,6 @@
             margin: 2px;
         }
         
-        /* পেজিনেশন */
         .pagination {
             display: flex;
             justify-content: center;
@@ -426,7 +405,6 @@
             border-color: #2d6a4f;
         }
         
-        /* মোডাল */
         .modal {
             display: none;
             position: fixed;
@@ -450,7 +428,7 @@
             background: white;
             border-radius: 20px;
             width: 90%;
-            max-width: 550px;
+            max-width: 600px;
             max-height: 85vh;
             overflow-y: auto;
             animation: slideUp 0.3s ease;
@@ -518,6 +496,72 @@
             flex: 1;
         }
         
+        /* ছবি আপলোড এরিয়ার স্টাইল */
+        .image-upload-area {
+            border: 2px dashed #2d6a4f;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .image-upload-area:hover {
+            background: #e8f5e9;
+            border-color: #e76f51;
+        }
+        
+        .image-upload-area i {
+            font-size: 2rem;
+            color: #2d6a4f;
+            margin-bottom: 10px;
+        }
+        
+        .image-preview {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .image-preview img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #2d6a4f;
+        }
+        
+        .remove-image-btn {
+            background: #e76f51;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2d6a4f;
+            width: 40%;
+        }
+        
+        .detail-value {
+            color: #555;
+            width: 60%;
+        }
+        
         .modal-buttons {
             display: flex;
             gap: 10px;
@@ -543,7 +587,6 @@
             color: #333;
         }
         
-        /* এম্পটি স্টেট */
         .empty-state {
             text-align: center;
             padding: 60px;
@@ -557,7 +600,6 @@
             margin-bottom: 15px;
         }
         
-        /* অ্যাডমিন ফুটার */
         .admin-footer {
             background: white;
             border-radius: 15px;
@@ -624,86 +666,6 @@
             color: #e76f51;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-developer a:hover {
-            color: #d45a3a;
-            text-decoration: underline;
-        }
-        
-        .footer-developer i {
-            margin: 0 3px;
-        }
-        
-        /* রেস্পন্সিভ */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                width: 260px;
-            }
-            
-            .sidebar.open {
-                transform: translateX(0);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .filter-bar {
-                flex-direction: column;
-            }
-            
-            .search-box {
-                max-width: 100%;
-                width: 100%;
-            }
-            
-            .filter-group {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            .filter-group select {
-                flex: 1;
-            }
-            
-            .data-table {
-                font-size: 0.8rem;
-            }
-            
-            .form-row {
-                flex-direction: column;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-links {
-                justify-content: center;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .menu-toggle {
-                display: none;
-            }
-        }
-        
-        .menu-toggle {
-            background: #2d6a4f;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
         }
         
         .notification-toast {
@@ -719,14 +681,8 @@
         }
         
         @keyframes slideInRight {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         
         .spinner {
@@ -743,12 +699,60 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        .menu-toggle {
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 260px;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .filter-bar {
+                flex-direction: column;
+            }
+            .search-box {
+                max-width: 100%;
+                width: 100%;
+            }
+            .filter-group {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="admin-wrapper">
-    <!-- সাইডবার -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <i class="fas fa-mountain"></i>
@@ -787,7 +791,6 @@
         </div>
     </div>
     
-    <!-- মেইন কন্টেন্ট -->
     <div class="main-content">
         <div class="topbar">
             <button class="menu-toggle" id="menuToggle">
@@ -807,7 +810,6 @@
             </div>
         </div>
         
-        <!-- ডায়নামিক কন্টেন্ট -->
         <div id="dynamicContent">
             <div style="text-align: center; padding: 50px;">
                 <div class="spinner"></div>
@@ -815,7 +817,6 @@
             </div>
         </div>
         
-        <!-- অ্যাডমিন ফুটার -->
         <div class="admin-footer">
             <div class="footer-content">
                 <div class="footer-logo">
@@ -823,34 +824,17 @@
                     <span>পাহাড়ি হাট</span>
                     <small style="font-size: 0.7rem; color: #999; margin-left: 5px;">অ্যাডমিন প্যানেল</small>
                 </div>
-                
                 <div class="footer-links">
-                    <a href="../index.html" target="_blank">
-                        <i class="fas fa-home"></i> ওয়েবসাইট
-                    </a>
-                    <a href="mailto:info@paharihat.com">
-                        <i class="fas fa-envelope"></i> সাপোর্ট
-                    </a>
-                    <a href="#" onclick="window.print(); return false;">
-                        <i class="fas fa-print"></i> প্রিন্ট
-                    </a>
-                    <a href="#" id="clearCacheBtn">
-                        <i class="fas fa-sync-alt"></i> ক্যাশ ক্লিয়ার
-                    </a>
+                    <a href="../index.html" target="_blank"><i class="fas fa-home"></i> ওয়েবসাইট</a>
+                    <a href="mailto:info@paharihat.com"><i class="fas fa-envelope"></i> সাপোর্ট</a>
+                    <a href="#" onclick="window.print(); return false;"><i class="fas fa-print"></i> প্রিন্ট</a>
+                    <a href="#" id="clearCacheBtn"><i class="fas fa-sync-alt"></i> ক্যাশ ক্লিয়ার</a>
                 </div>
             </div>
-            
             <div class="footer-developer">
                 <i class="fas fa-code"></i> ডেভেলপড বাই 
-                <a href="mailto:aungching.jack420@gmail.com">
-                    <i class="fas fa-user-code"></i> অং চিং
-                </a>
-                <span class="separator">|</span>
-                <i class="far fa-copyright"></i> ২০২৬ পাহাড়ি হাট
-                <span class="separator">|</span>
-                <i class="fas fa-version"></i> ভার্সন 2.0
-                <span class="separator">|</span>
-                <i class="fas fa-shield-alt"></i> সিকিউর প্যানেল
+                <a href="mailto:aungching.jack420@gmail.com"><i class="fas fa-user-code"></i> অং চিং</a>
+                <span>|</span> <i class="far fa-copyright"></i> ২০২৬ পাহাড়ি হাট <span>|</span> <i class="fas fa-version"></i> ভার্সন 2.0
             </div>
         </div>
     </div>
@@ -874,7 +858,62 @@
     let masterProducts = JSON.parse(localStorage.getItem('master_products') || '[]');
     let vendors = JSON.parse(localStorage.getItem('vendors') || '[]');
     
-    // ডিফল্ট প্রোডাক্ট ডাটা (যদি খালি থাকে)
+    // ============================================
+    // হেল্পার ফাংশন
+    // ============================================
+    function getDefaultDeadline() {
+        const date = new Date();
+        date.setDate(date.getDate() + 30);
+        return date.toISOString().split('T')[0];
+    }
+    
+    function getDefaultDeliveryDate() {
+        const date = new Date();
+        date.setDate(date.getDate() + 15);
+        const banglaMonths = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+        return `${date.getDate()} ${banglaMonths[date.getMonth()]} ${date.getFullYear()}`;
+    }
+    
+    // ছবি base64 এ কনভার্ট করার ফাংশন
+    function convertImageToBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+    
+    // ============================================
+    // ওয়েবসাইটের জন্য প্রোডাক্ট সিঙ্ক
+    // ============================================
+    function syncProductsToWebsite() {
+        const websiteProducts = masterProducts.map(product => ({
+            id: product.id,
+            name: product.name,
+            category: product.category,
+            categoryName: product.categoryName,
+            estimatePrice: product.estimatePrice,
+            actualPrice: product.actualPrice,
+            oldPrice: product.oldPrice,
+            image: product.image,
+            source: product.source || 'পার্বত্য চট্টগ্রাম',
+            stock: product.stock || 50,
+            unit: product.category === 'fruits' ? 'কেজি' : (product.category === 'meat' ? 'কেজি' : 'প্যাক'),
+            deadline: product.deadline || getDefaultDeadline(),
+            deliveryDate: product.deliveryDate || getDefaultDeliveryDate(),
+            rating: product.rating || 4,
+            reviews: product.reviews || 0,
+            status: 'active',
+            discount: product.discount || 0,
+            updatedAt: new Date().toISOString()
+        }));
+        
+        localStorage.setItem('website_products', JSON.stringify(websiteProducts));
+        console.log('✅ প্রোডাক্ট ওয়েবসাইটের জন্য সিঙ্ক করা হয়েছে!');
+    }
+    
+    // ডিফল্ট প্রোডাক্ট ডাটা
     if (masterProducts.length === 0) {
         masterProducts = [
             {
@@ -890,7 +929,12 @@
                 image: 'https://placehold.co/300x250/2d6a4f/white?text=মধু',
                 source: 'বান্দরবান, থানচি',
                 stock: 150,
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                deadline: getDefaultDeadline(),
+                deliveryDate: getDefaultDeliveryDate(),
+                rating: 4.5,
+                reviews: 48,
+                discount: 5
             },
             {
                 id: 2,
@@ -905,15 +949,18 @@
                 image: 'https://placehold.co/300x250/e76f51/white?text=কমলা',
                 source: 'রাঙ্গামাটি, সাজেক',
                 stock: 500,
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                deadline: getDefaultDeadline(),
+                deliveryDate: getDefaultDeliveryDate(),
+                rating: 5,
+                reviews: 112,
+                discount: 0
             }
         ];
         localStorage.setItem('master_products', JSON.stringify(masterProducts));
+        syncProductsToWebsite();
     }
     
-    // ============================================
-    // নোটিফিকেশন
-    // ============================================
     function showNotification(message, type = 'success') {
         const notification = document.createElement('div');
         notification.className = 'notification-toast';
@@ -922,9 +969,6 @@
         setTimeout(() => notification.remove(), 3000);
     }
     
-    // ============================================
-    // ক্যাটাগরি নাম
-    // ============================================
     function getCategoryName(categoryId) {
         const categories = {
             'honey': 'মধু',
@@ -937,29 +981,19 @@
         return categories[categoryId] || categoryId;
     }
     
-    // ============================================
-    // ভেন্ডরের নাম
-    // ============================================
     function getVendorName(vendorId) {
         const vendor = vendors.find(v => v.id === vendorId);
         return vendor ? vendor.shopName : '—';
     }
     
-    // ============================================
-    // প্রোডাক্ট লিস্ট ভেরিয়েবল
-    // ============================================
     let currentPage = 1;
     let itemsPerPage = 10;
     let searchTerm = '';
     let categoryFilter = 'all';
     
-    // ============================================
-    // প্রোডাক্ট লিস্ট লোড
-    // ============================================
     function loadProducts() {
         let filteredProducts = [...masterProducts];
         
-        // সার্চ ফিল্টার
         if (searchTerm) {
             filteredProducts = filteredProducts.filter(product => 
                 product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -967,21 +1001,17 @@
             );
         }
         
-        // ক্যাটাগরি ফিল্টার
         if (categoryFilter !== 'all') {
             filteredProducts = filteredProducts.filter(product => product.category === categoryFilter);
         }
         
-        // সাজানো (নতুন আগে)
         filteredProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         
-        // স্ট্যাটস
         const totalProducts = masterProducts.length;
         const productsWithPrice = masterProducts.filter(p => p.actualPrice).length;
         const productsWithoutPrice = masterProducts.filter(p => !p.actualPrice).length;
         const totalStock = masterProducts.reduce((sum, p) => sum + (p.stock || 0), 0);
         
-        // পেজিনেশন
         const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
         const startIndex = (currentPage - 1) * itemsPerPage;
         const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
@@ -989,151 +1019,64 @@
         const container = document.getElementById('dynamicContent');
         container.innerHTML = `
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-box"></i></div>
-                    <div class="stat-info">
-                        <h3>${totalProducts}</h3>
-                        <p>মোট পণ্য</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-tag"></i></div>
-                    <div class="stat-info">
-                        <h3>${productsWithPrice}</h3>
-                        <p>দাম আপডেট করা</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
-                    <div class="stat-info">
-                        <h3>${productsWithoutPrice}</h3>
-                        <p>দাম আপডেট বাকি</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-boxes"></i></div>
-                    <div class="stat-info">
-                        <h3>${totalStock}</h3>
-                        <p>মোট স্টক</p>
-                    </div>
-                </div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-box"></i></div><div class="stat-info"><h3>${totalProducts}</h3><p>মোট পণ্য</p></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-tag"></i></div><div class="stat-info"><h3>${productsWithPrice}</h3><p>দাম আপডেট করা</p></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-info"><h3>${productsWithoutPrice}</h3><p>দাম আপডেট বাকি</p></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-boxes"></i></div><div class="stat-info"><h3>${totalStock}</h3><p>মোট স্টক</p></div></div>
             </div>
             
             <div class="filter-bar">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchProduct" placeholder="পণ্যের নাম বা উৎস দিয়ে খুঁজুন...">
-                </div>
-                <div class="filter-group">
-                    <select id="categoryFilterSelect">
-                        <option value="all">📦 সব ক্যাটাগরি</option>
-                        <option value="honey">🍯 মধু</option>
-                        <option value="fruits">🍎 ফল</option>
-                        <option value="meat">🍗 মাংস</option>
-                        <option value="spices">🌶️ মশলা</option>
-                        <option value="seafood">🐟 মাছ</option>
-                        <option value="vegetables">🥬 শাক-সবজি</option>
-                    </select>
-                </div>
-                <button class="add-product-btn" onclick="openAddProductModal()">
-                    <i class="fas fa-plus"></i> নতুন পণ্য যোগ করুন
-                </button>
+                <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchProduct" placeholder="পণ্যের নাম বা উৎস দিয়ে খুঁজুন..."></div>
+                <div class="filter-group"><select id="categoryFilterSelect"><option value="all">📦 সব ক্যাটাগরি</option><option value="honey">🍯 মধু</option><option value="fruits">🍎 ফল</option><option value="meat">🍗 মাংস</option><option value="spices">🌶️ মশলা</option><option value="seafood">🐟 মাছ</option><option value="vegetables">🥬 শাক-সবজি</option></select></div>
+                <button class="add-product-btn" onclick="openAddProductModal()"><i class="fas fa-plus"></i> নতুন পণ্য যোগ করুন</button>
             </div>
             
             <div class="section-card">
-                <div class="section-header">
-                    <h3><i class="fas fa-list"></i> পণ্য তালিকা</h3>
-                    <span>মোট ${filteredProducts.length} টি পণ্য</span>
-                </div>
-                
+                <div class="section-header"><h3><i class="fas fa-list"></i> পণ্য তালিকা</h3><span>মোট ${filteredProducts.length} টি পণ্য</span></div>
                 ${filteredProducts.length === 0 ? `
-                    <div class="empty-state">
-                        <i class="fas fa-box-open"></i>
-                        <h3>কোনো পণ্য পাওয়া যায়নি</h3>
-                        <p>সার্চ টার্ম বা ফিল্টার পরিবর্তন করে আবার চেষ্টা করুন</p>
-                    </div>
+                    <div class="empty-state"><i class="fas fa-box-open"></i><h3>কোনো পণ্য পাওয়া যায়নি</h3><p>সার্চ টার্ম বা ফিল্টার পরিবর্তন করে আবার চেষ্টা করুন</p></div>
                 ` : `
                     <div style="overflow-x: auto;">
                         <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>ক্রমিক</th>
-                                    <th>ছবি</th>
-                                    <th>পণ্যের নাম</th>
-                                    <th>ক্যাটাগরি</th>
-                                    <th>আনুমানিক</th>
-                                    <th>আসল দাম</th>
-                                    <th>স্টক</th>
-                                    <th>ভেন্ডর</th>
-                                    <th>অ্যাকশন</th>
-                                </tr>
-                            </thead>
+                            <thead><tr><th>ক্রমিক</th><th>ছবি</th><th>পণ্যের নাম</th><th>ক্যাটাগরি</th><th>আনুমানিক</th><th>আসল দাম</th><th>স্টক</th><th>ভেন্ডর</th><th>অ্যাকশন</th></tr></thead>
                             <tbody>
                                 ${paginatedProducts.map((product, index) => `
                                     <tr>
                                         <td>${startIndex + index + 1}</td>
-                                        <td>
-                                            <img src="${product.image || 'https://placehold.co/50x50/2d6a4f/white?text=' + encodeURIComponent(product.name)}" 
-                                                 class="product-image" 
-                                                 onerror="this.src='https://placehold.co/50x50/2d6a4f/white?text=পণ্য'">
-                                        </td>
+                                        <td><img src="${product.image}" class="product-image" onerror="this.src='https://placehold.co/50x50/2d6a4f/white?text=পণ্য'"></td>
                                         <td><strong>${product.name}</strong></td>
                                         <td>${product.categoryName}</td>
                                         <td>৳${product.estimatePrice}</td>
-                                        <td>
-                                            ${product.actualPrice ? `৳${product.actualPrice}` : '<span style="color:#e76f51;">—</span>'}
-                                            ${product.oldPrice ? `<span style="text-decoration:line-through; font-size:0.7rem;"> ৳${product.oldPrice}</span>` : ''}
-                                        </td>
+                                        <td>${product.actualPrice ? `৳${product.actualPrice}` : '<span style="color:#e76f51;">—</span>'}${product.oldPrice ? `<span style="text-decoration:line-through; font-size:0.7rem;"> ৳${product.oldPrice}</span>` : ''}</td>
                                         <td>${product.stock || 0} ${product.category === 'fruits' ? 'পিস' : 'কেজি'}</td>
                                         <td>${getVendorName(product.vendorId)}</small></td>
-                                        <td>
-                                            <button class="btn-view" onclick="viewProductDetails(${product.id})">👁️ দেখুন</button>
-                                            <button class="btn-edit" onclick="openEditProductModal(${product.id})">✏️ এডিট</button>
-                                            <button class="btn-delete" onclick="deleteProduct(${product.id})">🗑️ ডিলিট</button>
-                                        </td>
+                                        <td><button class="btn-view" onclick="viewProductDetails(${product.id})">👁️ দেখুন</button><button class="btn-edit" onclick="openEditProductModal(${product.id})">✏️ এডিট</button><button class="btn-delete" onclick="deleteProduct(${product.id})">🗑️ ডিলিট</button></td>
                                     </tr>
                                 `).join('')}
                             </tbody>
-                        <tr>
+                        </table>
                     </div>
-                    
-                    ${totalPages > 1 ? `
-                        <div class="pagination">
-                            <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>« আগে</button>
-                            ${[...Array(totalPages)].map((_, i) => `
-                                <button class="${currentPage === i + 1 ? 'active' : ''}" onclick="changePage(${i + 1})">${i + 1}</button>
-                            `).join('')}
-                            <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>পরে »</button>
-                        </div>
-                    ` : ''}
+                    ${totalPages > 1 ? `<div class="pagination"><button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>« আগে</button>${[...Array(totalPages)].map((_, i) => `<button class="${currentPage === i + 1 ? 'active' : ''}" onclick="changePage(${i + 1})">${i + 1}</button>`).join('')}<button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>পরে »</button></div>` : ''}
                 `}
             </div>
         `;
         
-        // ইভেন্ট লিসেনার
-        document.getElementById('searchProduct')?.addEventListener('input', (e) => {
-            searchTerm = e.target.value;
-            currentPage = 1;
-            loadProducts();
-        });
-        
-        document.getElementById('categoryFilterSelect')?.addEventListener('change', (e) => {
-            categoryFilter = e.target.value;
-            currentPage = 1;
-            loadProducts();
-        });
+        document.getElementById('searchProduct')?.addEventListener('input', (e) => { searchTerm = e.target.value; currentPage = 1; loadProducts(); });
+        document.getElementById('categoryFilterSelect')?.addEventListener('change', (e) => { categoryFilter = e.target.value; currentPage = 1; loadProducts(); });
     }
     
-    // পেজিনেশন চেঞ্জ
-    function changePage(page) {
-        currentPage = page;
-        loadProducts();
-    }
+    function changePage(page) { if (page < 1) return; currentPage = page; loadProducts(); }
     
     // ============================================
-    // নতুন পণ্য যোগ করার মোডাল
+    // ছবি আপলোড সহ নতুন পণ্য মোডাল
     // ============================================
+    let selectedImageBase64 = null;
+    let selectedImageName = '';
+    
     function openAddProductModal() {
+        selectedImageBase64 = null;
+        selectedImageName = '';
+        
         const modal = document.createElement('div');
         modal.className = 'modal';
         modal.innerHTML = `
@@ -1163,9 +1106,7 @@
                             <label>ভেন্ডর *</label>
                             <select id="productVendor">
                                 <option value="">ভেন্ডর নির্বাচন করুন</option>
-                                ${vendors.filter(v => v.status === 'approved').map(v => `
-                                    <option value="${v.id}">${v.shopName}</option>
-                                `).join('')}
+                                ${vendors.filter(v => v.status === 'approved').map(v => `<option value="${v.id}">${v.shopName}</option>`).join('')}
                             </select>
                         </div>
                     </div>
@@ -1185,14 +1126,29 @@
                             <input type="number" id="stock" placeholder="যেমন: 100" value="0">
                         </div>
                         <div class="form-group">
-                            <label>উৎস স্থান</label>
-                            <input type="text" id="productSource" placeholder="যেমন: বান্দরবান, থানচি">
+                            <label>ছাড় (ঐচ্ছিক)</label>
+                            <input type="number" id="discount" placeholder="যেমন: 5" value="0">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>ছবির URL (ঐচ্ছিক)</label>
-                        <input type="text" id="productImage" placeholder="https://...">
+                        <label>উৎস স্থান</label>
+                        <input type="text" id="productSource" placeholder="যেমন: বান্দরবান, থানচি">
                     </div>
+                    
+                    <!-- ছবি আপলোড এরিয়া -->
+                    <div class="form-group">
+                        <label>পণ্যের ছবি আপলোড করুন</label>
+                        <div class="image-upload-area" id="imageUploadArea">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>ক্লিক করুন অথবা ছবি টেনে আনুন</p>
+                            <input type="file" id="imageFileInput" accept="image/*" style="display: none;">
+                            <div id="imagePreviewContainer" class="image-preview" style="display: none;">
+                                <img id="previewImage" src="#" alt="প্রিভিউ">
+                                <button type="button" class="remove-image-btn" id="removeImageBtn"><i class="fas fa-trash"></i> সরান</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="modal-buttons">
                         <button class="btn-save" onclick="addNewProduct()">✅ যোগ করুন</button>
                         <button class="btn-cancel" onclick="closeModal(this)">❌ বাতিল</button>
@@ -1202,10 +1158,77 @@
         `;
         document.body.appendChild(modal);
         modal.style.display = 'flex';
+        
+        // ছবি আপলোড ইভেন্ট লিসেনার
+        const uploadArea = document.getElementById('imageUploadArea');
+        const fileInput = document.getElementById('imageFileInput');
+        const previewContainer = document.getElementById('imagePreviewContainer');
+        const previewImage = document.getElementById('previewImage');
+        const removeBtn = document.getElementById('removeImageBtn');
+        
+        uploadArea.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                if (file.size > 2 * 1024 * 1024) {
+                    showNotification('ছবির সাইজ ২MB এর কম হতে হবে!', 'error');
+                    return;
+                }
+                selectedImageName = file.name;
+                selectedImageBase64 = await convertImageToBase64(file);
+                previewImage.src = selectedImageBase64;
+                previewContainer.style.display = 'flex';
+                uploadArea.style.opacity = '0.7';
+            }
+        });
+        
+        if (removeBtn) {
+            removeBtn.addEventListener('click', () => {
+                selectedImageBase64 = null;
+                selectedImageName = '';
+                previewContainer.style.display = 'none';
+                fileInput.value = '';
+                uploadArea.style.opacity = '1';
+            });
+        }
+        
+        // ড্র্যাগ অ্যান্ড ড্রপ সাপোর্ট
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '#e8f5e9';
+            uploadArea.style.borderColor = '#e76f51';
+        });
+        
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '#f8f9fa';
+            uploadArea.style.borderColor = '#2d6a4f';
+        });
+        
+        uploadArea.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '#f8f9fa';
+            uploadArea.style.borderColor = '#2d6a4f';
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                if (file.size > 2 * 1024 * 1024) {
+                    showNotification('ছবির সাইজ ২MB এর কম হতে হবে!', 'error');
+                    return;
+                }
+                selectedImageName = file.name;
+                selectedImageBase64 = await convertImageToBase64(file);
+                previewImage.src = selectedImageBase64;
+                previewContainer.style.display = 'flex';
+                uploadArea.style.opacity = '0.7';
+            }
+        });
     }
     
-    // নতুন পণ্য যোগ করা
-    function addNewProduct() {
+    // ============================================
+    // নতুন পণ্য যোগ করা (ছবি সহ)
+    // ============================================
+    async function addNewProduct() {
         const name = document.getElementById('productName')?.value;
         const category = document.getElementById('productCategory')?.value;
         const vendorId = document.getElementById('productVendor')?.value;
@@ -1213,7 +1236,7 @@
         const actualPrice = document.getElementById('actualPrice')?.value;
         const stock = document.getElementById('stock')?.value;
         const source = document.getElementById('productSource')?.value;
-        const image = document.getElementById('productImage')?.value;
+        const discount = document.getElementById('discount')?.value;
         
         if (!name || !category || !vendorId || !estimatePrice) {
             showNotification('দয়া করে সব প্রয়োজনীয় তথ্য দিন!', 'error');
@@ -1225,6 +1248,12 @@
             'spices': 'মশলা', 'seafood': 'মাছ', 'vegetables': 'শাক-সবজি'
         };
         
+        // ছবি সেট করা (যদি আপলোড করা না হয় তাহলে ডিফল্ট ছবি)
+        let productImage = 'https://placehold.co/300x250/2d6a4f/white?text=' + encodeURIComponent(name);
+        if (selectedImageBase64) {
+            productImage = selectedImageBase64;
+        }
+        
         const newProduct = {
             id: Date.now(),
             name: name,
@@ -1235,16 +1264,22 @@
             oldPrice: null,
             vendorId: vendorId,
             updated: actualPrice ? true : false,
-            image: image || `https://placehold.co/300x250/2d6a4f/white?text=${encodeURIComponent(name)}`,
+            image: productImage,
             source: source || '',
             stock: stock ? parseInt(stock) : 0,
-            createdAt: new Date().toISOString()
+            discount: discount ? parseInt(discount) : 0,
+            rating: 4,
+            reviews: 0,
+            createdAt: new Date().toISOString(),
+            deadline: getDefaultDeadline(),
+            deliveryDate: getDefaultDeliveryDate()
         };
         
         masterProducts.push(newProduct);
         localStorage.setItem('master_products', JSON.stringify(masterProducts));
+        syncProductsToWebsite();
         
-        showNotification(`✅ "${name}" পণ্যটি যোগ করা হয়েছে!`);
+        showNotification(`✅ "${name}" পণ্যটি যোগ করা হয়েছে এবং ওয়েবসাইটে দেখানো হবে!`);
         closeModal(document.querySelector('.modal'));
         loadProducts();
     }
@@ -1267,7 +1302,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>পণ্যের নাম</label>
-                        <input type="text" id="editName" value="${product.name}">
+                        <input type="text" id="editName" value="${product.name.replace(/</g, '&lt;')}">
                     </div>
                     <div class="form-row">
                         <div class="form-group">
@@ -1284,23 +1319,33 @@
                         <div class="form-group">
                             <label>ভেন্ডর</label>
                             <select id="editVendor">
-                                ${vendors.filter(v => v.status === 'approved').map(v => `
-                                    <option value="${v.id}" ${product.vendorId === v.id ? 'selected' : ''}>${v.shopName}</option>
-                                `).join('')}
+                                ${vendors.filter(v => v.status === 'approved').map(v => `<option value="${v.id}" ${product.vendorId === v.id ? 'selected' : ''}>${v.shopName}</option>`).join('')}
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>আনুমানিক দাম</label>
-                        <input type="text" id="editEstimate" value="${product.estimatePrice}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>আনুমানিক দাম</label>
+                            <input type="text" id="editEstimate" value="${product.estimatePrice}">
+                        </div>
+                        <div class="form-group">
+                            <label>আসল দাম</label>
+                            <input type="number" id="editActualPrice" value="${product.actualPrice || ''}">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>স্টক</label>
+                            <input type="number" id="editStock" value="${product.stock || 0}">
+                        </div>
+                        <div class="form-group">
+                            <label>ছাড় (%)</label>
+                            <input type="number" id="editDiscount" value="${product.discount || 0}">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>আসল দাম</label>
-                        <input type="number" id="editActualPrice" value="${product.actualPrice || ''}">
-                    </div>
-                    <div class="form-group">
-                        <label>স্টক</label>
-                        <input type="number" id="editStock" value="${product.stock || 0}">
+                        <label>উৎস স্থান</label>
+                        <input type="text" id="editSource" value="${product.source || ''}">
                     </div>
                     <div class="modal-buttons">
                         <button class="btn-save" onclick="updateProduct(${productId})">💾 সেভ করুন</button>
@@ -1313,7 +1358,6 @@
         modal.style.display = 'flex';
     }
     
-    // পণ্য আপডেট
     function updateProduct(productId) {
         const index = masterProducts.findIndex(p => p.id === productId);
         if (index !== -1) {
@@ -1324,31 +1368,30 @@
             masterProducts[index].estimatePrice = document.getElementById('editEstimate')?.value;
             masterProducts[index].actualPrice = document.getElementById('editActualPrice')?.value ? parseInt(document.getElementById('editActualPrice')?.value) : null;
             masterProducts[index].stock = document.getElementById('editStock')?.value ? parseInt(document.getElementById('editStock')?.value) : 0;
+            masterProducts[index].discount = document.getElementById('editDiscount')?.value ? parseInt(document.getElementById('editDiscount')?.value) : 0;
+            masterProducts[index].source = document.getElementById('editSource')?.value;
             masterProducts[index].updated = masterProducts[index].actualPrice ? true : false;
             
             localStorage.setItem('master_products', JSON.stringify(masterProducts));
+            syncProductsToWebsite();
+            
             showNotification(`✅ পণ্য আপডেট করা হয়েছে!`);
             closeModal(document.querySelector('.modal'));
             loadProducts();
         }
     }
     
-    // ============================================
-    // পণ্য ডিলিট
-    // ============================================
     function deleteProduct(productId) {
-        if (confirm('আপনি কি এই পণ্যটি ডিলিট করতে চান? এই কাজটি বাতিল করা যাবে না।')) {
+        if (confirm('আপনি কি এই পণ্যটি ডিলিট করতে চান?')) {
             const product = masterProducts.find(p => p.id === productId);
             masterProducts = masterProducts.filter(p => p.id !== productId);
             localStorage.setItem('master_products', JSON.stringify(masterProducts));
+            syncProductsToWebsite();
             showNotification(`✅ ${product?.name} ডিলিট করা হয়েছে!`);
             loadProducts();
         }
     }
     
-    // ============================================
-    // পণ্য বিস্তারিত দেখা
-    // ============================================
     function viewProductDetails(productId) {
         const product = masterProducts.find(p => p.id === productId);
         if (!product) return;
@@ -1357,46 +1400,18 @@
         modal.className = 'modal';
         modal.innerHTML = `
             <div class="modal-content">
-                <div class="modal-header">
-                    <h3><i class="fas fa-info-circle"></i> ${product.name}</h3>
-                    <span class="modal-close" onclick="closeModal(this)">&times;</span>
-                </div>
+                <div class="modal-header"><h3><i class="fas fa-info-circle"></i> ${product.name}</h3><span class="modal-close" onclick="closeModal(this)">&times;</span></div>
                 <div class="modal-body">
-                    <div style="text-align: center; margin-bottom: 15px;">
-                        <img src="${product.image}" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px;" onerror="this.src='https://placehold.co/150x150/2d6a4f/white?text=পণ্য'">
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">পণ্যের নাম:</div>
-                        <div class="detail-value">${product.name}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">ক্যাটাগরি:</div>
-                        <div class="detail-value">${product.categoryName}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">ভেন্ডর:</div>
-                        <div class="detail-value">${getVendorName(product.vendorId)}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">আনুমানিক দাম:</div>
-                        <div class="detail-value">৳${product.estimatePrice}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">আসল দাম:</div>
-                        <div class="detail-value">${product.actualPrice ? `৳${product.actualPrice}` : '—'}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">স্টক:</div>
-                        <div class="detail-value">${product.stock || 0} ${product.category === 'fruits' ? 'পিস' : 'কেজি'}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">উৎস:</div>
-                        <div class="detail-value">${product.source || '—'}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">যোগের তারিখ:</div>
-                        <div class="detail-value">${new Date(product.createdAt).toLocaleDateString('bn-BD')}</div>
-                    </div>
+                    <div style="text-align:center; margin-bottom:15px;"><img src="${product.image}" style="width:150px; height:150px; object-fit:cover; border-radius:10px;"></div>
+                    <div class="detail-row"><div class="detail-label">পণ্যের নাম:</div><div class="detail-value">${product.name}</div></div>
+                    <div class="detail-row"><div class="detail-label">ক্যাটাগরি:</div><div class="detail-value">${product.categoryName}</div></div>
+                    <div class="detail-row"><div class="detail-label">ভেন্ডর:</div><div class="detail-value">${getVendorName(product.vendorId)}</div></div>
+                    <div class="detail-row"><div class="detail-label">আনুমানিক দাম:</div><div class="detail-value">৳${product.estimatePrice}</div></div>
+                    <div class="detail-row"><div class="detail-label">আসল দাম:</div><div class="detail-value">${product.actualPrice ? `৳${product.actualPrice}` : '—'}</div></div>
+                    <div class="detail-row"><div class="detail-label">ছাড়:</div><div class="detail-value">${product.discount || 0}%</div></div>
+                    <div class="detail-row"><div class="detail-label">স্টক:</div><div class="detail-value">${product.stock || 0} ${product.category === 'fruits' ? 'পিস' : 'কেজি'}</div></div>
+                    <div class="detail-row"><div class="detail-label">উৎস:</div><div class="detail-value">${product.source || '—'}</div></div>
+                    <div class="detail-row"><div class="detail-label">যোগের তারিখ:</div><div class="detail-value">${new Date(product.createdAt).toLocaleDateString('bn-BD')}</div></div>
                 </div>
             </div>
         `;
@@ -1404,55 +1419,19 @@
         modal.style.display = 'flex';
     }
     
-    // ============================================
-    // মোডাল ক্লোজ
-    // ============================================
-    function closeModal(element) {
-        const modal = element.closest('.modal');
-        if (modal) modal.remove();
-    }
+    function closeModal(element) { const modal = element.closest('.modal'); if (modal) modal.remove(); }
     
-    // ============================================
-    // লগআউট ও ট্যাব সুইচ
-    // ============================================
     function switchTab(tabName) {
-        if (tabName === 'dashboard') window.location.href = 'admin-dashboard.html';
-        else if (tabName === 'vendors') window.location.href = 'admin-vendors.html';
-        else if (tabName === 'payments') window.location.href = 'admin-payments.html';
-        else if (tabName === 'orders') window.location.href = 'admin-orders.html';
-        else if (tabName === 'products') window.location.href = 'admin-products.html';
-        else if (tabName === 'customers') window.location.href = 'admin-customers.html';
-        else if (tabName === 'reports') window.location.href = 'admin-reports.html';
-        else if (tabName === 'settings') window.location.href = 'admin-settings.html';
+        const pages = { 'dashboard': 'admin-dashboard.html', 'vendors': 'admin-vendors.html', 'payments': 'admin-payments.html', 'orders': 'admin-orders.html', 'products': 'admin-products.html', 'customers': 'admin-customers.html', 'reports': 'admin-reports.html', 'settings': 'admin-settings.html' };
+        if (pages[tabName]) window.location.href = pages[tabName];
     }
     
-    function adminLogout() {
-        localStorage.removeItem('currentAdmin');
-        showNotification('আপনি লগআউট করেছেন!');
-        setTimeout(() => window.location.href = 'admin-login.html', 1000);
-    }
+    function adminLogout() { localStorage.removeItem('currentAdmin'); showNotification('আপনি লগআউট করেছেন!'); setTimeout(() => window.location.href = 'admin-login.html', 1000); }
     
-    // সাইডবার টগল
-    document.getElementById('menuToggle')?.addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('open');
-    });
+    document.getElementById('menuToggle')?.addEventListener('click', () => document.getElementById('sidebar').classList.toggle('open'));
+    document.querySelectorAll('.sidebar-menu-item').forEach(item => item.addEventListener('click', () => switchTab(item.getAttribute('data-tab'))));
+    document.getElementById('clearCacheBtn')?.addEventListener('click', (e) => { e.preventDefault(); if(confirm('ক্যাশ ক্লিয়ার করবেন?')) { localStorage.clear(); sessionStorage.clear(); location.reload(); } });
     
-    // সাইডবার মেনু ইভেন্ট
-    document.querySelectorAll('.sidebar-menu-item').forEach(item => {
-        item.addEventListener('click', () => switchTab(item.getAttribute('data-tab')));
-    });
-    
-    // ক্যাশ ক্লিয়ার
-    document.getElementById('clearCacheBtn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        if(confirm('ক্যাশ ক্লিয়ার করলে পেজ রিফ্রেশ হবে। আপনি কি নিশ্চিত?')) {
-            localStorage.clear();
-            sessionStorage.clear();
-            location.reload();
-        }
-    });
-    
-    // গ্লোবাল ফাংশন
     window.changePage = changePage;
     window.openAddProductModal = openAddProductModal;
     window.addNewProduct = addNewProduct;
@@ -1464,7 +1443,6 @@
     window.adminLogout = adminLogout;
     window.switchTab = switchTab;
     
-    // ইনিশিয়াল লোড
     loadProducts();
 </script>
 </body>
