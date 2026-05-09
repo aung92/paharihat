@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার অর্ডার | পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .orders-container {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+        .order-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+        .order-id { color: #2d6a4f; font-weight: bold; }
+        .order-status {
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+        .status-pending { background: #fff3e0; color: #e76f51; }
+        .status-processing { background: #e3f2fd; color: #2196f3; }
+        .status-shipped { background: #e8f5e9; color: #4caf50; }
+        .status-delivered { background: #c8e6c9; color: #2d6a4f; }
+        .order-items { margin: 15px 0; }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .track-btn {
+            background: #2d6a4f;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        .empty-orders {
+            text-align: center;
+            padding: 60px;
+            background: white;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo"><a href="index.html"><i class="fas fa-mountain"></i><span>পাহাড়ি হাট</span></a></div>
+        <div class="nav-links">
+            <a href="index.html">হোম</a>
+            <a href="preorder.html">প্রি-অর্ডার</a>
+            <a href="my-orders.html" class="active">আমার অর্ডার</a>
+        </div>
+        <div class="nav-icons">
+            <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+        </div>
+    </div>
+</nav>
+
+<div class="orders-container">
+    <div class="section-header">
+        <h1>📋 আমার <span class="highlight">অর্ডার</span></h1>
+        <p>আপনার সমস্ত অর্ডারের তালিকা</p>
+    </div>
+    
+    <div id="ordersList"></div>
+</div>
+
+<script>
+    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    function updateCartCount() {
+        const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.querySelectorAll('.cart-count').forEach(el => el.textContent = total);
+    }
+    
+    function loadOrders() {
+        const container = document.getElementById('ordersList');
+        
+        if (orders.length === 0) {
+            container.innerHTML = `
+                <div class="empty-orders">
+                    <i class="fas fa-box-open" style="font-size: 4rem; color: #ccc;"></i>
+                    <h3>কোনো অর্ডার নেই</h3>
+                    <p>আপনি এখনও কোনো অর্ডার করেননি</p>
+                    <a href="preorder.html" class="btn btn-primary">প্রি-অর্ডার শুরু করুন</a>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '';
+        orders.forEach(order => {
+            let statusClass = '';
+            if (order.status === 'pending') statusClass = 'status-pending';
+            else if (order.status === 'processing') statusClass = 'status-processing';
+            else if (order.status === 'shipped') statusClass = 'status-shipped';
+            else if (order.status === 'delivered') statusClass = 'status-delivered';
+            
+            let statusText = '';
+            if (order.status === 'pending') statusText = '⏳ অর্ডার প্রাপ্ত';
+            else if (order.status === 'processing') statusText = '🔄 প্রক্রিয়াকরণ';
+            else if (order.status === 'shipped') statusText = '🚚 ডেলিভারি প্রক্রিয়ায়';
+            else if (order.status === 'delivered') statusText = '✅ ডেলিভারি সম্পন্ন';
+            
+            html += `
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <span class="order-id">অর্ডার আইডি: ${order.id}</span><br>
+                            <small>📅 ${order.date}</small>
+                        </div>
+                        <div>
+                            <span class="order-status ${statusClass}">${statusText}</span>
+                        </div>
+                    </div>
+                    <div class="order-items">
+                        ${order.items.map(item => `
+                            <div class="order-item">
+                                <span>${item.name} x${item.quantity}</span>
+                                <span>৳${item.price * item.quantity}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="order-footer" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                        <div>
+                            <strong>মোট: ৳${order.total}</strong>
+                            <br>
+                            <small>📞 ${order.phone} | 📍 ${order.address.substring(0, 50)}...</small>
+                        </div>
+                        <button class="track-btn" onclick="trackOrder('${order.id}')">🔍 অর্ডার ট্র্যাক করুন</button>
+                    </div>
+                </div>
+            `;
+        });
+        
+        container.innerHTML = html;
+        updateCartCount();
+    }
+    
+    function trackOrder(orderId) {
+        window.location.href = `track-order.html?id=${orderId}`;
+    }
+    
+    loadOrders();
+</script>
+</body>
+</html>

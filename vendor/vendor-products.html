@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>আমার পণ্য | পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+        }
+        
+        /* Navbar */
+        .vendor-navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .vendor-navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .vendor-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .vendor-logo i {
+            font-size: 1.8rem;
+            color: #2d6a4f;
+        }
+        
+        .vendor-logo span {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d6a4f;
+        }
+        
+        .vendor-nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .vendor-nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .vendor-nav-links a:hover,
+        .vendor-nav-links a.active {
+            background: #2d6a4f;
+            color: white;
+        }
+        
+        .logout-btn {
+            background: #e76f51;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: #d45a3a;
+            transform: translateY(-2px);
+        }
+        
+        /* Main Container */
+        .vendor-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #2d6a4f, #40916c);
+            border-radius: 20px;
+            padding: 25px 30px;
+            color: white;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .page-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .page-header p {
+            opacity: 0.9;
+            font-size: 0.85rem;
+        }
+        
+        .add-product-btn {
+            background: #e76f51;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .add-product-btn:hover {
+            background: #d45a3a;
+            transform: translateY(-2px);
+        }
+        
+        /* Stats Cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card i {
+            font-size: 2rem;
+            color: #2d6a4f;
+            margin-bottom: 10px;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2d6a4f;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
+        /* Filter Bar */
+        .filter-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            max-width: 300px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-family: inherit;
+        }
+        
+        .filter-group select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-family: inherit;
+            background: white;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #f8f9fa;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 8px;
+        }
+        
+        .product-category {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2d6a4f;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-bottom: 12px;
+        }
+        
+        .price-info {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 12px;
+            margin: 12px 0;
+        }
+        
+        .estimate-price {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+        
+        .actual-price {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2d6a4f;
+        }
+        
+        .price-status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            margin-top: 8px;
+        }
+        
+        .status-updated {
+            background: #e8f5e9;
+            color: #2d6a4f;
+        }
+        
+        .status-pending {
+            background: #fff3e0;
+            color: #e76f51;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .update-price-btn, .edit-product-btn {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .update-price-btn {
+            background: #2d6a4f;
+            color: white;
+        }
+        
+        .update-price-btn:hover {
+            background: #1b4332;
+        }
+        
+        .edit-product-btn {
+            background: #e9ecef;
+            color: #555;
+        }
+        
+        .edit-product-btn:hover {
+            background: #dee2e6;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 20px;
+            color: #999;
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-header h3 {
+            color: #2d6a4f;
+        }
+        
+        .modal-close {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .modal-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .modal-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .modal-form-group input,
+        .modal-form-group select,
+        .modal-form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-form-group input:focus,
+        .modal-form-group select:focus,
+        .modal-form-group textarea:focus {
+            outline: none;
+            border-color: #2d6a4f;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+        
+        .modal-buttons button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-submit-btn {
+            background: #2d6a4f;
+            color: white;
+        }
+        
+        .modal-cancel-btn {
+            background: #e9ecef;
+            color: #555;
+        }
+        
+        /* Notification */
+        .notification-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2d6a4f;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            z-index: 1001;
+            animation: slideInRight 0.3s ease;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .vendor-navbar .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .vendor-nav-links {
+                justify-content: center;
+            }
+            
+            .page-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+            }
+            
+            .search-box {
+                max-width: 100%;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="vendor-navbar">
+    <div class="container">
+        <div class="vendor-logo">
+            <i class="fas fa-mountain"></i>
+            <span>পাহাড়ি হাট</span>
+            <small style="background: #2d6a4f20; padding: 2px 8px; border-radius: 20px; font-size: 0.7rem;">ভেন্ডর প্যানেল</small>
+        </div>
+        <div class="vendor-nav-links">
+            <a href="vendor-dashboard.html"><i class="fas fa-tachometer-alt"></i> ড্যাশবোর্ড</a>
+            <a href="vendor-orders.html"><i class="fas fa-shopping-cart"></i> অর্ডার</a>
+            <a href="vendor-products.html" class="active"><i class="fas fa-box"></i> আমার পণ্য</a>
+            <a href="vendor-profile.html"><i class="fas fa-user"></i> প্রোফাইল</a>
+        </div>
+        <button class="logout-btn" onclick="vendorLogout()">
+            <i class="fas fa-sign-out-alt"></i> লগআউট
+        </button>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="vendor-container" id="vendorProductsContainer">
+    <div style="text-align: center; padding: 50px;">
+        <div style="width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #2d6a4f; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
+        <p>লোড হচ্ছে...</p>
+    </div>
+</div>
+
+<style>
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
+<script>
+    // Current vendor
+    let currentVendor = JSON.parse(localStorage.getItem('currentVendor'));
+    let masterProducts = JSON.parse(localStorage.getItem('master_products') || '[]');
+    let vendorProducts = JSON.parse(localStorage.getItem('vendor_products') || '[]');
+    
+    // Check login
+    if (!currentVendor) {
+        window.location.href = 'vendor-login.html';
+    }
+    
+    // Initialize master products if empty
+    if (masterProducts.length === 0) {
+        masterProducts = [
+            { id: 1, name: 'বান্দরবানের খাঁটি মধু', category: 'honey', categoryName: 'মধু', estimatePrice: '800-1200', actualPrice: null, oldPrice: null, vendorId: null, updated: false, image: 'https://placehold.co/300x250/2d6a4f/white?text=মধু', stock: 0 },
+            { id: 2, name: 'পাহাড়ি মিষ্টি কমলা', category: 'fruits', categoryName: 'ফল', estimatePrice: '120-180', actualPrice: null, oldPrice: null, vendorId: null, updated: false, image: 'https://placehold.co/300x250/e76f51/white?text=কমলা', stock: 0 },
+            { id: 3, name: 'পাহাড়ি দেশি মুরগি', category: 'meat', categoryName: 'মাংস', estimatePrice: '550-750', actualPrice: null, oldPrice: null, vendorId: null, updated: false, image: 'https://placehold.co/300x250/d4a373/white?text=মুরগি', stock: 0 },
+            { id: 4, name: 'পাহাড়ি মশলা প্যাক', category: 'spices', categoryName: 'মশলা', estimatePrice: '450-600', actualPrice: null, oldPrice: null, vendorId: null, updated: false, image: 'https://placehold.co/300x250/606c38/white?text=মশলা', stock: 0 },
+            { id: 5, name: 'পাহাড়ি মিষ্টি আনারস', category: 'fruits', categoryName: 'ফল', estimatePrice: '100-150', actualPrice: null, oldPrice: null, vendorId: null, updated: false, image: 'https://placehold.co/300x250/f4a261/white?text=আনারস', stock: 0 },
+            { id: 6, name: 'থানচি স্পেশাল মধু', category: 'honey', categoryName: 'মধু', estimatePrice: '850-1100', actualPrice: null, oldPrice: null, vendorId: null, updated: false, image: 'https://placehold.co/300x250/2d6a4f/white?text=থানচি+মধু', stock: 0 }
+        ];
+        localStorage.setItem('master_products', JSON.stringify(masterProducts));
+    }
+    
+    // Get vendor's products
+    function getVendorProducts() {
+        return masterProducts.filter(p => p.vendorId === currentVendor.id);
+    }
+    
+    // Show notification
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = 'notification-toast';
+        notification.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i> ${message}`;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+    }
+    
+    // Open price update modal
+    function openPriceModal(productId, productName) {
+        const product = masterProducts.find(p => p.id === productId);
+        if (!product) return;
+        
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-tag"></i> ${productName} - দাম আপডেট</h3>
+                    <span class="modal-close" onclick="closeModal(this)">&times;</span>
+                </div>
+                <div class="modal-form-group">
+                    <label><i class="fas fa-money-bill"></i> আসল দাম (টাকা) *</label>
+                    <input type="number" id="actualPrice" placeholder="যেমন: 1000" value="${product.actualPrice || ''}">
+                </div>
+                <div class="modal-form-group">
+                    <label><i class="fas fa-tag"></i> পুরাতন দাম (ঐচ্ছিক)</label>
+                    <input type="number" id="oldPrice" placeholder="যেমন: 1200" value="${product.oldPrice || ''}">
+                </div>
+                <div class="modal-form-group">
+                    <label><i class="fas fa-boxes"></i> স্টক পরিমাণ</label>
+                    <input type="number" id="stock" placeholder="পণ্যের সংখ্যা" value="${product.stock || 0}">
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-submit-btn" onclick="updateProductPrice(${productId})">
+                        <i class="fas fa-save"></i> আপডেট করুন
+                    </button>
+                    <button class="modal-cancel-btn" onclick="closeModal(this)">
+                        <i class="fas fa-times"></i> বাতিল
+                    </button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.style.display = 'flex';
+    }
+    
+    // Update product price
+    function updateProductPrice(productId) {
+        const actualPrice = document.getElementById('actualPrice')?.value;
+        const oldPrice = document.getElementById('oldPrice')?.value;
+        const stock = document.getElementById('stock')?.value;
+        
+        if (!actualPrice) {
+            alert('দয়া করে আসল দাম দিন!');
+            return;
+        }
+        
+        const productIndex = masterProducts.findIndex(p => p.id === productId);
+        if (productIndex !== -1) {
+            masterProducts[productIndex].actualPrice = parseInt(actualPrice);
+            masterProducts[productIndex].oldPrice = oldPrice ? parseInt(oldPrice) : null;
+            masterProducts[productIndex].updated = true;
+            masterProducts[productIndex].vendorId = currentVendor.id;
+            masterProducts[productIndex].stock = stock ? parseInt(stock) : 0;
+            masterProducts[productIndex].updatedAt = new Date().toISOString();
+            
+            localStorage.setItem('master_products', JSON.stringify(masterProducts));
+            
+            showNotification(`✅ ${masterProducts[productIndex].name} এর দাম আপডেট করা হয়েছে!`, 'success');
+            
+            const modal = document.querySelector('.modal');
+            if (modal) modal.remove();
+            loadProducts();
+        }
+    }
+    
+    // Open add product modal
+    function openAddProductModal() {
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-plus-circle"></i> নতুন পণ্য যোগ করুন</h3>
+                    <span class="modal-close" onclick="closeModal(this)">&times;</span>
+                </div>
+                <div class="modal-form-group">
+                    <label><i class="fas fa-tag"></i> পণ্যের নাম *</label>
+                    <input type="text" id="productName" placeholder="যেমন: পাহাড়ি আদা">
+                </div>
+                <div class="modal-form-group">
+                    <label><i class="fas fa-list"></i> ক্যাটাগরি *</label>
+                    <select id="productCategory">
+                        <option value="honey">🍯 মধু</option>
+                        <option value="fruits">🍎 ফল</option>
+                        <option value="meat">🍗 মাংস</option>
+                        <option value="spices">🌶️ মশলা</option>
+                        <option value="seafood">🐟 মাছ</option>
+                        <option value="vegetables">🥬 শাক-সবজি</option>
+                    </select>
+                </div>
+                <div class="modal-form-group">
+                    <label><i class="fas fa-money-bill"></i> আনুমানিক দাম *</label>
+                    <input type="text" id="estimatePrice" placeholder="যেমন: 500-800">
+                </div>
+                <div class="modal-form-group">
+                    <label><i class="fas fa-image"></i> ছবির লিংক</label>
+                    <input type="text" id="productImage" placeholder="https://...">
+                </div>
+                <div class="modal-form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> উৎস</label>
+                    <input type="text" id="productSource" placeholder="যেমন: বান্দরবান, থানচি">
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-submit-btn" onclick="addNewProduct()">
+                        <i class="fas fa-check"></i> পণ্য যোগ করুন
+                    </button>
+                    <button class="modal-cancel-btn" onclick="closeModal(this)">
+                        <i class="fas fa-times"></i> বাতিল
+                    </button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.style.display = 'flex';
+    }
+    
+    // Add new product
+    function addNewProduct() {
+        const name = document.getElementById('productName')?.value;
+        const category = document.getElementById('productCategory')?.value;
+        const estimatePrice = document.getElementById('estimatePrice')?.value;
+        const image = document.getElementById('productImage')?.value;
+        const source = document.getElementById('productSource')?.value;
+        
+        if (!name || !category || !estimatePrice) {
+            alert('দয়া করে পণ্যের নাম, ক্যাটাগরি এবং আনুমানিক দাম দিন!');
+            return;
+        }
+        
+        const categoryNames = {
+            'honey': 'মধু', 'fruits': 'ফল', 'meat': 'মাংส',
+            'spices': 'মশলা', 'seafood': 'মাছ', 'vegetables': 'শাক-সবজি'
+        };
+        
+        const newProduct = {
+            id: Date.now(),
+            name: name,
+            category: category,
+            categoryName: categoryNames[category],
+            estimatePrice: estimatePrice,
+            actualPrice: null,
+            oldPrice: null,
+            vendorId: currentVendor.id,
+            updated: false,
+            image: image || 'https://placehold.co/300x250/2d6a4f/white?text=' + encodeURIComponent(name),
+            source: source || currentVendor.district,
+            stock: 0,
+            createdAt: new Date().toISOString()
+        };
+        
+        masterProducts.push(newProduct);
+        localStorage.setItem('master_products', JSON.stringify(masterProducts));
+        
+        showNotification(`✅ "${name}" পণ্যটি যোগ করা হয়েছে!`, 'success');
+        
+        const modal = document.querySelector('.modal');
+        if (modal) modal.remove();
+        loadProducts();
+    }
+    
+    // Load products
+    let searchTerm = '';
+    let categoryFilter = 'all';
+    
+    function loadProducts() {
+        const container = document.getElementById('vendorProductsContainer');
+        let vendorProds = getVendorProducts();
+        
+        // Filter
+        let filtered = [...vendorProds];
+        if (searchTerm) {
+            filtered = filtered.filter(p => 
+                p.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        }
+        if (categoryFilter !== 'all') {
+            filtered = filtered.filter(p => p.category === categoryFilter);
+        }
+        
+        const updatedCount = filtered.filter(p => p.updated).length;
+        const pendingCount = filtered.filter(p => !p.updated).length;
+        
+        container.innerHTML = `
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h1><i class="fas fa-box"></i> আমার পণ্য</h1>
+                    <p>আপনার সকল পণ্যের তালিকা, দাম আপডেট করুন এবং নতুন পণ্য যোগ করুন</p>
+                </div>
+                <button class="add-product-btn" onclick="openAddProductModal()">
+                    <i class="fas fa-plus"></i> নতুন পণ্য যোগ করুন
+                </button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <i class="fas fa-box"></i>
+                    <div class="stat-number">${filtered.length}</div>
+                    <div class="stat-label">মোট পণ্য</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="stat-number">${updatedCount}</div>
+                    <div class="stat-label">দাম আপডেট করা</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-number">${pendingCount}</div>
+                    <div class="stat-label">দাম আপডেট বাকি</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="stat-number">${vendorProds.length}</div>
+                    <div class="stat-label">সর্বমোট পণ্য</div>
+                </div>
+            </div>
+            
+            <!-- Filter -->
+            <div class="filter-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchProducts" placeholder="পণ্য খুঁজুন...">
+                </div>
+                <div class="filter-group">
+                    <label>ক্যাটাগরি:</label>
+                    <select id="categoryFilterSelect">
+                        <option value="all">সব</option>
+                        <option value="honey">🍯 মধু</option>
+                        <option value="fruits">🍎 ফল</option>
+                        <option value="meat">🍗 মাংস</option>
+                        <option value="spices">🌶️ মশলা</option>
+                        <option value="seafood">🐟 মাছ</option>
+                        <option value="vegetables">🥬 শাক-সবজি</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Products Grid -->
+            ${filtered.length === 0 ? `
+                <div class="empty-state">
+                    <i class="fas fa-box-open"></i>
+                    <h3>কোনো পণ্য নেই</h3>
+                    <p>"নতুন পণ্য যোগ করুন" বাটনে ক্লিক করে পণ্য যোগ করুন</p>
+                </div>
+            ` : `
+                <div class="products-grid">
+                    ${filtered.map(product => `
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://placehold.co/300x250/2d6a4f/white?text=${encodeURIComponent(product.name)}'">
+                            <div class="product-info">
+                                <h3 class="product-name">${product.name}</h3>
+                                <span class="product-category">${product.categoryName}</span>
+                                <div class="price-info">
+                                    <div class="estimate-price">
+                                        <span><i class="fas fa-chart-line"></i> আনুমানিক:</span>
+                                        <span>৳${product.estimatePrice}</span>
+                                    </div>
+                                    <div class="actual-price">
+                                        <span><i class="fas fa-tag"></i> আসল দাম:</span>
+                                        <span>${product.actualPrice ? `৳${product.actualPrice}` : '<span style="color:#e76f51;">দেওয়া হয়নি</span>'}</span>
+                                    </div>
+                                    <div class="estimate-price">
+                                        <span><i class="fas fa-boxes"></i> স্টক:</span>
+                                        <span>${product.stock || 0} ${product.category === 'fruits' ? 'পিস' : 'কেজি'}</span>
+                                    </div>
+                                </div>
+                                <div class="price-status ${product.updated ? 'status-updated' : 'status-pending'}">
+                                    ${product.updated ? '✓ দাম আপডেট করা হয়েছে' : '⏳ দাম আপডেট বাকি'}
+                                </div>
+                                <div class="product-actions">
+                                    <button class="update-price-btn" onclick="openPriceModal(${product.id}, '${product.name}')">
+                                        <i class="fas fa-edit"></i> দাম আপডেট
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `}
+        `;
+        
+        // Add event listeners
+        const searchInput = document.getElementById('searchProducts');
+        const categorySelect = document.getElementById('categoryFilterSelect');
+        
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                searchTerm = this.value;
+                loadProducts();
+            });
+        }
+        
+        if (categorySelect) {
+            categorySelect.addEventListener('change', function() {
+                categoryFilter = this.value;
+                loadProducts();
+            });
+        }
+    }
+    
+    // Close modal
+    function closeModal(element) {
+        const modal = element.closest('.modal');
+        if (modal) modal.remove();
+    }
+    
+    // Vendor logout
+    function vendorLogout() {
+        localStorage.removeItem('currentVendor');
+        showNotification('আপনি লগআউট করেছেন', 'info');
+        setTimeout(() => {
+            window.location.href = 'vendor-login.html';
+        }, 1000);
+    }
+    
+    // Make functions global
+    window.openPriceModal = openPriceModal;
+    window.updateProductPrice = updateProductPrice;
+    window.closeModal = closeModal;
+    window.openAddProductModal = openAddProductModal;
+    window.addNewProduct = addNewProduct;
+    window.vendorLogout = vendorLogout;
+    
+    // Load products
+    loadProducts();
+</script>
+</body>
+</html>

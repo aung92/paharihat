@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>সেটিংস | অ্যাডমিন প্যানেল | পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+        }
+        
+        /* ============================================ */
+        /* সাইডবার স্টাইল                               */
+        /* ============================================ */
+        .admin-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #1b4332 0%, #2d6a4f 100%);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .sidebar-header {
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-header p {
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+        
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+        
+        .sidebar-menu-item {
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .sidebar-menu-item:hover,
+        .sidebar-menu-item.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-left: 4px solid #e76f51;
+        }
+        
+        .sidebar-menu-item i {
+            width: 22px;
+            font-size: 1.1rem;
+        }
+        
+        /* ============================================ */
+        /* মেইন কন্টেন্ট                               */
+        /* ============================================ */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        /* টপবার */
+        .topbar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .page-title h2 {
+            color: #2d6a4f;
+            font-size: 1.3rem;
+        }
+        
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .admin-name {
+            text-align: right;
+        }
+        
+        .admin-name .name {
+            font-weight: 600;
+            color: #2d6a4f;
+        }
+        
+        .admin-name .role {
+            font-size: 0.7rem;
+            color: #999;
+        }
+        
+        .logout-btn {
+            background: #e76f51;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: #d45a3a;
+            transform: translateY(-2px);
+        }
+        
+        /* ============================================ */
+        /* সেটিংস কন্টেন্ট                             */
+        /* ============================================ */
+        .settings-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .settings-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .settings-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .settings-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .settings-header i {
+            font-size: 1.8rem;
+            color: #2d6a4f;
+        }
+        
+        .settings-header h3 {
+            color: #2d6a4f;
+            font-size: 1.2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group label i {
+            color: #2d6a4f;
+            width: 22px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2d6a4f;
+            box-shadow: 0 0 0 3px rgba(45,106,79,0.1);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .btn-save {
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-save:hover {
+            background: #1b4332;
+            transform: translateY(-2px);
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+        
+        /* টগল সুইচ */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 30px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: #2d6a4f;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+        
+        .toggle-label {
+            margin-left: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        /* প্রিভিউ ইমেজ */
+        .logo-preview {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .logo-preview img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: #f8f9fa;
+            padding: 5px;
+            border: 1px solid #eee;
+        }
+        
+        /* নোটিফিকেশন */
+        .notification-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2d6a4f;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            z-index: 1001;
+            animation: slideInRight 0.3s ease;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* রেস্পন্সিভ */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 260px;
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .settings-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+        
+        .menu-toggle {
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2d6a4f;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="admin-wrapper">
+    <!-- সাইডবার -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-mountain"></i>
+            <h3>পাহাড়ি হাট</h3>
+            <p>অ্যাডমিন প্যানেল</p>
+        </div>
+        <div class="sidebar-menu">
+            <div class="sidebar-menu-item" data-tab="dashboard">
+                <i class="fas fa-tachometer-alt"></i> ড্যাশবোর্ড
+            </div>
+            <div class="sidebar-menu-item" data-tab="vendors">
+                <i class="fas fa-store"></i> ভেন্ডর ম্যানেজ
+            </div>
+            <div class="sidebar-menu-item" data-tab="payments">
+                <i class="fas fa-money-bill"></i> পেমেন্ট রিকোয়েস্ট
+            </div>
+            <div class="sidebar-menu-item" data-tab="orders">
+                <i class="fas fa-shopping-cart"></i> অর্ডার
+            </div>
+            <div class="sidebar-menu-item" data-tab="products">
+                <i class="fas fa-box"></i> পণ্য
+            </div>
+            <div class="sidebar-menu-item" data-tab="customers">
+                <i class="fas fa-users"></i> কাস্টমার
+            </div>
+            <div class="sidebar-menu-item" data-tab="reports">
+                <i class="fas fa-chart-line"></i> রিপোর্ট
+            </div>
+            <div class="sidebar-menu-item active" data-tab="settings">
+                <i class="fas fa-cog"></i> সেটিংস
+            </div>
+        </div>
+    </div>
+    
+    <!-- মেইন কন্টেন্ট -->
+    <div class="main-content">
+        <div class="topbar">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="page-title">
+                <h2><i class="fas fa-cog"></i> সেটিংস</h2>
+            </div>
+            <div class="admin-info">
+                <div class="admin-name">
+                    <div class="name" id="adminName">অ্যাডমিন</div>
+                    <div class="role">সুপার অ্যাডমিন</div>
+                </div>
+                <button class="logout-btn" onclick="adminLogout()">
+                    <i class="fas fa-sign-out-alt"></i> লগআউট
+                </button>
+            </div>
+        </div>
+        
+        <!-- সেটিংস কন্টেন্ট -->
+        <div id="settingsContent">
+            <div style="text-align: center; padding: 50px;">
+                <div class="spinner"></div>
+                <p>লোড হচ্ছে...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ============================================
+    // চেক অ্যাডমিন লগইন
+    // ============================================
+    let currentAdmin = JSON.parse(localStorage.getItem('currentAdmin'));
+    
+    if (!currentAdmin) {
+        window.location.href = 'admin-login.html';
+    }
+    
+    document.getElementById('adminName').innerText = currentAdmin.name || 'অ্যাডমিন';
+    
+    // ============================================
+    // সাইট সেটিংস ডাটা
+    // ============================================
+    let siteSettings = JSON.parse(localStorage.getItem('site_settings')) || {
+        siteName: 'পাহাড়ি হাট',
+        siteLogo: 'https://placehold.co/150x50/2d6a4f/white?text=পাহাড়ি+হাট',
+        contactPhone: '01918481232',
+        contactEmail: 'info@paharihat.com',
+        contactAddress: 'বান্দরবান, পার্বত্য চট্টগ্রাম',
+        facebookUrl: 'https://facebook.com/paharihat',
+        instagramUrl: 'https://instagram.com/paharihat',
+        youtubeUrl: 'https://youtube.com/paharihat',
+        deliveryChargeDhaka: 60,
+        deliveryChargeOutside: 120,
+        deliveryChargeRemote: 200,
+        preorderDays: 15,
+        vendorApprovalRequired: true,
+        maintenanceMode: false
+    };
+    
+    // ============================================
+    // নোটিফিকেশন
+    // ============================================
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = 'notification-toast';
+        notification.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i> ${message}`;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+    }
+    
+    // ============================================
+    // সেটিংস লোড
+    // ============================================
+    function loadSettings() {
+        const container = document.getElementById('settingsContent');
+        
+        container.innerHTML = `
+            <div class="settings-container">
+                <!-- সাধারণ সেটিংস -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <i class="fas fa-globe"></i>
+                        <h3>সাধারণ সেটিংস</h3>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-store"></i> সাইটের নাম</label>
+                        <input type="text" id="siteName" value="${siteSettings.siteName}">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> সাইট লোগো URL</label>
+                        <input type="text" id="siteLogo" value="${siteSettings.siteLogo}">
+                        <div class="logo-preview">
+                            <img src="${siteSettings.siteLogo}" id="logoPreview" onerror="this.src='https://placehold.co/150x50/2d6a4f/white?text=Logo'">
+                            <span style="font-size:0.7rem; color:#999;">লোগো প্রিভিউ</span>
+                        </div>
+                    </div>
+                    <button class="btn-save" onclick="saveGeneralSettings()">
+                        <i class="fas fa-save"></i> সংরক্ষণ করুন
+                    </button>
+                </div>
+                
+                <!-- যোগাযোগ সেটিংস -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <i class="fas fa-address-card"></i>
+                        <h3>যোগাযোগের তথ্য</h3>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> ফোন নম্বর</label>
+                        <input type="tel" id="contactPhone" value="${siteSettings.contactPhone}">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> ইমেইল</label>
+                        <input type="email" id="contactEmail" value="${siteSettings.contactEmail}">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> ঠিকানা</label>
+                        <textarea id="contactAddress" rows="2">${siteSettings.contactAddress}</textarea>
+                    </div>
+                    <button class="btn-save" onclick="saveContactSettings()">
+                        <i class="fas fa-save"></i> সংরক্ষণ করুন
+                    </button>
+                </div>
+                
+                <!-- ডেলিভারি সেটিংস -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <i class="fas fa-truck"></i>
+                        <h3>ডেলিভারি সেটিংস</h3>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-city"></i> ঢাকা সিটি কর্পোরেশন</label>
+                        <input type="number" id="deliveryChargeDhaka" value="${siteSettings.deliveryChargeDhaka}">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map"></i> ঢাকার বাইরে</label>
+                        <input type="number" id="deliveryChargeOutside" value="${siteSettings.deliveryChargeOutside}">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-mountain"></i> দূরবর্তী এলাকা</label>
+                        <input type="number" id="deliveryChargeRemote" value="${siteSettings.deliveryChargeRemote}">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar"></i> প্রি-অর্ডার ডেলিভারি সময় (দিন)</label>
+                        <input type="number" id="preorderDays" value="${siteSettings.preorderDays}">
+                    </div>
+                    <button class="btn-save" onclick="saveDeliverySettings()">
+                        <i class="fas fa-save"></i> সংরক্ষণ করুন
+                    </button>
+                </div>
+                
+                <!-- সোশ্যাল মিডিয়া সেটিংস -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <i class="fas fa-share-alt"></i>
+                        <h3>সোশ্যাল মিডিয়া</h3>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fab fa-facebook"></i> ফেসবুক</label>
+                        <input type="url" id="facebookUrl" value="${siteSettings.facebookUrl}" placeholder="https://facebook.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fab fa-instagram"></i> ইনস্টাগ্রাম</label>
+                        <input type="url" id="instagramUrl" value="${siteSettings.instagramUrl}" placeholder="https://instagram.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fab fa-youtube"></i> ইউটিউব</label>
+                        <input type="url" id="youtubeUrl" value="${siteSettings.youtubeUrl}" placeholder="https://youtube.com/...">
+                    </div>
+                    <button class="btn-save" onclick="saveSocialSettings()">
+                        <i class="fas fa-save"></i> সংরক্ষণ করুন
+                    </button>
+                </div>
+                
+                <!-- অ্যাডমিন প্রোফাইল সেটিংস -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <i class="fas fa-user-shield"></i>
+                        <h3>অ্যাডমিন প্রোফাইল</h3>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> নাম</label>
+                        <input type="text" id="adminNameInput" value="${currentAdmin.name || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> ইমেইল</label>
+                        <input type="email" id="adminEmail" value="${currentAdmin.email || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-key"></i> নতুন পাসওয়ার্ড</label>
+                        <input type="password" id="newPassword" placeholder="নতুন পাসওয়ার্ড দিন">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-key"></i> পাসওয়ার্ড নিশ্চিত</label>
+                        <input type="password" id="confirmPassword" placeholder="পাসওয়ার্ড আবার দিন">
+                    </div>
+                    <button class="btn-save" onclick="saveAdminProfile()">
+                        <i class="fas fa-save"></i> প্রোফাইল আপডেট করুন
+                    </button>
+                </div>
+                
+                <!-- সিস্টেম সেটিংস -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>সিস্টেম সেটিংস</h3>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-user-check"></i> ভেন্ডর অনুমোদন প্রয়োজন</label>
+                        <div style="display: flex; align-items: center;">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="vendorApprovalRequired" ${siteSettings.vendorApprovalRequired ? 'checked' : ''}>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="toggle-label">নতুন ভেন্ডর অনুমোদন করতে হবে</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-tools"></i> মেইনটেনেন্স মোড</label>
+                        <div style="display: flex; align-items: center;">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="maintenanceMode" ${siteSettings.maintenanceMode ? 'checked' : ''}>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="toggle-label">সাইট বন্ধ রাখুন (ভিজিটররা দেখতে পাবে না)</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class="btn-danger" onclick="clearAllData()">
+                        <i class="fas fa-trash-alt"></i> সব ডাটা ডিলিট করুন (রিসেট)
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        // লোগো প্রিভিউ আপডেট
+        document.getElementById('siteLogo')?.addEventListener('input', (e) => {
+            const preview = document.getElementById('logoPreview');
+            if (preview) {
+                preview.src = e.target.value;
+            }
+        });
+    }
+    
+    // ============================================
+    // সেভ ফাংশনসমূহ
+    // ============================================
+    function saveGeneralSettings() {
+        siteSettings.siteName = document.getElementById('siteName').value;
+        siteSettings.siteLogo = document.getElementById('siteLogo').value;
+        localStorage.setItem('site_settings', JSON.stringify(siteSettings));
+        showNotification('সাধারণ সেটিংস সংরক্ষণ করা হয়েছে!');
+    }
+    
+    function saveContactSettings() {
+        siteSettings.contactPhone = document.getElementById('contactPhone').value;
+        siteSettings.contactEmail = document.getElementById('contactEmail').value;
+        siteSettings.contactAddress = document.getElementById('contactAddress').value;
+        localStorage.setItem('site_settings', JSON.stringify(siteSettings));
+        showNotification('যোগাযোগের তথ্য সংরক্ষণ করা হয়েছে!');
+    }
+    
+    function saveDeliverySettings() {
+        siteSettings.deliveryChargeDhaka = parseInt(document.getElementById('deliveryChargeDhaka').value);
+        siteSettings.deliveryChargeOutside = parseInt(document.getElementById('deliveryChargeOutside').value);
+        siteSettings.deliveryChargeRemote = parseInt(document.getElementById('deliveryChargeRemote').value);
+        siteSettings.preorderDays = parseInt(document.getElementById('preorderDays').value);
+        localStorage.setItem('site_settings', JSON.stringify(siteSettings));
+        showNotification('ডেলিভারি সেটিংস সংরক্ষণ করা হয়েছে!');
+    }
+    
+    function saveSocialSettings() {
+        siteSettings.facebookUrl = document.getElementById('facebookUrl').value;
+        siteSettings.instagramUrl = document.getElementById('instagramUrl').value;
+        siteSettings.youtubeUrl = document.getElementById('youtubeUrl').value;
+        localStorage.setItem('site_settings', JSON.stringify(siteSettings));
+        showNotification('সোশ্যাল মিডিয়া সেটিংস সংরক্ষণ করা হয়েছে!');
+    }
+    
+    function saveAdminProfile() {
+        const newName = document.getElementById('adminNameInput').value;
+        const newEmail = document.getElementById('adminEmail').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        
+        if (newPassword && newPassword !== confirmPassword) {
+            showNotification('পাসওয়ার্ড মিলছে না!', 'error');
+            return;
+        }
+        
+        // অ্যাডমিন ডাটা আপডেট
+        let adminAccount = JSON.parse(localStorage.getItem('admin_account'));
+        if (adminAccount) {
+            adminAccount.name = newName;
+            adminAccount.email = newEmail;
+            if (newPassword) adminAccount.password = newPassword;
+            localStorage.setItem('admin_account', JSON.stringify(adminAccount));
+            
+            currentAdmin = adminAccount;
+            localStorage.setItem('currentAdmin', JSON.stringify(currentAdmin));
+            document.getElementById('adminName').innerText = currentAdmin.name || 'অ্যাডমিন';
+        }
+        
+        showNotification('অ্যাডমিন প্রোফাইল আপডেট করা হয়েছে!');
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+    }
+    
+    function saveSystemSettings() {
+        siteSettings.vendorApprovalRequired = document.getElementById('vendorApprovalRequired').checked;
+        siteSettings.maintenanceMode = document.getElementById('maintenanceMode').checked;
+        localStorage.setItem('site_settings', JSON.stringify(siteSettings));
+        showNotification('সিস্টেম সেটিংস সংরক্ষণ করা হয়েছে!');
+    }
+    
+    // ============================================
+    // সব ডাটা রিসেট
+    // ============================================
+    function clearAllData() {
+        if (confirm('⚠️ সতর্কতা: আপনি কি সব ডাটা ডিলিট করতে চান? এই কাজটি বাতিল করা যাবে না!\n\nসব ভেন্ডর, কাস্টমার, অর্ডার, পণ্য ডাটা মুছে যাবে।')) {
+            if (confirm('শেষবারের মতো নিশ্চিত করুন: আপনি কি পুরো সাইট রিসেট করতে চান?')) {
+                // সব localStorage ক্লিয়ার
+                localStorage.clear();
+                
+                // ডিফল্ট অ্যাডমিন রিক্রিয়েট
+                const defaultAdmin = {
+                    id: 'ADMIN-001',
+                    username: 'admin',
+                    password: 'admin123',
+                    name: 'সুপার অ্যাডমিন',
+                    email: 'admin@paharihat.com',
+                    role: 'super_admin',
+                    createdAt: new Date().toISOString()
+                };
+                localStorage.setItem('admin_account', JSON.stringify(defaultAdmin));
+                
+                showNotification('সব ডাটা ডিলিট করা হয়েছে! পেজ রিফ্রেশ হবে...');
+                setTimeout(() => {
+                    window.location.href = 'admin-login.html';
+                }, 2000);
+            }
+        }
+    }
+    
+    // ============================================
+    // লগআউট ও ট্যাব সুইচ
+    // ============================================
+    function switchTab(tabName) {
+        if (tabName === 'dashboard') window.location.href = 'admin-dashboard.html';
+        else if (tabName === 'vendors') window.location.href = 'admin-vendors.html';
+        else if (tabName === 'payments') window.location.href = 'admin-payments.html';
+        else if (tabName === 'orders') window.location.href = 'admin-orders.html';
+        else if (tabName === 'products') window.location.href = 'admin-products.html';
+        else if (tabName === 'customers') window.location.href = 'admin-customers.html';
+        else if (tabName === 'reports') window.location.href = 'admin-reports.html';
+        else if (tabName === 'settings') window.location.href = 'admin-settings.html';
+    }
+    
+    function adminLogout() {
+        localStorage.removeItem('currentAdmin');
+        showNotification('আপনি লগআউট করেছেন!');
+        setTimeout(() => window.location.href = 'admin-login.html', 1000);
+    }
+    
+    // সাইডবার টগল
+    document.getElementById('menuToggle')?.addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('open');
+    });
+    
+    // সাইডবার মেনু ইভেন্ট
+    document.querySelectorAll('.sidebar-menu-item').forEach(item => {
+        item.addEventListener('click', () => switchTab(item.getAttribute('data-tab')));
+    });
+    
+    // গ্লোবাল ফাংশন
+    window.saveGeneralSettings = saveGeneralSettings;
+    window.saveContactSettings = saveContactSettings;
+    window.saveDeliverySettings = saveDeliverySettings;
+    window.saveSocialSettings = saveSocialSettings;
+    window.saveAdminProfile = saveAdminProfile;
+    window.saveSystemSettings = saveSystemSettings;
+    window.clearAllData = clearAllData;
+    window.adminLogout = adminLogout;
+    window.switchTab = switchTab;
+    
+    // সিস্টেম সেটিংস সেভ করার জন্য আলাদা ইভেন্ট (টগলের জন্য)
+    document.addEventListener('change', function(e) {
+        if (e.target.id === 'vendorApprovalRequired' || e.target.id === 'maintenanceMode') {
+            saveSystemSettings();
+        }
+    });
+    
+    // ইনিশিয়াল লোড
+    loadSettings();
+</script>
+</body>
+</html>

@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>পাহাড়ি হাট - প্রি-অর্ডার ই-বাজার</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- ১. নেভিগেশন বার (Navigation Bar) - আপডেটেড -->
+<!-- ============================================ -->
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <a href="#home">
+                <i class="fas fa-mountain"></i>
+                <span>পাহাড়ি হাট</span>
+            </a>
+        </div>
+        
+        <!-- ডেস্কটপ সার্চ - মোবাইলে লুকানো -->
+        <div class="search-bar desktop-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="পণ্য খুঁজুন... (মধু, কমলা, মাংস...)">
+        </div>
+        
+        <!-- নেভ লিংক - ডেস্কটপে দেখাবে, মোবাইলে লুকানো -->
+        <div class="nav-links" id="navLinks">
+            <a href="#home" class="active"><i class="fas fa-home"></i> হোম</a>
+            <a href="#categories"><i class="fas fa-tags"></i> ক্যাটাগরি</a>
+            <a href="#preorder"><i class="fas fa-clock"></i> প্রি-অর্ডার</a>
+            <a href="#requestSection"><i class="fas fa-gem"></i> রিকুয়েস্ট</a>
+            <a href="#track"><i class="fas fa-chart-line"></i> ট্র্যাক</a>
+        </div>
+        
+        <!-- নেভ আইকন - ডেস্কটপে দেখাবে, মোবাইলে লুকানো -->
+        <div class="nav-icons desktop-only">
+            <a href="#" class="search-icon mobile-search-toggle">
+                <i class="fas fa-search"></i>
+            </a>
+            <a href="cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+            
+            <!-- ইউজার ড্রপডাউন -->
+            <div class="user-dropdown">
+                <a href="#" class="user-icon" id="userIcon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="user-dropdown-menu" id="userDropdownMenu">
+                    <div class="user-info" id="userInfo">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameDisplay">অতিথি</span>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a href="my-orders.html" class="dropdown-item">
+                        <i class="fas fa-box"></i> আমার অর্ডার
+                    </a>
+                    <a href="#" class="dropdown-item" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> লগইন / সাইন আপ
+                    </a>
+                    <a href="#" class="dropdown-item" id="logoutBtn" style="display: none;">
+                        <i class="fas fa-sign-out-alt"></i> লগআউট
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</nav>
+
+<!-- ============================================ -->
+<!-- ২. হিরো সেকশন (Hero Section)                 -->
+<!-- ============================================ -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">🌟 প্রি-অর্ডার বিশেষ ছাড়</span>
+                <h1>পাহাড়ের <span class="highlight">তাজা পণ্য</span><br>আপনার দোরগোড়ায়</h1>
+                <p>বান্দরবান, রাঙ্গামাটি, খাগড়াছড়ি থেকে সরাসরি — ফরমালিনমুক্ত ফল, খাঁটি মধু, পাহাড়ি মাংস ও মশলা। এখনই প্রি-অর্ডার করুন।</p>
+                <div class="hero-buttons">
+                    <a href="#preorder" class="btn btn-primary" id="preorderNowBtn">
+                        প্রি-অর্ডার করুন <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#requestSection" class="btn btn-outline" id="requestProductBtn">
+                        পণ্য রিকুয়েস্ট করুন
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">সন্তুষ্ট গ্রাহক</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">পাহাড়ি পণ্য</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">জেলা থেকে সংগ্রহ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://placehold.co/500x400/2d6a4f/white?text=পাহাড়ি+হাট" alt="পাহাড়ি পণ্য">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ৩. প্রি-অর্ডার কিভাবে কাজ করে (How it Works)  -->
+<!-- ============================================ -->
+<section class="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2>📦 প্রি-অর্ডার <span class="highlight">কিভাবে কাজ করে?</span></h2>
+            <p>সহজ ৫টি ধাপে পাহাড় থেকে আপনার রান্নাঘর</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-icon">1</div>
+                <h4>পণ্য নির্বাচন</h4>
+                <p>আপনার পছন্দের পণ্য ও ওজন নির্বাচন করুন</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">2</div>
+                <h4>অগ্রিম পেমেন্ট</h4>
+                <p>৫০% বা পূর্ণ পেমেন্ট করুন (বিকাশ/নগদ)</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">3</div>
+                <h4>সোর্সিং ও প্যাকিং</h4>
+                <p>আমরা পাহাড়ি এলাকা থেকে সংগ্রহ করি</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">4</div>
+                <h4>ডেলিভারি</h4>
+                <p>নির্ধারিত তারিখে ডেলিভারি (৭-১৫ দিন)</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">5</div>
+                <h4>বাকি টাকা প্রদান</h4>
+                <p>হাতে পেয়ে বাকি টাকা দিন</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ৪. ক্যাটাগরি সেকশন (Categories)              -->
+<!-- ============================================ -->
+<section id="categories" class="categories">
+    <div class="container">
+        <div class="section-header">
+            <h2>🍽️ <span class="highlight">ক্যাটাগরি</span> ব্রাউজ করুন</h2>
+            <p>পাহাড়ের প্রকৃতি থেকে সংগ্রহ করা ৫০+ পণ্য</p>
+        </div>
+        <div class="category-grid">
+            <div class="category-card" data-category="fruits">
+                <div class="category-icon"><i class="fas fa-apple-alt"></i></div>
+                <h3>মৌসুমি ফল</h3>
+                <p>কমলা, কাঁঠাল, লিচু, আনারস</p>
+                <span class="badge">ফরমালিন ফ্রি</span>
+            </div>
+            <div class="category-card" data-category="seafood">
+                <div class="category-icon"><i class="fas fa-fish"></i></div>
+                <h3>সামুদ্রিক মাছ</h3>
+                <p>ইলিশ, রূপচাঁদা, লইট্টা, চিংড়ি</p>
+                <span class="badge">তাজা কোল্ড চেইন</span>
+            </div>
+            <div class="category-card" data-category="honey">
+                <div class="category-icon"><i class="fas fa-jar"></i></div>
+                <h3>মধু</h3>
+                <p>বান্দরবানের মধু, থাই মধু</p>
+                <span class="badge">খাঁটি ১০০%</span>
+            </div>
+            <div class="category-card" data-category="meat">
+                <div class="category-icon"><i class="fas fa-drumstick-bite"></i></div>
+                <h3>মাংস</h3>
+                <p>পাহাড়ি গরু, ছাগল, দেশি মুরগি</p>
+                <span class="badge">কোল্ড চেইন</span>
+            </div>
+            <div class="category-card" data-category="spices">
+                <div class="category-icon"><i class="fas fa-mortar-pestle"></i></div>
+                <h3>মশলা</h3>
+                <p>হলুদ, মরিচ, এলাচ, দারুচিনি</p>
+                <span class="badge">পাহাড়ি উৎস</span>
+            </div>
+            <div class="category-card" data-category="vegetables">
+                <div class="category-icon"><i class="fas fa-leaf"></i></div>
+                <h3>শাক-সবজি</h3>
+                <p>পাহাড়ি শাক, বাঁশের অঙ্কুর, লেবু</p>
+                <span class="badge">কেমিক্যাল ফ্রি</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ৫. প্রি-অর্ডার প্রোডাক্ট সেকশন               -->
+<!-- ============================================ -->
+<section id="preorder" class="products preorder-products">
+    <div class="container">
+        <div class="section-header">
+            <h2>🔥 চলমান <span class="highlight">প্রি-অর্ডার</span></h2>
+            <p>সীমিত পরিমাণে, সীমিত সময়ে — এখনই বুক করুন</p>
+        </div>
+        <div class="product-grid" id="preorderProductGrid">
+            <!-- প্রোডাক্ট কার্ড ১ - বান্দরবানের মধু -->
+            <div class="product-card" data-id="1" data-name="বান্দরবানের মধু" data-estimate-price="800-1200" data-actual-price="" data-price-updated="false">
+                <div class="product-badge preorder">
+                    <span>🔵 প্রি-অর্ডার</span>
+                </div>
+                <div class="product-discount-badge">
+                    <span>-৫%</span>
+                </div>
+                <div class="product-image">
+                    <img src="https://placehold.co/300x250/2d6a4f/white?text=মধু" alt="বান্দরবানের মধু">
+                </div>
+                <div class="product-content">
+                    <div class="product-source">
+                        <i class="fas fa-location-dot"></i> উৎস: বান্দরবান, থানচি
+                    </div>
+                    <h3 class="product-title">বান্দরবানের খাঁটি মধু</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>(৪৮ রিভিউ)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="estimate-price">৳৮০০-১২০০</span>
+                        <span class="price-status-badge estimate-badge">আনুমানিক দাম</span>
+                        <span class="per-unit">/কেজি</span>
+                    </div>
+                    <div class="product-preorder-info">
+                        <div class="countdown-timer" data-deadline="2026-05-30">
+                            <i class="far fa-clock"></i> শেষ হতে: <span class="days">০২</span>দিন <span class="hours">০৫</span>ঘণ্টা
+                        </div>
+                        <div class="delivery-date">
+                            <i class="far fa-calendar-alt"></i> ডেলিভারি: ১০-১৫ জুন ২০২৬
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-minus">-</button>
+                            <input type="number" value="1" min="1" max="10" step="1">
+                            <button class="qty-plus">+</button>
+                        </div>
+                        <button class="btn-add-to-cart">প্রি-বুক <i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট কার্ড ২ - রাঙ্গামাটির কমলা -->
+            <div class="product-card" data-id="2" data-name="রাঙ্গামাটির কমলা" data-estimate-price="120-180" data-actual-price="" data-price-updated="false">
+                <div class="product-badge preorder">
+                    <span>🔵 প্রি-অর্ডার</span>
+                </div>
+                <div class="product-badge formalin-free">
+                    <span>🌿 ফরমালিন ফ্রি</span>
+                </div>
+                <div class="product-image">
+                    <img src="https://placehold.co/300x250/e76f51/white?text=কমলা" alt="রাঙ্গামাটির কমলা">
+                </div>
+                <div class="product-content">
+                    <div class="product-source">
+                        <i class="fas fa-location-dot"></i> উৎস: রাঙ্গামাটি, সাজেক
+                    </div>
+                    <h3 class="product-title">পাহাড়ি মিষ্টি কমলা</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>(১১২ রিভিউ)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="estimate-price">৳১২০-১৮০</span>
+                        <span class="price-status-badge estimate-badge">আনুমানিক দাম</span>
+                        <span class="per-unit">/কেজি</span>
+                    </div>
+                    <div class="product-preorder-info">
+                        <div class="countdown-timer" data-deadline="2026-05-25">
+                            <i class="far fa-clock"></i> শেষ হতে: <span class="days">০৪</span>দিন <span class="hours">১২</span>ঘণ্টা
+                        </div>
+                        <div class="delivery-date">
+                            <i class="far fa-calendar-alt"></i> ডেলিভারি: ৫-১০ জুন ২০২৬
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-minus">-</button>
+                            <input type="number" value="1" min="1" max="20">
+                            <button class="qty-plus">+</button>
+                        </div>
+                        <button class="btn-add-to-cart">প্রি-বুক <i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট কার্ড ৩ - বান্দরবানের দেশি মুরগি -->
+            <div class="product-card" data-id="3" data-name="বান্দরবানের দেশি মুরগি" data-estimate-price="550-750" data-actual-price="" data-price-updated="false">
+                <div class="product-badge preorder">
+                    <span>🔵 প্রি-অর্ডার</span>
+                </div>
+                <div class="product-badge cold-chain">
+                    <span>❄️ কোল্ড চেইন</span>
+                </div>
+                <div class="product-image">
+                    <img src="https://placehold.co/300x250/d4a373/white?text=দেশি+মুরগি" alt="বান্দরবানের দেশি মুরগি">
+                </div>
+                <div class="product-content">
+                    <div class="product-source">
+                        <i class="fas fa-location-dot"></i> উৎস: বান্দরবান, রুমা
+                    </div>
+                    <h3 class="product-title">পাহাড়ি দেশি মুরগি</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>(৬৭ রিভিউ)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="estimate-price">৳৫৫০-৭৫০</span>
+                        <span class="price-status-badge estimate-badge">আনুমানিক দাম</span>
+                        <span class="per-unit">/কেজি</span>
+                    </div>
+                    <div class="product-cut-options">
+                        <span>✂️ কাটিং: </span>
+                        <select class="cut-select">
+                            <option value="normal">সাধারণ টুকরা</option>
+                            <option value="boneless">হাড়বিহীন (+৳৫০)</option>
+                            <option value="curry">কারি পিস</option>
+                        </select>
+                    </div>
+                    <div class="product-preorder-info">
+                        <div class="countdown-timer" data-deadline="2026-05-28">
+                            <i class="far fa-clock"></i> শেষ হতে: <span class="days">০৫</span>দিন <span class="hours">০৮</span>ঘণ্টা
+                        </div>
+                        <div class="delivery-date">
+                            <i class="far fa-calendar-alt"></i> ডেলিভারি: ৮-১২ জুন ২০২৬
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-minus">-</button>
+                            <input type="number" value="1" min="1" max="5">
+                            <button class="qty-plus">+</button>
+                        </div>
+                        <button class="btn-add-to-cart">প্রি-বুক <i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট কার্ড ৪ - খাগড়াছড়ির মশলা প্যাক -->
+            <div class="product-card" data-id="4" data-name="খাগড়াছড়ির মশলা প্যাক" data-estimate-price="450-600" data-actual-price="" data-price-updated="false">
+                <div class="product-badge preorder">
+                    <span>🔵 প্রি-অর্ডার</span>
+                </div>
+                <div class="product-image">
+                    <img src="https://placehold.co/300x250/606c38/white?text=মশলা" alt="খাগড়াছড়ির মশলা">
+                </div>
+                <div class="product-content">
+                    <div class="product-source">
+                        <i class="fas fa-location-dot"></i> উৎস: খাগড়াছড়ি, দীঘিনালা
+                    </div>
+                    <h3 class="product-title">পাহাড়ি মশলা প্যাক (হলুদ+মরিচ+ধনিয়া)</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>(৩৪ রিভিউ)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="estimate-price">৳৪৫০-৬০০</span>
+                        <span class="price-status-badge estimate-badge">আনুমানিক দাম</span>
+                        <span class="per-unit">/প্যাক</span>
+                    </div>
+                    <div class="product-preorder-info">
+                        <div class="countdown-timer" data-deadline="2026-06-01">
+                            <i class="far fa-clock"></i> শেষ হতে: <span class="days">০৮</span>দিন <span class="hours">১৫</span>ঘণ্টা
+                        </div>
+                        <div class="delivery-date">
+                            <i class="far fa-calendar-alt"></i> ডেলিভারি: ১৫-২০ জুন ২০২৬
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-minus">-</button>
+                            <input type="number" value="1" min="1" max="10">
+                            <button class="qty-plus">+</button>
+                        </div>
+                        <button class="btn-add-to-cart">প্রি-বুক <i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট কার্ড ৫ - পাহাড়ি আনারস -->
+            <div class="product-card" data-id="5" data-name="পাহাড়ি আনারস" data-estimate-price="100-150" data-actual-price="" data-price-updated="false">
+                <div class="product-badge preorder">
+                    <span>🔵 প্রি-অর্ডার</span>
+                </div>
+                <div class="product-badge formalin-free">
+                    <span>🌿 ফরমালিন ফ্রি</span>
+                </div>
+                <div class="product-image">
+                    <img src="https://placehold.co/300x250/f4a261/white?text=আনারস" alt="পাহাড়ি আনারস">
+                </div>
+                <div class="product-content">
+                    <div class="product-source">
+                        <i class="fas fa-location-dot"></i> উৎস: খাগড়াছড়ি, রাঙ্গামাটি
+                    </div>
+                    <h3 class="product-title">পাহাড়ি মিষ্টি আনারস</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>(৮৯ রিভিউ)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="estimate-price">৳১০০-১৫০</span>
+                        <span class="price-status-badge estimate-badge">আনুমানিক দাম</span>
+                        <span class="per-unit">/পিস</span>
+                    </div>
+                    <div class="product-preorder-info">
+                        <div class="countdown-timer" data-deadline="2026-06-05">
+                            <i class="far fa-clock"></i> শেষ হতে: <span class="days">১২</span>দিন <span class="hours">০৮</span>ঘণ্টা
+                        </div>
+                        <div class="delivery-date">
+                            <i class="far fa-calendar-alt"></i> ডেলিভারি: ১৮-২২ জুন ২০২৬
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-minus">-</button>
+                            <input type="number" value="1" min="1" max="10">
+                            <button class="qty-plus">+</button>
+                        </div>
+                        <button class="btn-add-to-cart">প্রি-বুক <i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট কার্ড ৬ - থানচি মধু -->
+            <div class="product-card" data-id="6" data-name="থানচি মধু" data-estimate-price="850-1100" data-actual-price="" data-price-updated="false">
+                <div class="product-badge preorder">
+                    <span>🔵 প্রি-অর্ডার</span>
+                </div>
+                <div class="product-discount-badge">
+                    <span>-১০%</span>
+                </div>
+                <div class="product-image">
+                    <img src="https://placehold.co/300x250/2d6a4f/white?text=থানচি+মধু" alt="থানচি মধু">
+                </div>
+                <div class="product-content">
+                    <div class="product-source">
+                        <i class="fas fa-location-dot"></i> উৎস: বান্দরবান, থানচি
+                    </div>
+                    <h3 class="product-title">থানচি স্পেশাল মধু</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>(৭৬ রিভিউ)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="estimate-price">৳৮৫০-১১০০</span>
+                        <span class="price-status-badge estimate-badge">আনুমানিক দাম</span>
+                        <span class="per-unit">/কেজি</span>
+                    </div>
+                    <div class="product-preorder-info">
+                        <div class="countdown-timer" data-deadline="2026-06-10">
+                            <i class="far fa-clock"></i> শেষ হতে: <span class="days">১৭</span>দিন <span class="hours">০০</span>ঘণ্টা
+                        </div>
+                        <div class="delivery-date">
+                            <i class="far fa-calendar-alt"></i> ডেলিভারি: ২৫-৩০ জুন ২০২৬
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-minus">-</button>
+                            <input type="number" value="1" min="1" max="10">
+                            <button class="qty-plus">+</button>
+                        </div>
+                        <button class="btn-add-to-cart">প্রি-বুক <i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="view-all">
+            <a href="preorder.html" class="btn btn-primary" id="viewAllPreorderBtn">
+                🔥 সব প্রি-অর্ডার দেখুন 
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <p class="view-all-note">*সর্বোচ্চ ১৫ দিনে ডেলিভারি, সীমিত স্টক</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- সোশ্যাল শেয়ার সেকশন (প্রোডাক্ট সেকশনের পরে) -->
+<!-- ============================================ -->
+<section class="social-share-section">
+    <div class="container">
+        <div class="social-share-wrapper">
+            <h3><i class="fas fa-share-alt"></i> পাহাড়ি হাট শেয়ার করুন</h3>
+            <p>আপনার বন্ধুদের সাথে শেয়ার করুন এবং উপার্জন করুন</p>
+            <div class="social-share-buttons">
+                <a href="#" class="share-btn facebook" id="fbShareBtn">
+                    <i class="fab fa-facebook-f"></i> ফেসবুক
+                </a>
+                <a href="#" class="share-btn whatsapp" id="waShareBtn">
+                    <i class="fab fa-whatsapp"></i> হোয়াটসঅ্যাপ
+                </a>
+                <a href="#" class="share-btn twitter" id="twitterShareBtn">
+                    <i class="fab fa-twitter"></i> টুইটার
+                </a>
+                <a href="#" class="share-btn copy" id="copyLinkBtn">
+                    <i class="fas fa-link"></i> লিংক কপি
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ৬. রিকুয়েস্ট প্রোডাক্ট সেকশন -->
+<!-- ============================================ -->
+<section class="request-products" id="requestSection">
+    <div class="container">
+        <div class="section-header">
+            <h2>🙋 পণ্য <span class="highlight">রিকুয়েস্ট করুন</span></h2>
+            <p>আপনার কাঙ্খিত পণ্য জানান, আমরা আনার চেষ্টা করব</p>
+        </div>
+        <div class="request-flex">
+            <div class="request-form-container">
+                <form id="productRequestForm" class="request-form">
+                    <div class="form-group">
+                        <label><i class="fas fa-apple-alt"></i> পণ্যের নাম *</label>
+                        <input type="text" id="productName" placeholder="যেমন: পাহাড়ি আদা, বনমুরগি, থাই মধু" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-image"></i> পণ্যের ছবি আপলোড করুন</label>
+                        <div class="image-upload-area" style="border: 2px dashed #2d6a4f; border-radius: 12px; padding: 20px; text-align: center; background: #f8f9fa;">
+                            <input type="file" id="productImage" accept="image/*" style="display: none;">
+                            <button type="button" id="uploadImageBtn" class="btn btn-outline" style="margin-bottom: 10px;">
+                                <i class="fas fa-cloud-upload-alt"></i> ছবি নির্বাচন করুন
+                            </button>
+                            <div id="imagePreview" style="display: none; margin-top: 15px;">
+                                <img id="previewImg" src="#" alt="প্রিভিউ" style="max-width: 100px; max-height: 100px; border-radius: 8px;">
+                                <div style="margin-top: 10px;">
+                                    <label><i class="fas fa-tag"></i> ছবির নাম:</label>
+                                    <input type="text" id="imageName" style="width: 65%; padding: 5px; border: 1px solid #ddd; border-radius: 5px;" placeholder="ছবির নাম">
+                                    <button type="button" id="renameImageBtn" style="background: #e76f51; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+                                        <i class="fas fa-edit"></i> Rename
+                                    </button>
+                                </div>
+                                <button type="button" id="removeImageBtn" style="margin-top: 5px; background: none; border: none; color: red; cursor: pointer;">
+                                    <i class="fas fa-trash"></i> সরান
+                                </button>
+                            </div>
+                            <p style="font-size: 0.7rem; color: #666; margin-top: 10px;">সাপোর্টেড ফরম্যাট: JPG, PNG, GIF (ম্যাক্স ২MB)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-tag"></i> ক্যাটাগরি</label>
+                            <select id="category">
+                                <option value="fruits">মৌসুমি ফল</option>
+                                <option value="seafood">সামুদ্রিক মাছ</option>
+                                <option value="honey">মধু</option>
+                                <option value="meat">মাংস</option>
+                                <option value="spices">মশলা</option>
+                                <option value="vegetables">শাক-সবজি</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-weight-hanging"></i> কাঙ্খিত পরিমাণ</label>
+                            <input type="text" id="quantity" placeholder="যেমন: ২ কেজি">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-location-dot"></i> ডেলিভারি এলাকা *</label>
+                            <select id="deliveryArea" required>
+                                <option value="">-- ঢাকার এলাকা নির্বাচন করুন --</option>
+                                <option value="মিরপুর">মিরপুর</option>
+                                <option value="উত্তরা">উত্তরা</option>
+                                <option value="যাত্রাবাড়ী">যাত্রাবাড়ী</option>
+                                <option value="ধানমন্ডি">ধানমন্ডি</option>
+                                <option value="গুলশান">গুলশান</option>
+                                <option value="বনানী">বনানী</option>
+                                <option value="বাড়িধারা">বাড়িধারা</option>
+                                <option value="মোহাম্মদপুর">মোহাম্মদপুর</option>
+                                <option value="শমলী">শমলী</option>
+                                <option value="আগারগাঁও">আগারগাঁও</option>
+                                <option value="এলিফ্যান্ট রোড">এলিফ্যান্ট রোড</option>
+                                <option value="কাকরাইল">কাকরাইল</option>
+                                <option value="কারওয়ান বাজার">কারওয়ান বাজার</option>
+                                <option value="কমলাপুর">কমলাপুর</option>
+                                <option value="পল্টন">পল্টন</option>
+                                <option value="রমনা">রমনা</option>
+                                <option value="শাহবাগ">শাহবাগ</option>
+                                <option value="সেগুনবাগিচা">সেগুনবাগিচা</option>
+                                <option value="তেজগাঁও">তেজগাঁও</option>
+                                <option value="বিমানবন্দর">বিমানবন্দর এলাকা</option>
+                                <option value="ঢাকা ক্যান্টনমেন্ট">ঢাকা ক্যান্টনমেন্ট</option>
+                                <option value="বসুন্ধরা">বসুন্ধরা</option>
+                                <option value="খিলক্ষেত">খিলক্ষেত</option>
+                                <option value="খিলগাঁও">খিলগাঁও</option>
+                                <option value="সবুজবাগ">সবুজবাগ</option>
+                                <option value="মুগদা">মুগদা</option>
+                                <option value="শ্যামপুর">শ্যামপুর</option>
+                                <option value="লালবাগ">লালবাগ</option>
+                                <option value="চকবাজার">চকবাজার</option>
+                                <option value="সূত্রাপুর">সূত্রাপুর</option>
+                                <option value="গেন্ডারিয়া">গেন্ডারিয়া</option>
+                                <option value="কদমতলী">কদমতলী</option>
+                                <option value="ডেমরা">ডেমরা</option>
+                                <option value="শেরেবাংলা নগর">শেরেবাংলা নগর</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-mobile-alt"></i> আপনার মোবাইল *</label>
+                            <input type="tel" id="customerMobile" placeholder="০১XXXXXXXXX" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-comment"></i> অতিরিক্ত মন্তব্য</label>
+                        <textarea id="comments" rows="3" placeholder="কোন বিশেষ প্রয়োজন জানান..."></textarea>
+                    </div>
+                    
+                    <div class="recaptcha-placeholder">
+                        <input type="checkbox" id="notRobot"> আমি রোবট নই
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">
+                        রিকুয়েস্ট পাঠান <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="request-list-container">
+                <h4>জনপ্রিয় রিকুয়েস্ট <i class="fas fa-fire"></i></h4>
+                <div class="request-list" id="requestList">
+                    <div class="request-item">
+                        <div class="request-info">
+                            <span class="request-name">পাহাড়ি বনমুরগি</span>
+                            <span class="request-category">মাংস</span>
+                        </div>
+                        <div class="request-votes">
+                            <button class="vote-btn"><i class="fas fa-thumbs-up"></i></button>
+                            <span>২৪ ভোট</span>
+                        </div>
+                    </div>
+                    <div class="request-item">
+                        <div class="request-info">
+                            <span class="request-name">থানচি মধু (বিশেষ ফুলের)</span>
+                            <span class="request-category">মধু</span>
+                        </div>
+                        <div class="request-votes">
+                            <button class="vote-btn"><i class="fas fa-thumbs-up"></i></button>
+                            <span>১৮ ভোট</span>
+                        </div>
+                    </div>
+                    <div class="request-item">
+                        <div class="request-info">
+                            <span class="request-name">পাহাড়ি লঙ্কা (ঝাল)</span>
+                            <span class="request-category">মশলা</span>
+                        </div>
+                        <div class="request-votes">
+                            <button class="vote-btn"><i class="fas fa-thumbs-up"></i></button>
+                            <span>১২ ভোট</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="request-note">
+                    <i class="fas fa-info-circle"></i> বেশি ভোট পাওয়া পণ্য আমরা প্রি-অর্ডারে আনব!
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ৭. ফরমালিন ফ্রি জোন (Trust Building)         -->
+<!-- ============================================ -->
+<section class="trust-badge">
+    <div class="container">
+        <div class="trust-content">
+            <div class="trust-icon">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <div class="trust-text">
+                <h3>🌿 ১০০% ফরমালিন মুক্ত — আমাদের নিশ্চয়তা</h3>
+                <p>আমরা কখনো ফরমালিন ব্যবহার করি না। সরাসরি পাহাড়ি কৃষক ও সংগ্রাহকের কাছ থেকে সংগ্রহ করি। ফরমালিন সন্দেহে ২৪ ঘণ্টার মধ্যে ফ্রি রিটার্ন ও পূর্ণ টাকা ফেরত।</p>
+                <a href="#" class="trust-link" id="trustPolicyLink">বিস্তারিত নীতি পড়ুন <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ফরমালিন ফ্রি নীতি পপআপ/মোডাল -->
+<!-- ============================================ -->
+<div id="trustPolicyModal" class="trust-modal" style="display: none;">
+    <div class="trust-modal-content">
+        <span class="trust-modal-close">&times;</span>
+        <div class="trust-modal-header">
+            <i class="fas fa-leaf"></i>
+            <h2>ফরমালিন ফ্রি নীতি</h2>
+            <p>আমাদের প্রতিশ্রুতি ও নিশ্চয়তা</p>
+        </div>
+        <div class="trust-modal-body">
+            <div class="policy-section">
+                <h3><i class="fas fa-check-circle"></i> ১০০% ফরমালিন মুক্ত</h3>
+                <p>পাহাড়ি হাট-এ বিক্রি হওয়া প্রতিটি পণ্য ১০০% ফরমালিন মুক্ত। আমরা সরাসরি পাহাড়ি কৃষক, সংগ্রাহক ও উৎপাদনকারীদের কাছ থেকে পণ্য সংগ্রহ করি। আমাদের কোনো পণ্যেই ফরমালিন বা ক্ষতিকর কোনো রাসায়নিক ব্যবহার করা হয় না।</p>
+            </div>
+            <div class="policy-section">
+                <h3><i class="fas fa-truck"></i> সরাসরি সংগ্রহ প্রক্রিয়া</h3>
+                <p>আমাদের টিম সরাসরি বান্দরবান, রাঙ্গামাটি ও খাগড়াছড়ি জেলার কৃষক ও পাহাড়ি সংগ্রাহকদের কাছ থেকে পণ্য সংগ্রহ করে। এই প্রক্রিয়ায় মধ্যস্বত্বভোগী নেই, ফলে পণ্য তাজা ও খাঁটি থাকে।</p>
+            </div>
+            <div class="policy-section">
+                <h3><i class="fas fa-undo-alt"></i> ২৪ ঘণ্টা রিটার্ন পলিসি</h3>
+                <p>যদি কোনো গ্রাহকের মনে সন্দেহ হয় যে পণ্যে ফরমালিন ব্যবহার করা হয়েছে, তবে ডেলিভারির ২৪ ঘণ্টার মধ্যে ফ্রি রিটার্নের সুবিধা পাবেন। আমাদের টিম পণ্য সংগ্রহ করে পরীক্ষা করবে।</p>
+            </div>
+            <div class="policy-section">
+                <h3><i class="fas fa-money-bill-wave"></i> পূর্ণ টাকা ফেরত</h3>
+                <p>পরীক্ষার পর যদি প্রমাণিত হয় যে পণ্যে ফরমালিন আছে, তবে পুরো টাকা ফেরত দেওয়া হবে। এটি আমাদের নিশ্চয়তা। (সাধারণত ৩-৫ কার্যদিবসের মধ্যে টাকা ফেরত দেওয়া হয়)</p>
+            </div>
+            <div class="policy-section highlight">
+                <h3><i class="fas fa-shield-alt"></i> আমাদের প্রতিশ্রুতি</h3>
+                <p>পাহাড়ি হাট কখনো ইচ্ছাকৃতভাবে ফরমালিন মেশানো পণ্য বিক্রি করবে না। আমরা গ্রাহকের স্বাস্থ্য ও নিরাপত্তাকে সর্বোচ্চ গুরুত্ব দেই। যদি কোনো অভিযোগ আসে, আমরা দ্রুত সমাধান করব।</p>
+            </div>
+            <div class="policy-contact">
+                <i class="fas fa-headset"></i>
+                <div>
+                    <strong>যেকোনো সমস্যায় যোগাযোগ করুন:</strong><br>
+                    হোয়াটসঅ্যাপ: ০১৯১৮৪৮১২৩২<br>
+                    ইমেইল: info@paharihat.com
+                </div>
+            </div>
+        </div>
+        <div class="trust-modal-footer">
+            <button class="btn btn-primary close-modal-btn">বুঝলাম, ধন্যবাদ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- ৮. সোর্স এলাকা (Source Districts)            -->
+<!-- ============================================ -->
+<section class="source-districts">
+    <div class="container">
+        <div class="section-header">
+            <h2>🏔️ আমাদের <span class="highlight">উৎস</span></h2>
+            <p>পার্বত্য চট্টগ্রামের তিন জেলা থেকে সরাসরি সংগ্রহ</p>
+        </div>
+        <div class="districts-flex">
+            <div class="district-card">
+                <i class="fas fa-mountain"></i>
+                <h3>বান্দরবান</h3>
+                <p>মধু, দেশি মুরগি, পাহাড়ি ফল, বাঁশের অঙ্কুর</p>
+                <span class="district-badge">প্রাধান্য: মধু ও মুরগি</span>
+            </div>
+            <div class="district-card">
+                <i class="fas fa-water"></i>
+                <h3>রাঙ্গামাটি</h3>
+                <p>কমলা, আনারস, মধু, সামুদ্রিক মাছ</p>
+                <span class="district-badge">প্রাধান্য: কমলা ও মাছ</span>
+            </div>
+            <div class="district-card">
+                <i class="fas fa-tree"></i>
+                <h3>খাগড়াছড়ি</h3>
+                <p>মশলা, থাই মধু, পাহাড়ি শাক, আনারস</p>
+                <span class="district-badge">প্রাধান্য: মশলা ও মধু</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- অর্ডার ট্র্যাক সেকশন                          -->
+<!-- ============================================ -->
+<section id="track" class="track-order" style="padding: 60px 0; background-color: #f8f9fa;">
+    <div class="container">
+        <div class="section-header">
+            <h2>📦 অর্ডার <span class="highlight">ট্র্যাক</span> করুন</h2>
+            <p>আপনার অর্ডারের বর্তমান অবস্থা জানুন</p>
+        </div>
+        <div class="track-container" style="max-width: 500px; margin: 0 auto;">
+            <div class="track-input-group" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <input type="text" id="orderId" placeholder="অর্ডার আইডি দিন (যেমন: PH-12345)" style="flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                <button id="trackBtn" class="btn btn-primary">ট্র্যাক করুন <i class="fas fa-search"></i></button>
+            </div>
+            <div id="trackResult" style="margin-top: 20px; display: none;">
+                <div class="track-status" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <div class="status-steps" style="display: flex; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap;">
+                        <div id="step1" class="track-step" style="color: #2d6a4f;"><i class="fas fa-check-circle"></i> অর্ডার প্রাপ্ত</div>
+                        <div id="step2" class="track-step" style="color: #999;"><i class="fas fa-box"></i> প্রক্রিয়াকরণ</div>
+                        <div id="step3" class="track-step" style="color: #999;"><i class="fas fa-truck"></i> ডেলিভারি</div>
+                        <div id="step4" class="track-step" style="color: #999;"><i class="fas fa-home"></i> হাতে পৌঁছেছে</div>
+                    </div>
+                    <div id="trackMessage"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ৯. প্রি-অর্ডার FAQ সেকশন                     -->
+<!-- ============================================ -->
+<section class="faq">
+    <div class="container">
+        <div class="section-header">
+            <h2>প্রি-অর্ডার <span class="highlight">সচরাচর জিজ্ঞাসা ❓</span></h2>
+            <p>আপনার মনে যেকোনো প্রশ্ন থাকলে এখানে দেখুন</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>প্রি-অর্ডার আর সাধারণ অর্ডারের মধ্যে পার্থক্য কী?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>প্রি-অর্ডারে পণ্য এখনই হাতে পাবেন না। আমরা সোর্স থেকে সংগ্রহ, প্যাকিং করে নির্ধারিত তারিখে ডেলিভারি করি। সাধারণ অর্ডারে পণ্য স্টক থেকে সরাসরি ২৪-৪৮ ঘণ্টায় পাঠানো হয়।</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>প্রি-অর্ডারে টাকা কিভাবে দিতে হয়?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>আপনি দুইভাবে পেমেন্ট করতে পারবেন:<br>
+                    • আংশিক পেমেন্ট: ৫০% অগ্রিম (বিকাশ/নগদ), বাকি ডেলিভারির সময়<br>
+                    • পূর্ণ পেমেন্ট: সম্পূর্ণ টাকা এখনই দিলে ৫% ছাড়<br>
+                    বিকাশ/নগদ নম্বর: <strong>০১৯১৮৪৮১২৩২</strong></p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>প্রি-অর্ডার বাতিল করতে চাইলে কী করব?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>অর্ডারের ২৪ ঘণ্টার মধ্যে বিনা মূল্যে বাতিল ও পূর্ণ রিফান্ড। এর পরে ডেলিভারির ৭ দিন আগে পর্যন্ত ১০% চার্জ কেটে বাকি টাকা ফেরত দেওয়া হবে।</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>ফরমালিন মুক্ত নিশ্চয়তা কিভাবে পান?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>আমরা ফরমালিন ব্যবহার করি না — এটাই আমাদের প্রতিশ্রুতি। তবুও কোন পণ্যে ফরমালিন সন্দেহ হলে ২৪ ঘণ্টার মধ্যে ফ্রি রিটার্ন ও পূর্ণ টাকা ফেরত দেওয়া হবে।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ১০. নিউজলেটার সাবস্ক্রিপশন -->
+<!-- ============================================ -->
+<section class="newsletter">
+    <div class="container">
+        <div class="newsletter-wrapper">
+            <div class="newsletter-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <h3>প্রি-অর্ডার আপডেট পান</h3>
+            <p>নতুন প্রি-অর্ডার, ছাড় ও অফার প্রথমে জানতে সাবস্ক্রাইব করুন</p>
+            <form class="newsletter-form">
+                <div class="newsletter-input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="আপনার ইমেইল ঠিকানা" required>
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> 
+                        <span>সাবস্ক্রাইব</span>
+                    </button>
+                </div>
+            </form>
+            <div class="newsletter-features">
+                <span><i class="fas fa-check-circle"></i> স্প্যাম ফ্রি</span>
+                <span><i class="fas fa-shield-alt"></i> গোপনীয়তা সুরক্ষিত</span>
+                <span><i class="fas fa-bell"></i> এক ক্লিকে আনসাবস্ক্রাইব</span>
+            </div>
+            <p class="privacy-note">
+                <i class="fas fa-lock"></i> আমরা আপনার তথ্য গোপন রাখব। যেকোনো সময় আনসাবস্ক্রাইব করতে পারবেন।
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- হেল্পলাইন / লাইভ চ্যাট বাটন                  -->
+<!-- ============================================ -->
+<div class="helpdesk">
+    <div class="help-button" id="helpButton">
+        <i class="fas fa-headset"></i>
+        <span>সাহায্য</span>
+    </div>
+    <div class="help-window" id="helpWindow">
+        <div class="help-header">
+            <i class="fas fa-headset"></i>
+            <h4>কাস্টমার সাপোর্ট</h4>
+            <span class="help-close">&times;</span>
+        </div>
+        <div class="help-body">
+            <div class="help-message support">
+                <i class="fas fa-robot"></i>
+                <p>আসসালামু আলাইকুম! কিভাবে সাহায্য করতে পারি?</p>
+            </div>
+            <div class="quick-options">
+                <button class="quick-option" data-question="অর্ডার স্ট্যাটাস">📦 অর্ডার স্ট্যাটাস</button>
+                <button class="quick-option" data-question="প্রোডাক্ট সম্পর্কে">🍯 প্রোডাক্ট সম্পর্কে</button>
+                <button class="quick-option" data-question="ডেলিভারি সময়">🚚 ডেলিভারি সময়</button>
+                <button class="quick-option" data-question="পেমেন্ট সমস্যা">💳 পেমেন্ট সমস্যা</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="আপনার প্রশ্ন লিখুন...">
+                <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div class="contact-support">
+                <hr>
+                <p>সরাসরি যোগাযোগ করুন:</p>
+                <a href="tel:01918481232" class="call-btn"><i class="fas fa-phone"></i> কল করুন</a>
+                <a href="https://wa.me/8801918481232" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i> হোয়াটসঅ্যাপ</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- ১১. ফুটার (Footer) -->
+<!-- ============================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <span>পাহাড়ি হাট</span>
+                </div>
+                <p>পার্বত্য চট্টগ্রামের প্রকৃতি থেকে সরাসরি আপনার জন্য — ফরমালিনমুক্ত পণ্য, মানের নিশ্চয়তা এবং স্মার্ট প্রি-অর্ডার সিস্টেম।</p>
+                <div class="payment-info">
+                    <span>বিকাশ, নগদ: ০১৯১৮৪৮১২৩২</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>কুইক লিংক</h4>
+                <ul>
+                    <li><a href="#">প্রি-অর্ডার পণ্য</a></li>
+                    <li><a href="#">রিকুয়েস্ট প্রোডাক্ট</a></li>
+                    <li><a href="#">অর্ডার ট্র্যাক</a></li>
+                    <li><a href="#">বাল্ক অর্ডার</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>সাপোর্ট</h4>
+                <ul>
+                    <li><a href="#">প্রি-অর্ডার নীতিমালা</a></li>
+                    <li><a href="#">রিটার্ন ও রিফান্ড</a></li>
+                    <li><a href="#">গোপনীয়তা নীতি</a></li>
+                    <li><a href="#">যোগাযোগ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>ভেন্ডর</h4>
+                <ul>
+                    <li><a href="vendor/vendor-login.html">ভেন্ডর লগইন</a></li>
+                    <li><a href="vendor/vendor-register.html">ভেন্ডর রেজিস্ট্রেশন</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>যোগাযোগ</h4>
+                <p>হোয়াটসঅ্যাপ: ০১৯১৮৪৮১২৩২</p>
+                <p>ইমেইল: info@paharihat.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; ২০২৬ পাহাড়ি হাট — সব অধিকার সংরক্ষিত</p>
+            <p class="disclaimer">⚠️ সতর্কতা: অনলাইনে প্রতারণা থেকে সাবধান। আমাদের অফিসিয়াল নাম্বার: <strong>০১৯১৮৪৮১২৩২</strong></p>
+            <p class="developer-credit">ডেভেলপার: অং চিং</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================ -->
+<!-- মোবাইল বটম নেভিগেশন -->
+<!-- ============================================ -->
+<div class="mobile-bottom-nav">
+    <a href="#home" class="active"><i class="fas fa-home"></i><span>হোম</span></a>
+    <a href="#categories"><i class="fas fa-search"></i><span>ব্রাউজ</span></a>
+    <a href="cart.html" class="cart-nav">
+        <i class="fas fa-shopping-cart"></i>
+        <span>কার্ট</span>
+        <span class="cart-count">0</span>
+    </a>
+    <a href="#requestSection"><i class="fas fa-heart"></i><span>রিকুয়েস্ট</span></a>
+    <a href="#track"><i class="fas fa-user"></i><span>ট্র্যাক</span></a>
+</div>
+
+<!-- Custom JS -->
+<script src="js/main.js"></script>
+</body>
+</html>

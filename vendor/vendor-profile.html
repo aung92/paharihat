@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ভেন্ডর প্রোফাইল | পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* same navbar and basic styles as other vendor pages */
+        .profile-container { max-width: 600px; margin: 30px auto; background: white; border-radius: 20px; padding: 30px; }
+        .profile-field { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .profile-field label { font-weight: 600; color: #2d6a4f; display: block; margin-bottom: 5px; }
+        .profile-field p { color: #333; font-size: 1rem; }
+        .edit-btn { background: #2d6a4f; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <!-- navbar same as other vendor pages -->
+    <div class="profile-container">
+        <h2><i class="fas fa-user-circle"></i> আমার প্রোফাইল</h2>
+        <div class="profile-field"><label>দোকানের নাম</label><p id="shopName"></p></div>
+        <div class="profile-field"><label>মালিকের নাম</label><p id="ownerName"></p></div>
+        <div class="profile-field"><label>মোবাইল</label><p id="mobile"></p></div>
+        <div class="profile-field"><label>ইমেইল</label><p id="email"></p></div>
+        <div class="profile-field"><label>জেলা</label><p id="district"></p></div>
+        <div class="profile-field"><label>পণ্যের ধরন</label><p id="productType"></p></div>
+        <div class="profile-field"><label>জয়েন তারিখ</label><p id="joinDate"></p></div>
+        <button class="edit-btn" onclick="editProfile()"><i class="fas fa-edit"></i> প্রোফাইল এডিট করুন</button>
+    </div>
+    <script>
+        let vendor = JSON.parse(localStorage.getItem('currentVendor'));
+        if(!vendor) window.location.href='vendor-login.html';
+        document.getElementById('shopName').innerText = vendor.shopName;
+        document.getElementById('ownerName').innerText = vendor.ownerName;
+        document.getElementById('mobile').innerText = vendor.mobile;
+        document.getElementById('email').innerText = vendor.email || 'প্রদান করা হয়নি';
+        document.getElementById('district').innerText = vendor.district;
+        document.getElementById('productType').innerText = vendor.productType;
+        document.getElementById('joinDate').innerText = new Date(vendor.joinDate).toLocaleDateString('bn-BD');
+        function editProfile() { alert('এডিট ফিচার শীঘ্রই আসছে!'); }
+    </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ভেন্ডর লগইন | পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* ভেন্ডর কন্টেইনার */
+        .vendor-container {
+            max-width: 450px;
+            width: 100%;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* কার্ড ডিজাইন */
+        .vendor-card {
+            background: white;
+            border-radius: 24px;
+            padding: 35px 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .vendor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* হেডার */
+        .vendor-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .vendor-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2d6a4f, #40916c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 20px rgba(45,106,79,0.3);
+        }
+
+        .vendor-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .vendor-header h2 {
+            color: #2d6a4f;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .vendor-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ফর্ম গ্রুপ */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.85rem;
+        }
+
+        .form-group label i {
+            color: #2d6a4f;
+            margin-right: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            color: #2d6a4f;
+            font-size: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2d6a4f;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(45,106,79,0.1);
+        }
+
+        /* বাটন */
+        .btn-vendor {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #2d6a4f, #40916c);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-vendor:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(45,106,79,0.3);
+        }
+
+        /* ডিভাইডার */
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e9ecef;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        /* লিংক স্টাইল */
+        .vendor-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .vendor-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #2d6a4f;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .vendor-links a:hover {
+            color: #e76f51;
+            transform: translateX(3px);
+        }
+
+        .home-link {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .home-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .home-link a:hover {
+            color: #2d6a4f;
+        }
+
+        /* অ্যানিমেশন */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* রেস্পন্সিভ */
+        @media (max-width: 480px) {
+            .vendor-card {
+                padding: 25px 20px;
+            }
+            
+            .vendor-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .vendor-links a {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="vendor-container">
+    <div class="vendor-card">
+        <div class="vendor-header">
+            <div class="vendor-icon">
+                <i class="fas fa-store"></i>
+            </div>
+            <h2>ভেন্ডর লগইন</h2>
+            <p>আপনার ড্যাশবোর্ডে প্রবেশ করুন</p>
+        </div>
+        
+        <form id="vendorLoginForm">
+            <div class="form-group">
+                <label><i class="fas fa-phone-alt"></i> মোবাইল নম্বর</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-mobile-alt"></i>
+                    <input type="tel" id="loginMobile" placeholder="০১XXXXXXXXX" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> পাসওয়ার্ড</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-key"></i>
+                    <input type="password" id="loginPassword" placeholder="পাসওয়ার্ড দিন" required>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-vendor">
+                <i class="fas fa-sign-in-alt"></i> লগইন করুন
+            </button>
+        </form>
+        
+        <div class="divider">
+            <span>অথবা</span>
+        </div>
+        
+        <div class="vendor-links">
+            <a href="vendor-register.html">
+                <i class="fas fa-user-plus"></i> নতুন ভেন্ডর? রেজিস্ট্রেশন করুন
+            </a>
+        </div>
+        
+        <div class="home-link">
+            <a href="../index.html">
+                <i class="fas fa-home"></i> হোমপেজে ফিরুন
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('vendorLoginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const mobile = document.getElementById('loginMobile').value;
+        const password = document.getElementById('loginPassword').value;
+        
+        let vendors = JSON.parse(localStorage.getItem('vendors') || '[]');
+        const vendor = vendors.find(v => v.mobile === mobile && v.password === password);
+        
+        if (vendor) {
+            localStorage.setItem('currentVendor', JSON.stringify(vendor));
+            alert(`স্বাগতম ${vendor.shopName}`);
+            window.location.href = 'vendor-dashboard.html';
+        } else {
+            alert('❌ মোবাইল বা পাসওয়ার্ড ভুল!');
+        }
+    });
+</script>
+</body>
+</html>

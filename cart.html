@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার কার্ট | পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .cart-container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+        .cart-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .cart-table th, .cart-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-table th {
+            background: #2d6a4f;
+            color: white;
+        }
+        .cart-summary {
+            margin-top: 30px;
+            text-align: right;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        .checkout-btn {
+            background: #e76f51;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 60px;
+            background: white;
+            border-radius: 12px;
+        }
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #e76f51;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .quantity-input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
+                display: block;
+                width: 100%;
+            }
+            .cart-table th {
+                display: none;
+            }
+            .cart-table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            .cart-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo"><a href="index.html"><i class="fas fa-mountain"></i><span>পাহাড়ি হাট</span></a></div>
+        <div class="nav-links">
+            <a href="index.html">হোম</a>
+            <a href="preorder.html">প্রি-অর্ডার</a>
+            <a href="my-orders.html">আমার অর্ডার</a>
+        </div>
+        <div class="nav-icons">
+            <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+        </div>
+    </div>
+</nav>
+
+<div class="cart-container">
+    <div class="cart-header">
+        <h1>🛒 আমার <span class="highlight">কার্ট</span></h1>
+        <p>আপনার নির্বাচিত পণ্য সমূহ</p>
+    </div>
+    
+    <div id="cartContent">
+        <!-- কার্ট আইটেম এখানে লোড হবে -->
+    </div>
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    function loadCart() {
+        const cartContent = document.getElementById('cartContent');
+        
+        if (cart.length === 0) {
+            cartContent.innerHTML = `
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart" style="font-size: 4rem; color: #ccc;"></i>
+                    <h3>আপনার কার্ট খালি</h3>
+                    <p>পণ্য যোগ করতে <a href="preorder.html">প্রি-অর্ডার পেজ</a> ভিজিট করুন</p>
+                    <a href="preorder.html" class="btn btn-primary">পণ্য ব্রাউজ করুন</a>
+                </div>
+            `;
+            return;
+        }
+        
+        let total = 0;
+        let html = `
+            <table class="cart-table">
+                <thead>
+                    <tr><th>পণ্য</th><th>দাম</th><th>পরিমাণ</th><th>মোট</th><th></th></tr>
+                </thead>
+                <tbody>
+        `;
+        
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            html += `
+                <tr>
+                    <td data-label="পণ্য">${item.name} <small>${item.weight || ''}</small></td>
+                    <td data-label="দাম">৳${item.price}</td>
+                    <td data-label="পরিমাণ">
+                        <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+                    </td>
+                    <td data-label="মোট">৳${itemTotal}</td>
+                    <td><button class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></button></td>
+                </tr>
+            `;
+        });
+        
+        html += `
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <h3>মোট দাম: ৳${total}</h3>
+                <p><i class="fas fa-truck"></i> ডেলিভারি চার্জ: ৳60 (ঢাকার ভিতরে)</p>
+                <h4>সর্বমোট: ৳${total + 60}</h4>
+                <button class="checkout-btn" onclick="proceedToCheckout()">📦 অর্ডার কনফার্ম করুন</button>
+            </div>
+        `;
+        
+        cartContent.innerHTML = html;
+        updateCartCount();
+    }
+    
+    function updateQuantity(index, quantity) {
+        cart[index].quantity = parseInt(quantity);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart();
+    }
+    
+    function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart();
+        showNotification('পণ্য সরানো হয়েছে', 'info');
+    }
+    
+    function updateCartCount() {
+        const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.querySelectorAll('.cart-count').forEach(el => el.textContent = total);
+    }
+    
+    function proceedToCheckout() {
+        if (cart.length === 0) {
+            alert('আপনার কার্ট খালি!');
+            return;
+        }
+        window.location.href = 'checkout.html';
+    }
+    
+    function showNotification(msg, type) {
+        alert(msg);
+    }
+    
+    loadCart();
+</script>
+</body>
+</html>

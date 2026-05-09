@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>চেকআউট | পাহাড়ি হাট</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .checkout-container {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .checkout-form, .order-summary {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .place-order-btn {
+            width: 100%;
+            background: #2d6a4f;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo"><a href="index.html"><i class="fas fa-mountain"></i><span>পাহাড়ি হাট</span></a></div>
+    </div>
+</nav>
+
+<div class="checkout-container">
+    <div class="checkout-form">
+        <h3>📝 ডেলিভারি তথ্য</h3>
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label>আপনার নাম *</label>
+                <input type="text" id="fullName" required>
+            </div>
+            <div class="form-group">
+                <label>মোবাইল নম্বর *</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label>ঠিকানা *</label>
+                <textarea id="address" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>পেমেন্ট পদ্ধতি</label>
+                <select id="paymentMethod">
+                    <option value="bkash">বিকাশ (Send Money)</option>
+                    <option value="nagad">নগদ (Send Money)</option>
+                    <option value="cash">হাতে পেমেন্ট (ডেলিভারির সময়)</option>
+                </select>
+            </div>
+            <button type="submit" class="place-order-btn">✅ অর্ডার কনফার্ম করুন</button>
+        </form>
+    </div>
+    <div class="order-summary">
+        <h3>🛒 অর্ডার সামারি</h3>
+        <div id="orderSummary"></div>
+    </div>
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+    
+    function loadSummary() {
+        const summaryDiv = document.getElementById('orderSummary');
+        let total = 0;
+        let html = '';
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            html += `<p><strong>${item.name}</strong> x${item.quantity} = ৳${itemTotal}</p>`;
+        });
+        html += `<hr><p><strong>মোট: ৳${total}</strong></p>`;
+        html += `<p><small>ডেলিভারি চার্জ: ৳60</small></p>`;
+        html += `<h4>সর্বমোট: ৳${total + 60}</h4>`;
+        summaryDiv.innerHTML = html;
+    }
+    
+    document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const order = {
+            id: 'PH-' + Date.now(),
+            date: new Date().toLocaleString('bn-BD'),
+            customerName: document.getElementById('fullName').value,
+            phone: document.getElementById('phone').value,
+            address: document.getElementById('address').value,
+            paymentMethod: document.getElementById('paymentMethod').value,
+            items: [...cart],
+            total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) + 60,
+            status: 'pending',
+            statusText: 'অর্ডার প্রাপ্ত হয়েছে'
+        };
+        
+        orders.unshift(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        localStorage.removeItem('cart');
+        
+        alert('আপনার অর্ডার সফলভাবে সম্পন্ন হয়েছে! অর্ডার আইডি: ' + order.id);
+        window.location.href = 'my-orders.html';
+    });
+    
+    loadSummary();
+</script>
+</body>
+</html>
