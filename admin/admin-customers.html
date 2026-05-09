@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ============================================ */
+        /* সব স্টাইল আগের মতোই থাকবে                     */
+        /* ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -19,9 +22,6 @@
             min-height: 100vh;
         }
         
-        /* ============================================ */
-        /* সাইডবার স্টাইল                               */
-        /* ============================================ */
         .admin-wrapper {
             display: flex;
             min-height: 100vh;
@@ -86,17 +86,33 @@
             font-size: 1.1rem;
         }
         
-        /* ============================================ */
-        /* মেইন কন্টেন্ট                               */
-        /* ============================================ */
+        .sidebar-footer {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: auto;
+        }
+        
+        .sidebar-footer p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
+        }
+        
+        .sidebar-footer a {
+            color: #f4a261;
+            text-decoration: none;
+        }
+        
         .main-content {
             flex: 1;
             margin-left: 280px;
             padding: 20px;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
-        /* টপবার */
         .topbar {
             background: white;
             border-radius: 15px;
@@ -150,9 +166,6 @@
             transform: translateY(-2px);
         }
         
-        /* ============================================ */
-        /* স্ট্যাটস কার্ড                              */
-        /* ============================================ */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -202,9 +215,6 @@
             font-size: 0.8rem;
         }
         
-        /* ============================================ */
-        /* ফিল্টার বার                                 */
-        /* ============================================ */
         .filter-bar {
             background: white;
             border-radius: 15px;
@@ -249,9 +259,6 @@
             background: white;
         }
         
-        /* ============================================ */
-        /* টেবিল স্টাইল                               */
-        /* ============================================ */
         .section-card {
             background: white;
             border-radius: 20px;
@@ -296,7 +303,6 @@
             color: #2d6a4f;
         }
         
-        /* স্ট্যাটাস ব্যাজ */
         .status-badge {
             display: inline-block;
             padding: 4px 12px;
@@ -310,11 +316,6 @@
             color: #2d6a4f;
         }
         
-        .status-inactive {
-            background: #fff3e0;
-            color: #e76f51;
-        }
-        
         .btn-view {
             background: #2d6a4f;
             color: white;
@@ -325,7 +326,6 @@
             font-size: 0.7rem;
         }
         
-        /* মোডাল */
         .modal {
             display: none;
             position: fixed;
@@ -399,7 +399,161 @@
             margin-bottom: 5px;
         }
         
-        /* রেস্পন্সিভ */
+        /* ============================================ */
+        /* অ্যাডমিন ফুটার স্টাইল                        */
+        /* ============================================ */
+        .admin-footer {
+            background: white;
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-logo i {
+            font-size: 1.5rem;
+            color: #2d6a4f;
+        }
+        
+        .footer-logo span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d6a4f;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .footer-links a:hover {
+            color: #2d6a4f;
+        }
+        
+        .footer-developer {
+            text-align: center;
+            padding-top: 15px;
+            margin-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 0.75rem;
+            color: #999;
+        }
+        
+        .footer-developer a {
+            color: #e76f51;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-developer a:hover {
+            color: #d45a3a;
+            text-decoration: underline;
+        }
+        
+        .footer-developer i {
+            margin: 0 3px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2d6a4f;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .notification-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2d6a4f;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            z-index: 1001;
+            animation: slideInRight 0.3s ease;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            color: #999;
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .pagination button {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination button:hover,
+        .pagination button.active {
+            background: #2d6a4f;
+            color: white;
+            border-color: #2d6a4f;
+        }
+        
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -434,6 +588,15 @@
             .filter-group select {
                 width: 100%;
             }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
         }
         
         @media (min-width: 769px) {
@@ -449,68 +612,6 @@
             padding: 8px 12px;
             border-radius: 8px;
             cursor: pointer;
-        }
-        
-        /* নোটিফিকেশন */
-        .notification-toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #2d6a4f;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 10px;
-            z-index: 1001;
-            animation: slideInRight 0.3s ease;
-        }
-        
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        /* এম্পটি স্টেট */
-        .empty-state {
-            text-align: center;
-            padding: 50px;
-            color: #999;
-        }
-        
-        .empty-state i {
-            font-size: 4rem;
-            margin-bottom: 15px;
-            color: #ddd;
-        }
-        
-        /* পেজিনেশন */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .pagination button {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .pagination button:hover,
-        .pagination button.active {
-            background: #2d6a4f;
-            color: white;
-            border-color: #2d6a4f;
         }
     </style>
 </head>
@@ -550,6 +651,10 @@
                 <i class="fas fa-cog"></i> সেটিংস
             </div>
         </div>
+        <div class="sidebar-footer">
+            <p>👨‍💻 <a href="mailto:aungching.jack420@gmail.com">অং চিং</a></p>
+            <p><i class="fas fa-code"></i> পাহাড়ি হাট v2.0</p>
+        </div>
     </div>
     
     <!-- মেইন কন্টেন্ট -->
@@ -579,25 +684,49 @@
                 <p>লোড হচ্ছে...</p>
             </div>
         </div>
+        
+        <!-- ============================================ -->
+        <!-- অ্যাডমিন ফুটার                                -->
+        <!-- ============================================ -->
+        <div class="admin-footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-mountain"></i>
+                    <span>পাহাড়ি হাট</span>
+                    <small style="font-size: 0.7rem; color: #999; margin-left: 5px;">অ্যাডমিন প্যানেল</small>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="../index.html" target="_blank">
+                        <i class="fas fa-home"></i> ওয়েবসাইট
+                    </a>
+                    <a href="mailto:info@paharihat.com">
+                        <i class="fas fa-envelope"></i> সাপোর্ট
+                    </a>
+                    <a href="#" onclick="window.print(); return false;">
+                        <i class="fas fa-print"></i> প্রিন্ট
+                    </a>
+                    <a href="#" id="clearCacheBtn">
+                        <i class="fas fa-sync-alt"></i> ক্যাশ ক্লিয়ার
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-developer">
+                <i class="fas fa-code"></i> ডেভেলপড বাই 
+                <a href="mailto:aungching.jack420@gmail.com">
+                    <i class="fas fa-user-code"></i> অং চিং
+                </a>
+                <span class="separator">|</span>
+                <i class="far fa-copyright"></i> ২০২৬ পাহাড়ি হাট
+                <span class="separator">|</span>
+                <i class="fas fa-version"></i> ভার্সন 2.0
+                <span class="separator">|</span>
+                <i class="fas fa-shield-alt"></i> সিকিউর প্যানেল
+            </div>
+        </div>
     </div>
 </div>
-
-<style>
-    .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #f3f3f3;
-        border-top: 3px solid #2d6a4f;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin: 0 auto 15px;
-    }
-    
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-</style>
 
 <script>
     // ============================================
@@ -617,7 +746,6 @@
     let users = JSON.parse(localStorage.getItem('users') || '[]');
     let orders = JSON.parse(localStorage.getItem('orders') || '[]');
     
-    // ডিফল্ট কাস্টমার ডাটা (যদি খালি থাকে)
     if (users.length === 0) {
         users = [
             { id: 'USR-001', name: 'মোঃ রহিম', mobile: '01712345678', email: 'rahim@gmail.com', address: 'মিরপুর, ঢাকা', createdAt: new Date().toISOString(), totalOrders: 0, totalSpent: 0 },
@@ -626,7 +754,6 @@
         localStorage.setItem('users', JSON.stringify(users));
     }
     
-    // অর্ডার ডাটা আপডেট করে কাস্টমারের টোটাল অর্ডার ও স্পেন্ট ক্যালকুলেশন
     function updateCustomerStats() {
         users.forEach(user => {
             const customerOrders = orders.filter(o => o.phone === user.mobile || o.customerName === user.name);
@@ -637,9 +764,6 @@
     }
     updateCustomerStats();
     
-    // ============================================
-    // নোটিফিকেশন
-    // ============================================
     function showNotification(message, type = 'success') {
         const notification = document.createElement('div');
         notification.className = 'notification-toast';
@@ -648,21 +772,14 @@
         setTimeout(() => notification.remove(), 3000);
     }
     
-    // ============================================
-    // কাস্টমার লিস্ট ভেরিয়েবল
-    // ============================================
     let currentPage = 1;
     let itemsPerPage = 10;
     let searchTerm = '';
     let sortBy = 'newest';
     
-    // ============================================
-    // কাস্টমার লিস্ট লোড
-    // ============================================
     function loadCustomers() {
         let filteredUsers = [...users];
         
-        // সার্চ ফিল্টার
         if (searchTerm) {
             filteredUsers = filteredUsers.filter(user => 
                 (user.name && user.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -671,7 +788,6 @@
             );
         }
         
-        // সাজানো
         if (sortBy === 'newest') {
             filteredUsers.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         } else if (sortBy === 'oldest') {
@@ -682,12 +798,10 @@
             filteredUsers.sort((a, b) => b.totalSpent - a.totalSpent);
         }
         
-        // পেজিনেশন
         const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
         const startIndex = (currentPage - 1) * itemsPerPage;
         const paginatedUsers = filteredUsers.slice(startIndex, startIndex + itemsPerPage);
         
-        // স্ট্যাটস
         const totalCustomers = users.length;
         const activeCustomers = users.filter(u => u.totalOrders > 0).length;
         const totalRevenue = users.reduce((sum, u) => sum + u.totalSpent, 0);
@@ -804,7 +918,6 @@
             </div>
         `;
         
-        // ইভেন্ট লিসেনার
         document.getElementById('searchCustomer')?.addEventListener('input', (e) => {
             searchTerm = e.target.value;
             currentPage = 1;
@@ -818,15 +931,11 @@
         });
     }
     
-    // পেজিনেশন চেঞ্জ
     function changePage(page) {
         currentPage = page;
         loadCustomers();
     }
     
-    // ============================================
-    // কাস্টমার বিস্তারিত দেখানো
-    // ============================================
     function viewCustomerDetails(userId) {
         const user = users.find(u => u.id === userId);
         if (!user) return;
@@ -892,17 +1001,11 @@
         modal.style.display = 'flex';
     }
     
-    // ============================================
-    // মোডাল ক্লোজ
-    // ============================================
     function closeModal(element) {
         const modal = element.closest('.modal');
         if (modal) modal.remove();
     }
     
-    // ============================================
-    // লগআউট ও ট্যাব সুইচ
-    // ============================================
     function switchTab(tabName) {
         if (tabName === 'dashboard') window.location.href = 'admin-dashboard.html';
         else if (tabName === 'vendors') window.location.href = 'admin-vendors.html';
@@ -920,24 +1023,29 @@
         setTimeout(() => window.location.href = 'admin-login.html', 1000);
     }
     
-    // সাইডবার টগল
     document.getElementById('menuToggle')?.addEventListener('click', () => {
         document.getElementById('sidebar').classList.toggle('open');
     });
     
-    // সাইডবার মেনু ইভেন্ট
     document.querySelectorAll('.sidebar-menu-item').forEach(item => {
         item.addEventListener('click', () => switchTab(item.getAttribute('data-tab')));
     });
     
-    // এক্সপোর্ট ফাংশন (গ্লোবাল)
+    document.getElementById('clearCacheBtn')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(confirm('ক্যাশ ক্লিয়ার করলে পেজ রিফ্রেশ হবে। আপনি কি নিশ্চিত?')) {
+            localStorage.clear();
+            sessionStorage.clear();
+            location.reload();
+        }
+    });
+    
     window.changePage = changePage;
     window.viewCustomerDetails = viewCustomerDetails;
     window.closeModal = closeModal;
     window.adminLogout = adminLogout;
     window.switchTab = switchTab;
     
-    // ইনিশিয়াল লোড
     loadCustomers();
 </script>
 </body>

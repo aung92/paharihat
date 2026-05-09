@@ -1200,3 +1200,4 @@ document.addEventListener('DOMContentLoaded', function() {
     initSocialShare();
     initHelpdesk();
 });
+

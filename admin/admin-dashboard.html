@@ -86,6 +86,24 @@
             font-size: 1.1rem;
         }
         
+        /* সাইডবার ফুটার */
+        .sidebar-footer {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: auto;
+        }
+        
+        .sidebar-footer p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
+        }
+        
+        .sidebar-footer a {
+            color: #f4a261;
+            text-decoration: none;
+        }
+        
         /* ============================================ */
         /* মেইন কন্টেন্ট                               */
         /* ============================================ */
@@ -94,6 +112,9 @@
             margin-left: 280px;
             padding: 20px;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         /* টপবার */
@@ -169,6 +190,7 @@
             gap: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .stat-card:hover {
@@ -233,6 +255,7 @@
             color: #e76f51;
             text-decoration: none;
             font-size: 0.8rem;
+            cursor: pointer;
         }
         
         /* টেবিল */
@@ -295,6 +318,115 @@
             font-size: 0.7rem;
         }
         
+        /* ============================================ */
+        /* অ্যাডমিন ফুটার স্টাইল                        */
+        /* ============================================ */
+        .admin-footer {
+            background: white;
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-logo i {
+            font-size: 1.5rem;
+            color: #2d6a4f;
+        }
+        
+        .footer-logo span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d6a4f;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .footer-links a:hover {
+            color: #2d6a4f;
+        }
+        
+        .footer-developer {
+            text-align: center;
+            padding-top: 15px;
+            margin-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 0.75rem;
+            color: #999;
+        }
+        
+        .footer-developer a {
+            color: #e76f51;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-developer a:hover {
+            color: #d45a3a;
+            text-decoration: underline;
+        }
+        
+        .footer-developer i {
+            margin: 0 3px;
+        }
+        
+        /* স্পিনার */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2d6a4f;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* নোটিফিকেশন */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
         /* মোবাইল রেস্পন্সিভ */
         @media (max-width: 768px) {
             .sidebar {
@@ -312,6 +444,15 @@
             
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
             }
         }
         
@@ -367,10 +508,14 @@
                 <i class="fas fa-cog"></i> সেটিংস
             </div>
         </div>
+        <div class="sidebar-footer">
+            <p>👨‍💻 <a href="mailto:aungching.jack420@gmail.com">অং চিং</a></p>
+            <p><i class="fas fa-code"></i> পাহাড়ি হাট v2.0</p>
+        </div>
     </div>
     
     <!-- মেইন কন্টেন্ট -->
-    <div class="main-content" id="mainContent">
+    <div class="main-content">
         <div class="topbar">
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
@@ -390,32 +535,13 @@
         </div>
         
         <div id="dynamicContent">
-            <!-- কন্টেন্ট JS দিয়ে লোড হবে -->
             <div style="text-align: center; padding: 50px;">
                 <div class="spinner"></div>
                 <p>লোড হচ্ছে...</p>
             </div>
         </div>
-    </div>
-</div>
-
-<style>
-    .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #f3f3f3;
-        border-top: 3px solid #2d6a4f;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin: 0 auto 15px;
-    }
+        
     
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-</style>
-
 <script>
     // ============================================
     // চেক অ্যাডমিন লগইন
@@ -501,56 +627,56 @@
         
         document.getElementById('dynamicContent').innerHTML = `
             <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card" onclick="switchTab('vendors')">
                     <div class="stat-icon"><i class="fas fa-store"></i></div>
                     <div class="stat-info">
                         <h3>${stats.totalVendors}</h3>
                         <p>মোট ভেন্ডর</p>
                     </div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="switchTab('vendors')">
                     <div class="stat-icon"><i class="fas fa-clock"></i></div>
                     <div class="stat-info">
                         <h3>${stats.pendingVendors}</h3>
                         <p>পেন্ডিং ভেন্ডর</p>
                     </div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="switchTab('vendors')">
                     <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
                     <div class="stat-info">
                         <h3>${stats.approvedVendors}</h3>
                         <p>অ্যাপ্রুভড ভেন্ডর</p>
                     </div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="switchTab('payments')">
                     <div class="stat-icon"><i class="fas fa-money-bill"></i></div>
                     <div class="stat-info">
                         <h3>${stats.pendingPayments}</h3>
                         <p>পেমেন্ট রিকোয়েস্ট</p>
                     </div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="switchTab('orders')">
                     <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
                     <div class="stat-info">
                         <h3>${stats.totalOrders}</h3>
                         <p>মোট অর্ডার</p>
                     </div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="switchTab('orders')">
                     <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
                     <div class="stat-info">
                         <h3>৳${stats.totalSales.toLocaleString()}</h3>
                         <p>মোট বিক্রয়</p>
                     </div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="switchTab('products')">
                     <div class="stat-icon"><i class="fas fa-box"></i></div>
                     <div class="stat-info">
                         <h3>${stats.totalProducts}</h3>
                         <p>মোট পণ্য</p>
                     </div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="switchTab('customers')">
                     <div class="stat-icon"><i class="fas fa-users"></i></div>
                     <div class="stat-info">
                         <h3>${stats.totalCustomers}</h3>
@@ -624,221 +750,82 @@
                                     <td>৳${o.total}</td>
                                     <td><span class="status-badge ${o.status === 'pending' ? 'status-pending' : 'status-approved'}">${o.status}</span></td>
                                 </tr>
-                            `).join('') || '<tr><td colspan="4" style="text-align: center;">কোনো অর্ডার নেই</td></tr>'}
+                            `).join('') || '</tr><td colspan="4" style="text-align: center;">কোনো অর্ডার নেই</td></tr>'}
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- অ্যাডমিন ফুটার                                -->
+            <!-- ============================================ -->
+            <div class="admin-footer">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <i class="fas fa-mountain"></i>
+                        <span>পাহাড়ি হাট</span>
+                        <small style="font-size: 0.7rem; color: #999; margin-left: 5px;">অ্যাডমিন প্যানেল</small>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <a href="../index.html" target="_blank">
+                            <i class="fas fa-home"></i> ওয়েবসাইট
+                        </a>
+                        <a href="mailto:info@paharihat.com">
+                            <i class="fas fa-envelope"></i> সাপোর্ট
+                        </a>
+                        <a href="#" onclick="window.print(); return false;">
+                            <i class="fas fa-print"></i> প্রিন্ট
+                        </a>
+                        <a href="#" id="clearCacheBtn">
+                            <i class="fas fa-sync-alt"></i> ক্যাশ ক্লিয়ার
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-developer">
+                    <i class="fas fa-code"></i> ডেভেলপড বাই 
+                    <a href="mailto:aungching.jack420@gmail.com">
+                        <i class="fas fa-user-code"></i> অং চিং
+                    </a>
+                    <span class="separator">|</span>
+                    <i class="far fa-copyright"></i> ২০২৬ পাহাড়ি হাট
+                    <span class="separator">|</span>
+                    <i class="fas fa-version"></i> ভার্সন 2.0
                 </div>
             </div>
         `;
     }
     
     // ============================================
-    // ভেন্ডর ট্যাব
+    // অন্যান্য ট্যাব (অন্যান্য পেজে রিডাইরেক্ট)
     // ============================================
     function loadVendorsTab() {
-        document.getElementById('dynamicContent').innerHTML = `
-            <div class="section-card">
-                <div class="section-header">
-                    <h3><i class="fas fa-store"></i> সকল ভেন্ডর</h3>
-                </div>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>দোকানের নাম</th><th>মালিক</th><th>মোবাইল</th><th>জেলা</th><th>পণ্যের ধরন</th><th>স্ট্যাটাস</th><th>অ্যাকশন</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${vendors.map(v => `
-                                <tr>
-                                    <td>${v.shopName}</td>
-                                    <td>${v.ownerName}</td>
-                                    <td>${v.mobile}</td>
-                                    <td>${v.district === 'bandarban' ? 'বান্দরবান' : v.district === 'rangamati' ? 'রাঙ্গামাটি' : 'খাগড়াছড়ি'}</td>
-                                    <td>${v.productType === 'honey' ? 'মধু' : v.productType === 'fruits' ? 'ফল' : v.productType === 'meat' ? 'মাংস' : 'মশলা'}</td>
-                                    <td><span class="status-badge ${v.status === 'approved' ? 'status-approved' : 'status-pending'}">${v.status === 'approved' ? 'অ্যাপ্রুভড' : 'পেন্ডিং'}</span></td>
-                                    <td>
-                                        ${v.status === 'pending' ? `<button class="btn-approve" onclick="approveVendor('${v.id}')">✅ অনুমোদন</button>` : `<button class="btn-reject" onclick="rejectVendor('${v.id}')">❌ বাতিল</button>`}
-                                    </td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
+        window.location.href = 'admin-vendors.html';
     }
     
-    // ============================================
-    // পেমেন্ট ট্যাব
-    // ============================================
     function loadPaymentsTab() {
-        document.getElementById('dynamicContent').innerHTML = `
-            <div class="section-card">
-                <div class="section-header">
-                    <h3><i class="fas fa-money-bill"></i> পেমেন্ট রিকোয়েস্ট</h3>
-                </div>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>ভেন্ডর</th><th>পরিমাণ</th><th>মোবাইল</th><th>তারিখ</th><th>স্ট্যাটাস</th><th>অ্যাকশন</th></tr>
-                        </thead>
-                        <tbody>
-                            ${paymentRequests.map(p => {
-                                const vendor = vendors.find(v => v.id === p.vendorId);
-                                return `
-                                    <tr>
-                                        <td>${vendor?.shopName || 'Unknown'}</td>
-                                        <td>৳${p.amount}</td>
-                                        <td>${p.mobile}</td>
-                                        <td>${new Date(p.date).toLocaleDateString('bn-BD')}</td>
-                                        <td><span class="status-badge ${p.status === 'approved' ? 'status-approved' : 'status-pending'}">${p.status === 'approved' ? 'অ্যাপ্রুভড' : 'পেন্ডিং'}</span></td>
-                                        <td>
-                                            ${p.status === 'pending' ? `<button class="btn-approve" onclick="approvePayment('${p.id}')">✅ অনুমোদন</button>` : '—'}
-                                        </td>
-                                    </tr>
-                                `;
-                            }).join('') || '<tr><td colspan="6" style="text-align: center;">কোনো পেমেন্ট রিকোয়েস্ট নেই</td></tr>'}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
+        window.location.href = 'admin-payments.html';
     }
     
-    // ============================================
-    // অর্ডার ট্যাব
-    // ============================================
     function loadOrdersTab() {
-        document.getElementById('dynamicContent').innerHTML = `
-            <div class="section-card">
-                <div class="section-header">
-                    <h3><i class="fas fa-shopping-cart"></i> সকল অর্ডার</h3>
-                </div>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>অর্ডার আইডি</th><th>তারিখ</th><th>গ্রাহক</th><th>মোট</th><th>স্ট্যাটাস</th></tr>
-                        </thead>
-                        <tbody>
-                            ${allOrders.map(o => `
-                                <tr>
-                                    <td>${o.id}</td>
-                                    <td>${o.date}</td>
-                                    <td>${o.customerName || '—'}</td>
-                                    <td>৳${o.total}</td>
-                                    <td><span class="status-badge ${o.status === 'pending' ? 'status-pending' : 'status-approved'}">${o.status}</span></td>
-                                </tr>
-                            `).join('') || '<tr><td colspan="5" style="text-align: center;">কোনো অর্ডার নেই</td></tr>'}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
+        window.location.href = 'admin-orders.html';
     }
     
-    // ============================================
-    // পণ্য ট্যাব
-    // ============================================
     function loadProductsTab() {
-        document.getElementById('dynamicContent').innerHTML = `
-            <div class="section-card">
-                <div class="section-header">
-                    <h3><i class="fas fa-box"></i> সকল পণ্য</h3>
-                </div>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
-                        <thead><tr><th>পণ্যের নাম</th><th>ক্যাটাগরি</th><th>আনুমানিক দাম</th><th>ভেন্ডর</th><th>স্টক</th></tr></thead>
-                        <tbody>
-                            ${masterProducts.map(p => {
-                                const vendor = vendors.find(v => v.id === p.vendorId);
-                                return `
-                                    <tr>
-                                        <td>${p.name}</td>
-                                        <td>${p.categoryName || p.category}</td>
-                                        <td>৳${p.estimatePrice}</td>
-                                        <td>${vendor?.shopName || '—'}</td>
-                                        <td>${p.stock || 0}</td>
-                                    </tr>
-                                `;
-                            }).join('') || '<tr><td colspan="5" style="text-align: center;">কোনো পণ্য নেই</td></tr>'}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
+        window.location.href = 'admin-products.html';
     }
     
-    // ============================================
-    // কাস্টমার ট্যাব
-    // ============================================
     function loadCustomersTab() {
-        document.getElementById('dynamicContent').innerHTML = `
-            <div class="section-card">
-                <div class="section-header">
-                    <h3><i class="fas fa-users"></i> সকল কাস্টমার</h3>
-                </div>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
-                        <thead><tr><th>নাম</th><th>মোবাইল</th><th>রেজিস্ট্রেশন তারিখ</th></tr></thead>
-                        <tbody>
-                            ${users.map(u => `
-                                <tr>
-                                    <td>${u.name || '—'}</td>
-                                    <td>${u.mobile}</td>
-                                    <td>${new Date(u.createdAt).toLocaleDateString('bn-BD')}</td>
-                                </tr>
-                            `).join('') || '<tr><td colspan="3" style="text-align: center;">কোনো কাস্টমার নেই</td></tr>'}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
+        window.location.href = 'admin-customers.html';
     }
     
-    // ============================================
-    // রিপোর্ট ট্যাব
-    // ============================================
     function loadReportsTab() {
-        const stats = getStats();
-        document.getElementById('dynamicContent').innerHTML = `
-            <div class="stats-grid">
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-store"></i></div><div class="stat-info"><h3>${stats.totalVendors}</h3><p>মোট ভেন্ডর</p></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-info"><h3>${stats.totalCustomers}</h3><p>মোট কাস্টমার</p></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-shopping-cart"></i></div><div class="stat-info"><h3>${stats.totalOrders}</h3><p>মোট অর্ডার</p></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-info"><h3>৳${stats.totalSales.toLocaleString()}</h3><p>মোট বিক্রয়</p></div></div>
-            </div>
-            <div class="section-card">
-                <div class="section-header"><h3><i class="fas fa-chart-pie"></i> বিক্রয় সারাংশ</h3></div>
-                <p><strong>মোট ভেন্ডর পেমেন্ট:</strong> ৳${stats.totalPayments.toLocaleString()}</p>
-                <p><strong>পেন্ডিং পেমেন্ট:</strong> ${stats.pendingPayments} টি</p>
-            </div>
-        `;
+        window.location.href = 'admin-reports.html';
     }
     
-    // ============================================
-    // সেটিংস ট্যাব
-    // ============================================
     function loadSettingsTab() {
-        const admin = JSON.parse(localStorage.getItem('admin_account'));
-        document.getElementById('dynamicContent').innerHTML = `
-            <div class="section-card">
-                <div class="section-header"><h3><i class="fas fa-cog"></i> অ্যাডমিন সেটিংস</h3></div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label>অ্যাডমিন নাম</label>
-                    <input type="text" id="adminNameInput" value="${admin?.name || ''}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-                </div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label>ইমেইল</label>
-                    <input type="email" id="adminEmail" value="${admin?.email || ''}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-                </div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label>নতুন পাসওয়ার্ড</label>
-                    <input type="password" id="newPassword" placeholder="নতুন পাসওয়ার্ড দিন" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-                </div>
-                <button class="btn-approve" onclick="updateAdminSettings()" style="padding: 10px 20px;">সেভ করুন</button>
-            </div>
-        `;
+        window.location.href = 'admin-settings.html';
     }
     
     // ============================================
@@ -850,17 +837,7 @@
             vendors[index].status = 'approved';
             localStorage.setItem('vendors', JSON.stringify(vendors));
             showNotification('ভেন্ডর অনুমোদন করা হয়েছে!');
-            loadVendorsTab();
-        }
-    };
-    
-    window.rejectVendor = function(vendorId) {
-        const index = vendors.findIndex(v => v.id === vendorId);
-        if (index !== -1) {
-            vendors[index].status = 'rejected';
-            localStorage.setItem('vendors', JSON.stringify(vendors));
-            showNotification('ভেন্ডর বাতিল করা হয়েছে!');
-            loadVendorsTab();
+            loadDashboard();
         }
     };
     
@@ -870,47 +847,14 @@
             paymentRequests[index].status = 'approved';
             localStorage.setItem('payment_requests', JSON.stringify(paymentRequests));
             showNotification('পেমেন্ট অনুমোদন করা হয়েছে!');
-            loadPaymentsTab();
+            loadDashboard();
         }
-    };
-    
-    window.updateAdminSettings = function() {
-        const admin = JSON.parse(localStorage.getItem('admin_account'));
-        const newName = document.getElementById('adminNameInput')?.value;
-        const newEmail = document.getElementById('adminEmail')?.value;
-        const newPassword = document.getElementById('newPassword')?.value;
-        
-        if (newName) admin.name = newName;
-        if (newEmail) admin.email = newEmail;
-        if (newPassword) admin.password = newPassword;
-        
-        localStorage.setItem('admin_account', JSON.stringify(admin));
-        localStorage.setItem('currentAdmin', JSON.stringify({...admin, loginTime: new Date().toISOString()}));
-        
-        showNotification('সেটিংস আপডেট করা হয়েছে!');
-        loadSettingsTab();
-        document.getElementById('adminName').innerText = admin.name;
     };
     
     // ============================================
     // ট্যাব সুইচ
     // ============================================
     function switchTab(tabName) {
-        document.querySelectorAll('.sidebar-menu-item').forEach(item => item.classList.remove('active'));
-        document.querySelector(`.sidebar-menu-item[data-tab="${tabName}"]`).classList.add('active');
-        
-        const titles = {
-            dashboard: 'ড্যাশবোর্ড',
-            vendors: 'ভেন্ডর ম্যানেজ',
-            payments: 'পেমেন্ট রিকোয়েস্ট',
-            orders: 'অর্ডার',
-            products: 'পণ্য',
-            customers: 'কাস্টমার',
-            reports: 'রিপোর্ট',
-            settings: 'সেটিংস'
-        };
-        document.getElementById('pageTitle').innerHTML = `<i class="fas ${tabName === 'dashboard' ? 'fa-tachometer-alt' : tabName === 'vendors' ? 'fa-store' : tabName === 'payments' ? 'fa-money-bill' : tabName === 'orders' ? 'fa-shopping-cart' : tabName === 'products' ? 'fa-box' : tabName === 'customers' ? 'fa-users' : tabName === 'reports' ? 'fa-chart-line' : 'fa-cog'}"></i> ${titles[tabName]}`;
-        
         if (tabName === 'dashboard') loadDashboard();
         else if (tabName === 'vendors') loadVendorsTab();
         else if (tabName === 'payments') loadPaymentsTab();
@@ -933,10 +877,20 @@
         item.addEventListener('click', () => switchTab(item.getAttribute('data-tab')));
     });
     
+    // ক্যাশ ক্লিয়ার
+    document.getElementById('clearCacheBtn')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(confirm('ক্যাশ ক্লিয়ার করলে পেজ রিফ্রেশ হবে। আপনি কি নিশ্চিত?')) {
+            localStorage.clear();
+            sessionStorage.clear();
+            location.reload();
+        }
+    });
+    
     // লগআউট
     window.adminLogout = function() {
         localStorage.removeItem('currentAdmin');
-        showNotification('আপনি লগআউট করেছেন!');
+        showNotification('আপনি লগআউट করেছেন!');
         setTimeout(() => window.location.href = 'admin-login.html', 1000);
     };
     
