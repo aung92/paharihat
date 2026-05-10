@@ -1825,5 +1825,243 @@ document.addEventListener('DOMContentLoaded', function() {
     to { transform: translateX(0); opacity: 1; }
 }
 </style>
+<!-- ============================================ -->
+<!-- প্রোডাক্ট ডাইনামিক লোডিং - ফিক্সড ভার্সন   -->
+<!-- ============================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // DEFAULT প্রোডাক্ট ডাটা (যদি localStorage খালি থাকে)
+    const defaultProducts = [
+        {
+            id: 1, name: "বান্দরবানের খাঁটি মধু", category: "honey", 
+            estimatePrice: "৮০০-১২০০", actualPrice: "", image: "https://placehold.co/300x250/2d6a4f/white?text=মধু",
+            source: "বান্দরবান, থানচি", stock: 10, unit: "কেজি", 
+            deliveryDate: "১০-১৫ জুন ২০২৬", rating: 4.5, reviews: 48, discount: 5
+        },
+        {
+            id: 2, name: "পাহাড়ি মিষ্টি কমলা", category: "fruits", 
+            estimatePrice: "১২০-১৮০", actualPrice: "", image: "https://placehold.co/300x250/e76f51/white?text=কমলা",
+            source: "রাঙ্গামাটি, সাজেক", stock: 20, unit: "কেজি", 
+            deliveryDate: "৫-১০ জুন ২০২৬", rating: 5, reviews: 112, discount: 0
+        },
+        {
+            id: 3, name: "পাহাড়ি দেশি মুরগি", category: "meat", 
+            estimatePrice: "৫৫০-৭৫০", actualPrice: "", image: "https://placehold.co/300x250/d4a373/white?text=দেশি+মুরগি",
+            source: "বান্দরবান, রুমা", stock: 5, unit: "কেজি", 
+            deliveryDate: "৮-১২ জুন ২০২৬", rating: 4.5, reviews: 67, discount: 0
+        },
+        {
+            id: 4, name: "পাহাড়ি মশলা প্যাক", category: "spices", 
+            estimatePrice: "৪৫০-৬০০", actualPrice: "", image: "https://placehold.co/300x250/606c38/white?text=মশলা",
+            source: "খাগড়াছড়ি, দীঘিনালা", stock: 10, unit: "প্যাক", 
+            deliveryDate: "১৫-২০ জুন ২০২৬", rating: 5, reviews: 34, discount: 0
+        },
+        {
+            id: 5, name: "পাহাড়ি মিষ্টি আনারস", category: "fruits", 
+            estimatePrice: "১০০-১৫০", actualPrice: "", image: "https://placehold.co/300x250/f4a261/white?text=আনারস",
+            source: "খাগড়াছড়ি, রাঙ্গামাটি", stock: 10, unit: "পিস", 
+            deliveryDate: "১৮-২২ জুন ২০২৬", rating: 5, reviews: 89, discount: 0
+        },
+        {
+            id: 6, name: "থানচি স্পেশাল মধু", category: "honey", 
+            estimatePrice: "৮৫০-১১০০", actualPrice: "", image: "https://placehold.co/300x250/2d6a4f/white?text=থানচি+মধু",
+            source: "বান্দরবান, থানচি", stock: 8, unit: "কেজি", 
+            deliveryDate: "২৫-৩০ জুন ২০২৬", rating: 5, reviews: 76, discount: 10
+        }
+    ];
+
+    // localStorage চেক করে প্রোডাক্ট লোড করার ফাংশন
+    function loadProducts() {
+        let products = [];
+        
+        // প্রথমে website_products চেক করুন
+        let storedProducts = localStorage.getItem('website_products');
+        
+        if (storedProducts && JSON.parse(storedProducts).length > 0) {
+            products = JSON.parse(storedProducts);
+            console.log('Loaded from website_products:', products.length);
+        } else {
+            // master_products চেক করুন
+            storedProducts = localStorage.getItem('master_products');
+            if (storedProducts && JSON.parse(storedProducts).length > 0) {
+                products = JSON.parse(storedProducts);
+                console.log('Loaded from master_products:', products.length);
+            } else {
+                // ডিফল্ট প্রোডাক্ট ব্যবহার করুন
+                products = defaultProducts;
+                console.log('Using default products:', products.length);
+            }
+        }
+        
+        // HTML এ রেন্ডার করুন
+        renderProductGrid(products);
+    }
+    
+    // প্রোডাক্ট গ্রিড রেন্ডার ফাংশন
+    function renderProductGrid(products) {
+        const productGrid = document.getElementById('preorderProductGrid');
+        
+        if (!productGrid) {
+            console.error('Product grid element not found!');
+            return;
+        }
+        
+        // শুধুমাত্র প্রথম ৬টি প্রোডাক্ট দেখান
+        const displayProducts = products.slice(0, 6);
+        console.log('Rendering', displayProducts.length, 'products');
+        
+        // গ্রিড খালি করুন
+        productGrid.innerHTML = '';
+        
+        // প্রতিটি প্রোডাক্টের জন্য কার্ড তৈরি করুন
+        displayProducts.forEach(product => {
+            const card = createProductCard(product);
+            productGrid.appendChild(card);
+        });
+        
+        // কাউন্টডাউন টাইমার ইভেন্ট রি-ইনিশিয়ালাইজ
+        if (typeof initCountdownTimers === 'function') {
+            initCountdownTimers();
+        }
+        
+        // প্রোডাক্ট কার্ডের ইভেন্ট রি-ইনিশিয়ালাইজ
+        initProductCardEvents();
+    }
+    
+    // প্রোডাক্ট কার্ড HTML তৈরি ফাংশন (ইম্প্রুভড)
+    function createProductCard(product) {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.setAttribute('data-id', product.id);
+        card.setAttribute('data-name', product.name);
+        
+        // ডিসকাউন্ট ব্যাজ
+        const discountHtml = (product.discount && product.discount > 0) ? 
+            `<div class="product-discount-badge"><span>-${product.discount}%</span></div>` : '';
+        
+        // প্রাইস HTML
+        const priceHtml = (product.actualPrice && product.actualPrice !== '') ? 
+            `<span class="current-price">৳${product.actualPrice}</span>` : 
+            `<span class="estimate-price">৳${product.estimatePrice}</span>`;
+        
+        // রেটিং স্টার জেনারেট
+        const stars = generateStars(product.rating || 4);
+        
+        // রেটিং কাউন্ট
+        const reviewCount = product.reviews || 0;
+        
+        card.innerHTML = `
+            <div class="product-badge preorder"><span>🔵 প্রি-অর্ডার</span></div>
+            ${discountHtml}
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='https://placehold.co/300x250/2d6a4f/white?text=${encodeURIComponent(product.name)}'">
+            </div>
+            <div class="product-content">
+                <div class="product-source"><i class="fas fa-location-dot"></i> উৎস: ${product.source || 'পার্বত্য চট্টগ্রাম'}</div>
+                <h3 class="product-title">${product.name}</h3>
+                <div class="product-rating">${stars}<span>(${reviewCount} রিভিউ)</span></div>
+                <div class="product-price">${priceHtml}<span class="per-unit">/${product.unit || 'কেজি'}</span></div>
+                <div class="product-preorder-info"><div class="delivery-date"><i class="far fa-calendar-alt"></i> ডেলিভারি: ${product.deliveryDate || '৭-১৫ দিনের মধ্যে'}</div></div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="qty-minus">-</button>
+                        <input type="number" value="1" min="1" max="${product.stock || 10}">
+                        <button class="qty-plus">+</button>
+                    </div>
+                    <button class="btn-add-to-cart">প্রি-বুক <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        `;
+        
+        return card;
+    }
+    
+    // স্টার জেনারেটর ফাংশন
+    function generateStars(rating) {
+        let stars = '';
+        const fullStars = Math.floor(rating);
+        for (let i = 0; i < fullStars; i++) stars += '<i class="fas fa-star"></i>';
+        if (rating % 1 !== 0) stars += '<i class="fas fa-star-half-alt"></i>';
+        const emptyStars = 5 - Math.ceil(rating);
+        for (let i = 0; i < emptyStars; i++) stars += '<i class="far fa-star"></i>';
+        return stars;
+    }
+    
+    // প্রোডাক্ট কার্ডের কুয়ান্টিটি এবং কার্ট ইভেন্ট
+    function initProductCardEvents() {
+        // সব প্রোডাক্ট কার্ডে ইভেন্ট যোগ করুন
+        document.querySelectorAll('.product-card').forEach(card => {
+            const minusBtn = card.querySelector('.qty-minus');
+            const plusBtn = card.querySelector('.qty-plus');
+            const qtyInput = card.querySelector('.quantity-selector input');
+            const addToCartBtn = card.querySelector('.btn-add-to-cart');
+            
+            if (minusBtn) {
+                minusBtn.addEventListener('click', function() {
+                    let val = parseInt(qtyInput.value);
+                    if (val > 1) qtyInput.value = val - 1;
+                });
+            }
+            
+            if (plusBtn) {
+                plusBtn.addEventListener('click', function() {
+                    let val = parseInt(qtyInput.value);
+                    let max = parseInt(qtyInput.getAttribute('max')) || 10;
+                    if (val < max) qtyInput.value = val + 1;
+                });
+            }
+            
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', function() {
+                    const productId = card.dataset.id;
+                    const productName = card.dataset.name;
+                    const quantity = qtyInput.value;
+                    
+                    // অ্যালার্ট দেখান (প্রকৃত কার্ট ফাংশনালিটি পরে যোগ করা যাবে)
+                    alert(`${productName} প্রি-বুক সম্পন্ন! পরিমাণ: ${quantity} ${card.querySelector('.per-unit')?.innerText || 'কেজি'}`);
+                    
+                    // এখানে কার্টে যোগ করার ফাংশন কল করুন
+                    console.log('Added to cart:', {productId, productName, quantity});
+                });
+            }
+        });
+    }
+    
+    // local storage change listener
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'master_products' || e.key === 'website_products') {
+            console.log('Storage updated, reloading products...');
+            loadProducts();
+        }
+    });
+    
+    // পেজ লোড হলে প্রোডাক্ট লোড করুন
+    loadProducts();
+});
+
+// কাউন্টডাউন টাইমার ফাংশন (যদি না থাকে)
+function initCountdownTimers() {
+    const timers = document.querySelectorAll('.countdown-timer');
+    timers.forEach(timer => {
+        const deadlineAttr = timer.getAttribute('data-deadline');
+        if (deadlineAttr) {
+            const deadline = new Date(deadlineAttr);
+            const now = new Date();
+            const diff = deadline - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (86400000)) / (1000 * 60 * 60));
+                
+                const daysSpan = timer.querySelector('.days');
+                const hoursSpan = timer.querySelector('.hours');
+                
+                if (daysSpan) daysSpan.innerText = String(days).padStart(2, '0');
+                if (hoursSpan) hoursSpan.innerText = String(hours).padStart(2, '0');
+            }
+        }
+    });
+}
+</script>
 </body>
 </html>

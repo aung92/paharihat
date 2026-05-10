@@ -364,7 +364,7 @@ h3 { font-size: 1.1rem; }
 }
 
 /* ============================================ */
-/* প্রোডাক্ট সেকশন - মোবাইল রেস্পন্সিভ       */
+/* প্রোডাক্ট সেকশন - মোবাইল রেস্পন্সিভ FIXED  */
 /* ============================================ */
 .products { padding: 40px 0; background-color: var(--white); }
 .product-grid {
@@ -377,6 +377,47 @@ h3 { font-size: 1.1rem; }
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow);
+    position: relative;
+}
+.product-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+}
+.product-badge.preorder span {
+    background: #2d6a4f;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+.product-badge.formalin-free {
+    top: 45px;
+    left: 10px;
+}
+.product-badge.formalin-free span {
+    background: #e76f51;
+}
+.product-badge.cold-chain {
+    top: 45px;
+    left: 10px;
+}
+.product-badge.cold-chain span {
+    background: #2196f3;
+}
+.product-discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--secondary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 2;
 }
 .product-image img {
     width: 100%;
@@ -384,10 +425,40 @@ h3 { font-size: 1.1rem; }
     object-fit: cover;
 }
 .product-content { padding: 15px; }
-.product-source { font-size: 0.7rem; color: var(--gray); margin-bottom: 5px; }
-.product-title { font-size: 0.95rem; margin-bottom: 5px; }
-.product-rating { font-size: 0.7rem; margin-bottom: 8px; }
-.current-price { font-size: 1.1rem; font-weight: 700; color: var(--primary-color); }
+.product-source { 
+    font-size: 0.7rem; 
+    color: var(--gray); 
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.product-title { 
+    font-size: 0.95rem; 
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.product-rating { 
+    font-size: 0.7rem; 
+    margin-bottom: 8px;
+    color: #ffc107;
+}
+.product-rating span {
+    color: var(--gray);
+    margin-left: 5px;
+}
+.product-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.current-price { 
+    font-size: 1.1rem; 
+    font-weight: 700; 
+    color: var(--primary-color); 
+}
 .estimate-price {
     font-size: 0.9rem;
     font-weight: 600;
@@ -397,10 +468,58 @@ h3 { font-size: 1.1rem; }
     border-radius: 20px;
     display: inline-block;
 }
-.price-status-badge { font-size: 0.6rem; padding: 2px 6px; border-radius: 20px; }
-.estimate-badge { background-color: #f4a261; color: white; }
-.product-preorder-info { padding: 8px; margin: 10px 0; font-size: 0.7rem; background-color: var(--light-gray); border-radius: 8px; }
-.product-actions { flex-direction: column; gap: 8px; display: flex; }
+.price-status-badge { 
+    font-size: 0.6rem; 
+    padding: 2px 6px; 
+    border-radius: 20px; 
+}
+.estimate-badge { 
+    background-color: #f4a261; 
+    color: white; 
+}
+.per-unit {
+    font-size: 0.7rem;
+    color: var(--gray);
+}
+.product-cut-options {
+    margin: 8px 0;
+    font-size: 0.7rem;
+}
+.product-cut-options select {
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--light-gray);
+    font-size: 0.7rem;
+    margin-left: 5px;
+}
+.product-preorder-info { 
+    padding: 8px; 
+    margin: 10px 0; 
+    font-size: 0.7rem; 
+    background-color: var(--light-gray); 
+    border-radius: 8px; 
+}
+.countdown-timer {
+    background: linear-gradient(135deg, #2d6a4f, #40916c);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+}
+.delivery-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.7rem;
+    color: var(--dark);
+}
+.product-actions { 
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 .quantity-selector {
     display: flex;
     align-items: center;
@@ -418,11 +537,15 @@ h3 { font-size: 1.1rem; }
     cursor: pointer;
     color: var(--primary-color);
 }
+.quantity-selector button:hover {
+    background: var(--light-gray);
+}
 .quantity-selector input {
     width: 50px;
     text-align: center;
     border: none;
     height: 38px;
+    font-size: 0.9rem;
 }
 .btn-add-to-cart {
     width: 100%;
@@ -433,16 +556,22 @@ h3 { font-size: 1.1rem; }
     padding: 10px;
     cursor: pointer;
     font-weight: 600;
+    transition: var(--transition);
+}
+.btn-add-to-cart:hover {
+    background-color: var(--primary-dark);
 }
 .view-all { text-align: center; margin-top: 30px; }
 .view-all-note { font-size: 0.65rem; color: #666; margin-top: 8px; }
 
+/* ট্যাবলেট ভিউ */
 @media (min-width: 576px) {
     .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
     .product-actions { flex-direction: row; gap: 10px; }
     .btn-add-to-cart { width: auto; flex: 1; }
     .quantity-selector { width: auto; }
 }
+/* ডেস্কটপ ভিউ */
 @media (min-width: 992px) {
     .product-grid { grid-template-columns: repeat(3, 1fr); gap: 25px; }
     .product-image img { height: 220px; }
@@ -486,10 +615,11 @@ h3 { font-size: 1.1rem; }
 .recaptcha-placeholder { margin: 15px 0; }
 .recaptcha-placeholder input { width: auto; margin-right: 8px; }
 .request-list-container h4 { font-size: 1rem; margin-bottom: 15px; }
-.request-item { padding: 10px 0; display: flex; justify-content: space-between; align-items: center; }
+.request-item { padding: 10px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--light-gray); }
 .request-name { font-size: 0.85rem; font-weight: 500; }
 .request-category { font-size: 0.6rem; padding: 2px 6px; border-radius: 50px; background-color: var(--primary-light); color: white; margin-left: 8px; }
-.vote-btn { background: none; border: none; cursor: pointer; color: var(--secondary-color); }
+.vote-btn { background: none; border: none; cursor: pointer; color: var(--secondary-color); font-size: 0.8rem; }
+.vote-btn:hover { transform: scale(1.1); }
 .request-note { margin-top: 15px; padding: 10px; background-color: #fff3e0; border-radius: 8px; font-size: 0.7rem; }
 
 @media (min-width: 768px) {
@@ -1181,14 +1311,6 @@ h3 { font-size: 1.1rem; }
 .product-card:nth-child(4) { animation-delay: 0.4s; }
 .product-card:nth-child(5) { animation-delay: 0.5s; }
 .product-card:nth-child(6) { animation-delay: 0.6s; }
-
-.countdown-timer {
-    background: linear-gradient(135deg, #2d6a4f, #40916c);
-    color: white;
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-size: 0.7rem;
-}
 
 /* ============================================ */
 /* ফিল্টার বার - ল্যান্ডিং পেজের সাথে সামঞ্জস্যপূর্ণ */
