@@ -187,11 +187,12 @@ function initFaqAccordion() {
 // ============================================
 // 5. রিকুয়েস্ট ফর্ম সাবমিট (Request Form Submit)
 // ============================================
+// index.html এ রিকুয়েস্ট ফর্ম সাবমিটের জন্য আপডেটেড কোড
 function initRequestForm() {
     const form = document.getElementById('productRequestForm');
     
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const productName = document.getElementById('productName')?.value;
@@ -201,6 +202,24 @@ function initRequestForm() {
             const customerMobile = document.getElementById('customerMobile')?.value;
             const comments = document.getElementById('comments')?.value;
             const notRobot = document.getElementById('notRobot')?.checked;
+            
+            // গ্রাহকের নাম (লগইন করা থাকলে নাইলে মোবাইল নম্বর)
+            let customerName = 'অতিথি গ্রাহক';
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser && currentUser.name) {
+                customerName = currentUser.name;
+            }
+            
+            // ছবি আপলোড (যদি থাকে)
+            let imageBase64 = null;
+            const imageFile = document.getElementById('productImage')?.files[0];
+            if (imageFile) {
+                if (imageFile.size > 2 * 1024 * 1024) {
+                    showNotification('ছবির সাইজ ২MB এর কম হতে হবে!', 'error');
+                    return;
+                }
+                imageBase64 = await fileToBase64(imageFile);
+            }
             
             if (!productName || !customerMobile) {
                 showNotification('দয়া করে পণ্যের নাম এবং মোবাইল নম্বর দিন!', 'error');
@@ -222,11 +241,43 @@ function initRequestForm() {
                 return;
             }
             
-            console.log('রিকুয়েস্ট ডাটা:', {
-                productName, category, quantity, deliveryArea, customerMobile, comments
-            });
+            // ক্যাটাগরি নাম ম্যাপিং
+            const categoryNames = {
+                'fruits': 'মৌসুমি ফল',
+                'seafood': 'সামুদ্রিক মাছ',
+                'honey': 'মধু',
+                'meat': 'মাংস',
+                'spices': 'মশলা',
+                'vegetables': 'শাক-সবজি'
+            };
             
-            showNotification('আপনার রিকুয়েস্ট সফলভাবে জমা হয়েছে!', 'success');
+            // নতুন রিকুয়েস্ট তৈরি
+            const newRequest = {
+                id: 'REQ-' + Date.now(),
+                productName: productName,
+                category: category,
+                categoryName: categoryNames[category] || category,
+                quantity: quantity || 'নির্ধারিত নয়',
+                deliveryArea: deliveryArea,
+                customerMobile: customerMobile,
+                customerName: customerName,
+                comments: comments || '',
+                image: imageBase64,
+                status: 'pending',        // overall status: pending, approved, rejected
+                vendorStatus: 'pending',   // vendor status: pending, accepted, rejected
+                adminStatus: 'pending',    // admin status: pending, approved, rejected
+                vendorReply: null,
+                adminReply: null,
+                assignedVendor: null,
+                createdAt: new Date().toISOString()
+            };
+            
+            // লোকাল স্টোরেজে সেভ
+            let allRequests = JSON.parse(localStorage.getItem('product_requests') || '[]');
+            allRequests.push(newRequest);
+            localStorage.setItem('product_requests', JSON.stringify(allRequests));
+            
+            showNotification('আপনার রিকুয়েস্ট সফলভাবে জমা হয়েছে! ভেন্ডর/অ্যাডমিন শীঘ্রই রিভিউ করবেন।', 'success');
             form.reset();
             
             const imagePreview = document.getElementById('imagePreview');
@@ -236,6 +287,16 @@ function initRequestForm() {
             if (productImage) productImage.value = '';
         });
     }
+}
+
+// ফাইল টু বেস৬৪ কনভার্ট ফাংশন
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+    });
 }
 
 // ============================================

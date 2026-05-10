@@ -86,6 +86,23 @@
             font-size: 1.1rem;
         }
         
+        .sidebar-footer {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: auto;
+        }
+        
+        .sidebar-footer p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
+        }
+        
+        .sidebar-footer a {
+            color: #f4a261;
+            text-decoration: none;
+        }
+        
         /* ============================================ */
         /* মেইন কন্টেন্ট                               */
         /* ============================================ */
@@ -94,6 +111,9 @@
             margin-left: 280px;
             padding: 20px;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         /* টপবার */
@@ -113,6 +133,9 @@
         .page-title h2 {
             color: #2d6a4f;
             font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .admin-info {
@@ -169,7 +192,6 @@
             gap: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         
         .stat-card:hover {
@@ -223,42 +245,27 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: #f8f9fa;
-            padding: 5px 15px;
-            border-radius: 25px;
             flex: 1;
             max-width: 300px;
         }
         
         .search-box input {
-            border: none;
-            background: transparent;
-            padding: 8px;
-            width: 100%;
+            flex: 1;
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
             font-family: inherit;
-        }
-        
-        .search-box input:focus {
-            outline: none;
-        }
-        
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
         }
         
         .filter-group select {
             padding: 8px 15px;
             border: 1px solid #ddd;
             border-radius: 25px;
-            font-family: inherit;
             background: white;
         }
         
         /* ============================================ */
-        /* ভেন্ডর টেবিল                                */
+        /* সেকশন কার্ড                                */
         /* ============================================ */
         .section-card {
             background: white;
@@ -282,8 +289,12 @@
         .section-header h3 {
             color: #2d6a4f;
             font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
+        /* টেবিল */
         .data-table {
             width: 100%;
             border-collapse: collapse;
@@ -323,54 +334,31 @@
             color: #e76f51;
         }
         
-        .status-rejected {
-            background: #ffebee;
-            color: #e53935;
-        }
-        
-        /* বাটন */
         .btn-approve {
             background: #2d6a4f;
             color: white;
             border: none;
-            padding: 5px 12px;
-            border-radius: 15px;
+            padding: 5px 14px;
+            border-radius: 30px;
             cursor: pointer;
             font-size: 0.7rem;
-            margin: 2px;
+            font-weight: 500;
+            transition: all 0.2s;
         }
         
         .btn-reject {
             background: #e76f51;
             color: white;
             border: none;
-            padding: 5px 12px;
-            border-radius: 15px;
+            padding: 5px 14px;
+            border-radius: 30px;
             cursor: pointer;
             font-size: 0.7rem;
-            margin: 2px;
         }
         
-        .btn-view {
-            background: #2196f3;
-            color: white;
-            border: none;
-            padding: 5px 12px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 0.7rem;
-            margin: 2px;
-        }
-        
-        .btn-delete {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 5px 12px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 0.7rem;
-            margin: 2px;
+        .btn-approve:hover, .btn-reject:hover {
+            opacity: 0.9;
+            transform: scale(0.98);
         }
         
         /* পেজিনেশন */
@@ -398,90 +386,11 @@
             border-color: #2d6a4f;
         }
         
-        /* মোডাল */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 550px;
-            max-height: 85vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease;
-        }
-        
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            background: #2d6a4f;
-            color: white;
-            border-radius: 20px 20px 0 0;
-        }
-        
-        .modal-close {
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .modal-body {
-            padding: 20px;
-        }
-        
-        .detail-row {
-            display: flex;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .detail-label {
-            width: 130px;
-            font-weight: 600;
-            color: #2d6a4f;
-        }
-        
-        .detail-value {
-            flex: 1;
-            color: #333;
-        }
-        
         /* এম্পটি স্টেট */
         .empty-state {
             text-align: center;
             padding: 60px;
-            background: white;
+            background: #f8f9fa;
             border-radius: 20px;
         }
         
@@ -491,55 +400,89 @@
             margin-bottom: 15px;
         }
         
+        .empty-state h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #666;
+        }
+        
+        /* ফুটার */
+        .admin-footer {
+            background: white;
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-logo i {
+            font-size: 1.5rem;
+            color: #2d6a4f;
+        }
+        
+        .footer-logo span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d6a4f;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .footer-links a:hover {
+            color: #2d6a4f;
+        }
+        
+        .footer-developer {
+            text-align: center;
+            padding-top: 15px;
+            margin-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 0.75rem;
+            color: #999;
+        }
+        
+        .footer-developer a {
+            color: #e76f51;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
         /* রেস্পন্সিভ */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                width: 260px;
-            }
-            
-            .sidebar.open {
-                transform: translateX(0);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .filter-bar {
-                flex-direction: column;
-            }
-            
-            .search-box {
-                max-width: 100%;
-                width: 100%;
-            }
-            
-            .filter-group {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            .filter-group select {
-                flex: 1;
-            }
-            
-            .data-table {
-                font-size: 0.8rem;
-            }
-            
-            .detail-row {
-                flex-direction: column;
-            }
-            
-            .detail-label {
-                width: 100%;
-                margin-bottom: 5px;
-            }
+        .menu-toggle {
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
         }
         
         @media (min-width: 769px) {
@@ -548,13 +491,37 @@
             }
         }
         
-        .menu-toggle {
-            background: #2d6a4f;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 260px;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .filter-bar {
+                flex-direction: column;
+            }
+            .search-box {
+                max-width: 100%;
+                width: 100%;
+            }
+            .filter-group {
+                width: 100%;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links {
+                justify-content: center;
+            }
         }
         
         .notification-toast {
@@ -570,17 +537,10 @@
         }
         
         @keyframes slideInRight {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         
-        /* স্পিনার */
         .spinner {
             width: 40px;
             height: 40px;
@@ -595,105 +555,29 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        /* ============================================ */
-/* অ্যাডমিন ফুটার স্টাইল                        */
-/* ============================================ */
-.admin-footer {
-    background: white;
-    border-radius: 15px;
-    padding: 20px 25px;
-    margin-top: 30px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.footer-logo i {
-    font-size: 1.5rem;
-    color: #2d6a4f;
-}
-
-.footer-logo span {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #2d6a4f;
-}
-
-.footer-links {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.footer-links a {
-    color: #666;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.footer-links a:hover {
-    color: #2d6a4f;
-}
-
-.footer-developer {
-    text-align: center;
-    padding-top: 15px;
-    margin-top: 15px;
-    border-top: 1px solid #eee;
-    font-size: 0.75rem;
-    color: #999;
-}
-
-.footer-developer a {
-    color: #e76f51;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.footer-developer a:hover {
-    color: #d45a3a;
-    text-decoration: underline;
-}
-
-.footer-developer i {
-    margin: 0 3px;
-}
-
-/* রেস্পন্সিভ */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .footer-links {
-        justify-content: center;
-    }
-}
+        
+        .detail-row {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2d6a4f;
+            width: 40%;
+        }
+        
+        .detail-value {
+            color: #555;
+            width: 60%;
+        }
     </style>
 </head>
 <body>
 
 <div class="admin-wrapper">
-    <!-- সাইডবার -->
+    <!-- সাইডবার - সম্পূর্ণ মেনু সহ -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <i class="fas fa-mountain"></i>
@@ -704,7 +588,7 @@
             <div class="sidebar-menu-item" data-tab="dashboard">
                 <i class="fas fa-tachometer-alt"></i> ড্যাশবোর্ড
             </div>
-            <div class="sidebar-menu-item active" data-tab="vendors">
+            <div class="sidebar-menu-item" data-tab="vendors">
                 <i class="fas fa-store"></i> ভেন্ডর ম্যানেজ
             </div>
             <div class="sidebar-menu-item" data-tab="payments">
@@ -720,11 +604,18 @@
                 <i class="fas fa-users"></i> কাস্টমার
             </div>
             <div class="sidebar-menu-item" data-tab="reports">
-                <i class="fas fa-chart-line"></i> रिपোর্ট
+                <i class="fas fa-chart-line"></i> রিপোর্ট
+            </div>
+            <div class="sidebar-menu-item" data-tab="requests">
+                <i class="fas fa-gem"></i> রিকুয়েস্ট
             </div>
             <div class="sidebar-menu-item" data-tab="settings">
                 <i class="fas fa-cog"></i> সেটিংস
             </div>
+        </div>
+        <div class="sidebar-footer">
+            <p>👨‍💻 <a href="mailto:aungching.jack420@gmail.com">অং চিং</a></p>
+            <p><i class="fas fa-code"></i> পাহাড়ি হাট v2.0</p>
         </div>
     </div>
     
@@ -735,7 +626,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <div class="page-title">
-                <h2><i class="fas fa-store"></i> ভেন্ডর ম্যানেজমেন্ট</h2>
+                <h2 id="pageTitle"><i class="fas fa-store"></i> ভেন্ডর ম্যানেজমেন্ট</h2>
             </div>
             <div class="admin-info">
                 <div class="admin-name">
@@ -748,11 +639,37 @@
             </div>
         </div>
         
-        <!-- ডায়নামিক কন্টেন্ট -->
         <div id="dynamicContent">
             <div style="text-align: center; padding: 50px;">
                 <div class="spinner"></div>
                 <p>লোড হচ্ছে...</p>
+            </div>
+        </div>
+        
+        <!-- ফুটার -->
+        <div class="admin-footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-mountain"></i>
+                    <span>পাহাড়ি হাট</span>
+                    <small style="font-size: 0.7rem; color: #999; margin-left: 5px;">অ্যাডমিন প্যানেল</small>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html" target="_blank"><i class="fas fa-home"></i> ওয়েবসাইট</a>
+                    <a href="mailto:info@paharihat.com"><i class="fas fa-envelope"></i> সাপোর্ট</a>
+                    <a href="#" onclick="window.print(); return false;"><i class="fas fa-print"></i> প্রিন্ট</a>
+                    <a href="#" id="clearCacheBtn"><i class="fas fa-sync-alt"></i> ক্যাশ ক্লিয়ার</a>
+                </div>
+            </div>
+            <div class="footer-developer">
+                <i class="fas fa-code"></i> ডেভেলপড বাই 
+                <a href="mailto:aungching.jack420@gmail.com"><i class="fas fa-user-code"></i> অং চিং</a>
+                <span class="separator">|</span>
+                <i class="far fa-copyright"></i> ২০২৬ পাহাড়ি হাট
+                <span class="separator">|</span>
+                <i class="fas fa-version"></i> ভার্সন 2.0
+                <span class="separator">|</span>
+                <i class="fas fa-shield-alt"></i> সিকিউর প্যানেল
             </div>
         </div>
     </div>
@@ -774,36 +691,13 @@
     // ডাটা লোড
     // ============================================
     let vendors = JSON.parse(localStorage.getItem('vendors') || '[]');
-    let masterProducts = JSON.parse(localStorage.getItem('master_products') || '[]');
-    let paymentRequests = JSON.parse(localStorage.getItem('payment_requests') || '[]');
     
-    // ডিফল্ট ভেন্ডর ডাটা (যদি খালি থাকে)
+    // ডিফল্ট ভেন্ডর ডাটা
     if (vendors.length === 0) {
         vendors = [
-            {
-                id: 'VND-001',
-                shopName: 'বান্দরবান মধু ঘর',
-                ownerName: 'মোঃ রহিম',
-                mobile: '01712345678',
-                email: 'rahim@gmail.com',
-                district: 'bandarban',
-                productType: 'honey',
-                productDescription: 'খাঁটি পাহাড়ি মধু',
-                status: 'approved',
-                joinDate: new Date().toISOString()
-            },
-            {
-                id: 'VND-002',
-                shopName: 'রাঙ্গামাটি ফল বাজার',
-                ownerName: 'মোঃ করিম',
-                mobile: '01812345678',
-                email: 'karim@gmail.com',
-                district: 'rangamati',
-                productType: 'fruits',
-                productDescription: 'তাজা পাহাড়ি ফল',
-                status: 'pending',
-                joinDate: new Date().toISOString()
-            }
+            { id: 'VND-001', shopName: 'বান্দরবান মধু ঘর', ownerName: 'মোঃ রহিম', mobile: '01712345678', district: 'bandarban', productType: 'honey', status: 'approved', joinDate: new Date().toISOString() },
+            { id: 'VND-002', shopName: 'রাঙ্গামাটি ফল বাজার', ownerName: 'মোঃ করিম', mobile: '01812345678', district: 'rangamati', productType: 'fruits', status: 'pending', joinDate: new Date().toISOString() },
+            { id: 'VND-003', shopName: 'খাগড়াছড়ি মশাল ঘর', ownerName: 'মোঃ জসিম', mobile: '01912345678', district: 'khagrachhari', productType: 'spices', status: 'pending', joinDate: new Date().toISOString() }
         ];
         localStorage.setItem('vendors', JSON.stringify(vendors));
     }
@@ -820,73 +714,42 @@
     }
     
     // ============================================
-    // ক্যাটাগরি নাম
-    // ============================================
-    function getCategoryName(categoryId) {
-        const categories = {
-            'honey': 'মধু',
-            'fruits': 'ফল',
-            'meat': 'মাংস',
-            'spices': 'মশলা',
-            'seafood': 'মাছ',
-            'vegetables': 'শাক-সবজি'
-        };
-        return categories[categoryId] || categoryId;
-    }
-    
-    // ============================================
-    // জেলা নাম
-    // ============================================
-    function getDistrictName(districtId) {
-        const districts = {
-            'bandarban': 'বান্দরবান',
-            'rangamati': 'রাঙ্গামাটি',
-            'khagrachari': 'খাগড়াছড়ি',
-            'dhaka': 'ঢাকা',
-            'chittagong': 'চট্টগ্রাম'
-        };
-        return districts[districtId] || districtId;
-    }
-    
-    // ============================================
-    // ভেন্ডর লিস্ট ভেরিয়েবল
+    // ভেন্ডর লিস্ট লোড
     // ============================================
     let currentPage = 1;
     let itemsPerPage = 10;
     let searchTerm = '';
     let statusFilter = 'all';
     
-    // ============================================
-    // ভেন্ডর লিস্ট লোড
-    // ============================================
+    function getDistrictName(district) {
+        const districts = { 'bandarban': 'বান্দরবান', 'rangamati': 'রাঙ্গামাটি', 'khagrachhari': 'খাগড়াছড়ি' };
+        return districts[district] || district;
+    }
+    
+    function getProductTypeName(type) {
+        const types = { 'honey': 'মধু', 'fruits': 'ফল', 'meat': 'মাংস', 'spices': 'মশলা', 'seafood': 'মাছ', 'vegetables': 'শাক-সবজি' };
+        return types[type] || type;
+    }
+    
     function loadVendors() {
         let filteredVendors = [...vendors];
         
-        // সার্চ ফিল্টার
         if (searchTerm) {
-            filteredVendors = filteredVendors.filter(vendor => 
-                vendor.shopName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                vendor.ownerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                vendor.mobile.includes(searchTerm) ||
-                vendor.email?.toLowerCase().includes(searchTerm.toLowerCase())
+            filteredVendors = filteredVendors.filter(v => 
+                v.shopName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                v.ownerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                v.mobile.includes(searchTerm)
             );
         }
         
-        // স্ট্যাটাস ফিল্টার
         if (statusFilter !== 'all') {
-            filteredVendors = filteredVendors.filter(vendor => vendor.status === statusFilter);
+            filteredVendors = filteredVendors.filter(v => v.status === statusFilter);
         }
         
-        // সাজানো (নতুন আগে)
-        filteredVendors.sort((a, b) => new Date(b.joinDate) - new Date(a.joinDate));
-        
-        // স্ট্যাটস
         const totalVendors = vendors.length;
-        const approvedVendors = vendors.filter(v => v.status === 'approved').length;
         const pendingVendors = vendors.filter(v => v.status === 'pending').length;
-        const rejectedVendors = vendors.filter(v => v.status === 'rejected').length;
+        const approvedVendors = vendors.filter(v => v.status === 'approved').length;
         
-        // পেজিনেশন
         const totalPages = Math.ceil(filteredVendors.length / itemsPerPage);
         const startIndex = (currentPage - 1) * itemsPerPage;
         const paginatedVendors = filteredVendors.slice(startIndex, startIndex + itemsPerPage);
@@ -894,61 +757,43 @@
         const container = document.getElementById('dynamicContent');
         container.innerHTML = `
             <div class="stats-grid">
-                <div class="stat-card" onclick="filterByStatus('all')">
+                <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-store"></i></div>
-                    <div class="stat-info">
-                        <h3>${totalVendors}</h3>
-                        <p>মোট ভেন্ডর</p>
-                    </div>
+                    <div class="stat-info"><h3>${totalVendors}</h3><p>মোট ভেন্ডর</p></div>
                 </div>
-                <div class="stat-card" onclick="filterByStatus('approved')">
-                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="stat-info">
-                        <h3>${approvedVendors}</h3>
-                        <p>অ্যাপ্রুভড</p>
-                    </div>
-                </div>
-                <div class="stat-card" onclick="filterByStatus('pending')">
+                <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-clock"></i></div>
-                    <div class="stat-info">
-                        <h3>${pendingVendors}</h3>
-                        <p>পেন্ডিং</p>
-                    </div>
+                    <div class="stat-info"><h3>${pendingVendors}</h3><p>পেন্ডিং ভেন্ডর</p></div>
                 </div>
-                <div class="stat-card" onclick="filterByStatus('rejected')">
-                    <div class="stat-icon"><i class="fas fa-times-circle"></i></div>
-                    <div class="stat-info">
-                        <h3>${rejectedVendors}</h3>
-                        <p>রিজেক্টেড</p>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-info"><h3>${approvedVendors}</h3><p>অ্যাপ্রুভড ভেন্ডর</p></div>
                 </div>
             </div>
             
             <div class="filter-bar">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="searchVendor" placeholder="দোকান, মালিক, মোবাইল দিয়ে খুঁজুন...">
+                    <input type="text" id="searchVendor" placeholder="দোকান/মালিকের নাম বা মোবাইল...">
                 </div>
                 <div class="filter-group">
                     <select id="statusFilterSelect">
-                        <option value="all">📋 সব ভেন্ডর</option>
-                        <option value="approved">✅ অ্যাপ্রুভড</option>
+                        <option value="all">সব স্ট্যাটাস</option>
                         <option value="pending">⏳ পেন্ডিং</option>
-                        <option value="rejected">❌ রিজেক্টেড</option>
+                        <option value="approved">✅ অ্যাপ্রুভড</option>
                     </select>
                 </div>
             </div>
             
             <div class="section-card">
                 <div class="section-header">
-                    <h3><i class="fas fa-list"></i> ভেন্ডর তালিকা</h3>
-                    <span>মোট ${filteredVendors.length} জন ভেন্ডর</span>
+                    <h3><i class="fas fa-list"></i> ভেন্ডর লিস্ট</h3>
+                    <span>মোট ${filteredVendors.length} টি ভেন্ডর</span>
                 </div>
-                
                 ${filteredVendors.length === 0 ? `
                     <div class="empty-state">
                         <i class="fas fa-store-slash"></i>
-                        <h3>কোনো ভেন্ডর পাওয়া যায়নি</h3>
+                        <h3>কোনো ভেন্ডর নেই</h3>
                         <p>সার্চ টার্ম বা ফিল্টার পরিবর্তন করে আবার চেষ্টা করুন</p>
                     </div>
                 ` : `
@@ -964,38 +809,25 @@
                                     <th>পণ্যের ধরন</th>
                                     <th>স্ট্যাটাস</th>
                                     <th>অ্যাকশন</th>
-                                </tr>
+                                 </tr>
                             </thead>
                             <tbody>
                                 ${paginatedVendors.map((vendor, index) => `
                                     <tr>
                                         <td>${startIndex + index + 1}</td>
-                                        <td>
-                                            <div style="display: flex; align-items: center; gap: 10px;">
-                                                <div style="width: 35px; height: 35px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                                    <i class="fas fa-store" style="color: #2d6a4f;"></i>
-                                                </div>
-                                                <strong>${vendor.shopName}</strong>
-                                            </div>
-                                        </td>
+                                        <td><strong>${vendor.shopName}</strong></td>
                                         <td>${vendor.ownerName}</td>
                                         <td>${vendor.mobile}</td>
                                         <td>${getDistrictName(vendor.district)}</td>
-                                        <td>${getCategoryName(vendor.productType)}</td>
+                                        <td>${getProductTypeName(vendor.productType)}</td>
+                                        <td><span class="status-badge ${vendor.status === 'approved' ? 'status-approved' : 'status-pending'}">
+                                            ${vendor.status === 'approved' ? '✅ অনুমোদিত' : '⏳ পেন্ডিং'}
+                                        </span></td>
                                         <td>
-                                            <span class="status-badge status-${vendor.status}">
-                                                ${vendor.status === 'approved' ? '✅ অ্যাপ্রুভড' : vendor.status === 'pending' ? '⏳ পেন্ডিং' : '❌ রিজেক্টেড'}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            ${vendor.status === 'pending' ? `
-                                                <button class="btn-approve" onclick="approveVendor('${vendor.id}')">✅ অনুমোদন</button>
-                                                <button class="btn-reject" onclick="rejectVendor('${vendor.id}')">❌ বাতিল</button>
-                                            ` : ''}
-                                            <button class="btn-view" onclick="viewVendorDetails('${vendor.id}')">👁️ বিস্তারিত</button>
-                                            <button class="btn-delete" onclick="deleteVendor('${vendor.id}')">🗑️ ডিলিট</button>
-                                        </td>
-                                    </tr>
+                                            ${vendor.status === 'pending' ? `<button class="btn-approve" onclick="approveVendor('${vendor.id}')">✅ অনুমোদন</button>` : ''}
+                                            <button class="btn-approve" onclick="viewVendorDetails('${vendor.id}')" style="background:#2196f3;">👁️ বিস্তারিত</button>
+                                         </td>
+                                     </tr>
                                 `).join('')}
                             </tbody>
                         </table>
@@ -1014,7 +846,6 @@
             </div>
         `;
         
-        // ইভেন্ট লিসেনার
         document.getElementById('searchVendor')?.addEventListener('input', (e) => {
             searchTerm = e.target.value;
             currentPage = 1;
@@ -1028,172 +859,66 @@
         });
     }
     
-    // স্ট্যাটাস ফিল্টার ফাংশন
-    function filterByStatus(status) {
-        statusFilter = status;
-        currentPage = 1;
-        loadVendors();
-        const select = document.getElementById('statusFilterSelect');
-        if (select) select.value = status;
-    }
-    
-    // পেজিনেশন চেঞ্জ
     function changePage(page) {
+        if (page < 1) return;
         currentPage = page;
         loadVendors();
     }
     
-    // ============================================
-    // ভেন্ডর অনুমোদন
-    // ============================================
     function approveVendor(vendorId) {
         const index = vendors.findIndex(v => v.id === vendorId);
         if (index !== -1) {
             vendors[index].status = 'approved';
             localStorage.setItem('vendors', JSON.stringify(vendors));
-            showNotification(`✅ ${vendors[index].shopName} অনুমোদন করা হয়েছে!`);
+            showNotification('✅ ভেন্ডর অনুমোদন করা হয়েছে!');
             loadVendors();
         }
     }
     
-    // ============================================
-    // ভেন্ডর বাতিল
-    // ============================================
-    function rejectVendor(vendorId) {
-        const index = vendors.findIndex(v => v.id === vendorId);
-        if (index !== -1) {
-            vendors[index].status = 'rejected';
-            localStorage.setItem('vendors', JSON.stringify(vendors));
-            showNotification(`❌ ${vendors[index].shopName} বাতিল করা হয়েছে!`);
-            loadVendors();
-        }
-    }
-    
-    // ============================================
-    // ভেন্ডর ডিলিট
-    // ============================================
-    function deleteVendor(vendorId) {
-        if (confirm('আপনি কি এই ভেন্ডরকে সম্পূর্ণ ডিলিট করতে চান? এই কাজটি বাতিল করা যাবে না।')) {
-            const vendor = vendors.find(v => v.id === vendorId);
-            vendors = vendors.filter(v => v.id !== vendorId);
-            
-            // এই ভেন্ডরের পণ্যগুলোও ডিলিট
-            const updatedProducts = masterProducts.filter(p => p.vendorId !== vendorId);
-            localStorage.setItem('master_products', JSON.stringify(updatedProducts));
-            
-            // এই ভেন্ডরের পেমেন্ট রিকোয়েস্ট ডিলিট
-            const updatedPayments = paymentRequests.filter(p => p.vendorId !== vendorId);
-            localStorage.setItem('payment_requests', JSON.stringify(updatedPayments));
-            
-            localStorage.setItem('vendors', JSON.stringify(vendors));
-            showNotification(`✅ ${vendor?.shopName} ডিলিট করা হয়েছে!`);
-            loadVendors();
-        }
-    }
-    
-    // ============================================
-    // ভেন্ডর বিস্তারিত দেখা
-    // ============================================
     function viewVendorDetails(vendorId) {
         const vendor = vendors.find(v => v.id === vendorId);
         if (!vendor) return;
         
-        // ভেন্ডরের পণ্য সংখ্যা
-        const vendorProducts = masterProducts.filter(p => p.vendorId === vendorId);
-        
-        // ভেন্ডরের পেমেন্ট রিকোয়েস্ট
-        const vendorPayments = paymentRequests.filter(p => p.vendorId === vendorId);
-        const totalPaymentRequested = vendorPayments.reduce((sum, p) => sum + p.amount, 0);
-        const approvedPayments = vendorPayments.filter(p => p.status === 'approved').reduce((sum, p) => sum + p.amount, 0);
-        
         const modal = document.createElement('div');
         modal.className = 'modal';
+        modal.style.cssText = 'display:flex; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:1000;';
         modal.innerHTML = `
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3><i class="fas fa-store"></i> ${vendor.shopName}</h3>
-                    <span class="modal-close" onclick="closeModal(this)">&times;</span>
+            <div style="background:white; border-radius:20px; width:90%; max-width:500px; max-height:85vh; overflow-y:auto;">
+                <div style="background:#2d6a4f; color:white; padding:20px; border-radius:20px 20px 0 0; display:flex; justify-content:space-between; align-items:center;">
+                    <h3 style="margin:0;"><i class="fas fa-store"></i> ভেন্ডর বিস্তারিত</h3>
+                    <span style="font-size:1.5rem; cursor:pointer;" onclick="this.closest('.modal').remove()">&times;</span>
                 </div>
-                <div class="modal-body">
-                    <div class="detail-row">
-                        <div class="detail-label">দোকানের নাম:</div>
-                        <div class="detail-value">${vendor.shopName}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">মালিকের নাম:</div>
-                        <div class="detail-value">${vendor.ownerName}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">মোবাইল:</div>
-                        <div class="detail-value">${vendor.mobile}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">ইমেইল:</div>
-                        <div class="detail-value">${vendor.email || 'প্রদান করা হয়নি'}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">জেলা:</div>
-                        <div class="detail-value">${getDistrictName(vendor.district)}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">পণ্যের ধরন:</div>
-                        <div class="detail-value">${getCategoryName(vendor.productType)}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">পণ্যের বিবরণ:</div>
-                        <div class="detail-value">${vendor.productDescription || '—'}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">স্ট্যাটাস:</div>
-                        <div class="detail-value">
-                            <span class="status-badge status-${vendor.status}">
-                                ${vendor.status === 'approved' ? '✅ অ্যাপ্রুভড' : vendor.status === 'pending' ? '⏳ পেন্ডিং' : '❌ রিজেক্টেড'}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">জয়েন তারিখ:</div>
-                        <div class="detail-value">${new Date(vendor.joinDate).toLocaleDateString('bn-BD')}</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">মোট পণ্য:</div>
-                        <div class="detail-value">${vendorProducts.length} টি</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">পেমেন্ট রিকোয়েস্ট:</div>
-                        <div class="detail-value">${vendorPayments.length} টি (মোট ৳${totalPaymentRequested})</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">প্রাপ্ত পেমেন্ট:</div>
-                        <div class="detail-value">৳${approvedPayments}</div>
-                    </div>
+                <div style="padding:25px;">
+                    <div class="detail-row"><div class="detail-label">ভেন্ডর আইডি:</div><div class="detail-value">${vendor.id}</div></div>
+                    <div class="detail-row"><div class="detail-label">দোকানের নাম:</div><div class="detail-value">${vendor.shopName}</div></div>
+                    <div class="detail-row"><div class="detail-label">মালিকের নাম:</div><div class="detail-value">${vendor.ownerName}</div></div>
+                    <div class="detail-row"><div class="detail-label">মোবাইল:</div><div class="detail-value">${vendor.mobile}</div></div>
+                    <div class="detail-row"><div class="detail-label">জেলা:</div><div class="detail-value">${getDistrictName(vendor.district)}</div></div>
+                    <div class="detail-row"><div class="detail-label">পণ্যের ধরন:</div><div class="detail-value">${getProductTypeName(vendor.productType)}</div></div>
+                    <div class="detail-row"><div class="detail-label">স্ট্যাটাস:</div><div class="detail-value">${vendor.status === 'approved' ? '✅ অনুমোদিত' : '⏳ পেন্ডিং'}</div></div>
+                    <div class="detail-row"><div class="detail-label">যোগদানের তারিখ:</div><div class="detail-value">${new Date(vendor.joinDate).toLocaleDateString('bn-BD')}</div></div>
                 </div>
             </div>
         `;
         document.body.appendChild(modal);
-        modal.style.display = 'flex';
-    }
-    
-    // ============================================
-    // মোডাল ক্লোজ
-    // ============================================
-    function closeModal(element) {
-        const modal = element.closest('.modal');
-        if (modal) modal.remove();
     }
     
     // ============================================
     // লগআউট ও ট্যাব সুইচ
     // ============================================
     function switchTab(tabName) {
-        if (tabName === 'dashboard') window.location.href = 'admin-dashboard.html';
-        else if (tabName === 'vendors') window.location.href = 'admin-vendors.html';
-        else if (tabName === 'payments') window.location.href = 'admin-payments.html';
-        else if (tabName === 'orders') window.location.href = 'admin-orders.html';
-        else if (tabName === 'products') window.location.href = 'admin-products.html';
-        else if (tabName === 'customers') window.location.href = 'admin-customers.html';
-        else if (tabName === 'reports') window.location.href = 'admin-reports.html';
-        else if (tabName === 'settings') window.location.href = 'admin-settings.html';
+        const pages = {
+            'dashboard': 'admin-dashboard.html',
+            'vendors': 'admin-vendors.html',
+            'payments': 'admin-payments.html',
+            'orders': 'admin-orders.html',
+            'products': 'admin-products.html',
+            'customers': 'admin-customers.html',
+            'reports': 'admin-reports.html',
+            'requests': 'admin-requests.html',
+            'settings': 'admin-settings.html'
+        };
+        if (pages[tabName]) window.location.href = pages[tabName];
     }
     
     function adminLogout() {
@@ -1202,71 +927,37 @@
         setTimeout(() => window.location.href = 'admin-login.html', 1000);
     }
     
-    // সাইডবার টগল
+    // ============================================
+    // ইভেন্ট লিসেনার
+    // ============================================
     document.getElementById('menuToggle')?.addEventListener('click', () => {
         document.getElementById('sidebar').classList.toggle('open');
     });
     
-    // সাইডবার মেনু ইভেন্ট
     document.querySelectorAll('.sidebar-menu-item').forEach(item => {
         item.addEventListener('click', () => switchTab(item.getAttribute('data-tab')));
     });
     
+    document.getElementById('clearCacheBtn')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(confirm('ক্যাশ ক্লিয়ার করলে পেজ রিফ্রেশ হবে। আপনি কি নিশ্চিত?')) {
+            localStorage.clear();
+            sessionStorage.clear();
+            location.reload();
+        }
+    });
+    
+    // ============================================
     // গ্লোবাল ফাংশন
+    // ============================================
     window.changePage = changePage;
     window.approveVendor = approveVendor;
-    window.rejectVendor = rejectVendor;
-    window.deleteVendor = deleteVendor;
     window.viewVendorDetails = viewVendorDetails;
-    window.closeModal = closeModal;
-    window.filterByStatus = filterByStatus;
     window.adminLogout = adminLogout;
     window.switchTab = switchTab;
     
     // ইনিশিয়াল লোড
     loadVendors();
 </script>
-
-
-    <!-- ============================================ -->
-    <!-- অ্যাডমিন ফুটার                                -->
-    <!-- ============================================ -->
-    <div class="admin-footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <i class="fas fa-mountain"></i>
-                <span>পাহাড়ি হাট</span>
-                <small style="font-size: 0.7rem; color: #999; margin-left: 5px;">অ্যাডমিন প্যানেল</small>
-            </div>
-            
-            <div class="footer-links">
-                <a href="../index.html" target="_blank">
-                    <i class="fas fa-home"></i> ওয়েবসাইট
-                </a>
-                <a href="mailto:info@paharihat.com">
-                    <i class="fas fa-envelope"></i> সাপোর্ট
-                </a>
-                <a href="#" onclick="window.print(); return false;">
-                    <i class="fas fa-print"></i> প্রিন্ট
-                </a>
-                <a href="#" id="clearCacheBtn">
-                    <i class="fas fa-sync-alt"></i> ক্যাশ ক্লিয়ার
-                </a>
-            </div>
-        </div>
-        
-        <div class="footer-developer">
-            <i class="fas fa-code"></i> ডেভেলপড বাই 
-            <a href="mailto:aungching.jack420@gmail.com">
-                <i class="fas fa-user-code"></i> অং চিং
-            </a>
-            <span class="separator">|</span>
-            <i class="far fa-copyright"></i> ২০২৬ পাহাড়ি হাট
-            <span class="separator">|</span>
-            <i class="fas fa-version"></i> ভার্সন 2.0
-            <span class="separator">|</span>
-            <i class="fas fa-shield-alt"></i> সিকিউর প্যানেল
-        </div>
-    </div>
 </body>
 </html>

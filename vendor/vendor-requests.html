@@ -7,25 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hind Siliguri', sans-serif; background: #f0f2f5; min-height: 100vh; }
         
-        body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background: #f0f2f5;
-            min-height: 100vh;
-        }
-        
-        /* ============================================ */
-        /* সাইডবার স্টাইল                               */
-        /* ============================================ */
-        .vendor-wrapper {
-            display: flex;
-            min-height: 100vh;
-        }
+        .vendor-wrapper { display: flex; min-height: 100vh; }
         
         .sidebar {
             width: 280px;
@@ -38,85 +23,35 @@
             z-index: 100;
         }
         
-        .sidebar-header {
-            padding: 25px 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+        .sidebar-header { padding: 25px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-header i { font-size: 2.5rem; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 1.2rem; margin-bottom: 5px; }
+        .sidebar-header p { font-size: 0.7rem; opacity: 0.7; }
         
-        .sidebar-header i {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .sidebar-header h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-        
-        .sidebar-header p {
-            font-size: 0.7rem;
-            opacity: 0.7;
-        }
-        
-        .sidebar-menu {
-            padding: 20px 0;
-        }
-        
+        .sidebar-menu { padding: 20px 0; }
         .sidebar-menu-item {
             padding: 12px 25px;
             display: flex;
             align-items: center;
             gap: 12px;
             color: rgba(255,255,255,0.8);
-            text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        
         .sidebar-menu-item:hover,
         .sidebar-menu-item.active {
             background: rgba(255,255,255,0.1);
             color: white;
             border-left: 4px solid #e76f51;
         }
+        .sidebar-menu-item i { width: 22px; font-size: 1.1rem; }
         
-        .sidebar-menu-item i {
-            width: 22px;
-            font-size: 1.1rem;
-        }
+        .sidebar-footer { padding: 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; }
+        .sidebar-footer p { color: rgba(255,255,255,0.5); font-size: 0.7rem; }
+        .sidebar-footer a { color: #f4a261; text-decoration: none; }
         
-        .sidebar-footer {
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: auto;
-        }
+        .main-content { flex: 1; margin-left: 280px; padding: 20px; transition: all 0.3s ease; }
         
-        .sidebar-footer p {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.7rem;
-        }
-        
-        .sidebar-footer a {
-            color: #f4a261;
-            text-decoration: none;
-        }
-        
-        /* ============================================ */
-        /* মেইন কন্টেন্ট                               */
-        /* ============================================ */
-        .main-content {
-            flex: 1;
-            margin-left: 280px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        /* টপবার */
         .topbar {
             background: white;
             border-radius: 15px;
@@ -130,181 +65,42 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
-        .page-title h2 {
-            color: #2d6a4f;
-            font-size: 1.3rem;
+        .page-title h2 { color: #2d6a4f; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .logout-btn { background: #e76f51; color: white; border: none; padding: 8px 18px; border-radius: 25px; cursor: pointer; }
+        
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 25px; }
+        .stat-card { background: white; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .stat-icon { width: 55px; height: 55px; background: #e8f5e9; border-radius: 15px; display: flex; align-items: center; justify-content: center; }
+        .stat-icon i { font-size: 1.8rem; color: #2d6a4f; }
+        .stat-info h3 { font-size: 1.8rem; font-weight: 700; color: #2d6a4f; }
+        .stat-info p { color: #666; font-size: 0.8rem; }
+        
+        .section-card { background: white; border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; flex-wrap: wrap; gap: 15px; }
+        .section-header h3 { color: #2d6a4f; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        
+        .request-tabs {
             display: flex;
-            align-items: center;
             gap: 10px;
-        }
-        
-        .vendor-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .shop-name {
-            text-align: right;
-        }
-        
-        .shop-name .name {
-            font-weight: 600;
-            color: #2d6a4f;
-        }
-        
-        .shop-name .role {
-            font-size: 0.7rem;
-            color: #999;
-        }
-        
-        .logout-btn {
-            background: #e76f51;
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .logout-btn:hover {
-            background: #d45a3a;
-            transform: translateY(-2px);
-        }
-        
-        /* ============================================ */
-        /* স্ট্যাটস কার্ড                              */
-        /* ============================================ */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-        
-        .stat-card {
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .stat-icon {
-            width: 55px;
-            height: 55px;
-            background: #e8f5e9;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .stat-icon i {
-            font-size: 1.8rem;
-            color: #2d6a4f;
-        }
-        
-        .stat-info h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #2d6a4f;
-        }
-        
-        .stat-info p {
-            color: #666;
-            font-size: 0.8rem;
-        }
-        
-        /* ============================================ */
-        /* রিকুয়েস্ট টাইপ কার্ড                       */
-        /* ============================================ */
-        .request-types-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .request-type-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .request-type-card:hover {
-            transform: translateY(-5px);
-            border-color: #2d6a4f;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .request-type-card i {
-            font-size: 2.5rem;
-            color: #2d6a4f;
-            margin-bottom: 15px;
-        }
-        
-        .request-type-card h4 {
-            font-size: 1.1rem;
-            color: #2d2d2d;
-            margin-bottom: 8px;
-        }
-        
-        .request-type-card p {
-            font-size: 0.75rem;
-            color: #888;
-        }
-        
-        /* ============================================ */
-        /* রিকুয়েস্ট লিস্ট সেকশন                      */
-        /* ============================================ */
-        .section-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 20px;
-            padding-bottom: 15px;
             border-bottom: 1px solid #eee;
             flex-wrap: wrap;
-            gap: 15px;
         }
         
-        .section-header h3 {
-            color: #2d6a4f;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .request-tab {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+            border-radius: 30px;
         }
         
-        /* রিকুয়েস্ট কার্ড */
-        .requests-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .request-tab.active { background: #2d6a4f; color: white; }
+        
+        .requests-list { display: flex; flex-direction: column; gap: 15px; }
         
         .request-item {
             background: #f8f9fa;
@@ -314,37 +110,9 @@
             border-left: 4px solid #2d6a4f;
         }
         
-        .request-item:hover {
-            background: #f1f3f5;
-            transform: translateX(5px);
-        }
-        
-        .request-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        
-        .request-title {
-            font-weight: 600;
-            color: #2d2d2d;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .request-title i {
-            color: #2d6a4f;
-        }
-        
-        .request-id {
-            font-size: 0.7rem;
-            color: #999;
-            font-family: monospace;
-        }
+        .request-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+        .request-title { font-weight: 600; color: #2d2d2d; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .request-id { font-size: 0.7rem; color: #999; font-family: monospace; }
         
         .request-status {
             display: inline-block;
@@ -353,61 +121,19 @@
             font-size: 0.65rem;
             font-weight: 500;
         }
+        .status-pending { background: #fff3e0; color: #e76f51; }
+        .status-accepted { background: #e8f5e9; color: #2d6a4f; }
+        .status-rejected { background: #ffebee; color: #dc3545; }
         
-        .status-pending {
-            background: #fff3e0;
-            color: #e76f51;
-        }
+        .request-details { color: #666; font-size: 0.8rem; margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee; }
+        .request-date { font-size: 0.7rem; color: #999; display: flex; align-items: center; gap: 5px; margin-top: 8px; }
         
-        .status-approved {
-            background: #e8f5e9;
-            color: #2d6a4f;
-        }
+        .action-buttons { display: flex; gap: 10px; margin-top: 12px; }
+        .btn-accept { background: #2d6a4f; color: white; border: none; padding: 6px 18px; border-radius: 25px; cursor: pointer; font-size: 0.75rem; }
+        .btn-reject { background: #dc3545; color: white; border: none; padding: 6px 18px; border-radius: 25px; cursor: pointer; font-size: 0.75rem; }
+        .btn-reply { background: #2196f3; color: white; border: none; padding: 6px 18px; border-radius: 25px; cursor: pointer; font-size: 0.75rem; }
         
-        .status-rejected {
-            background: #ffebee;
-            color: #dc3545;
-        }
-        
-        .status-processing {
-            background: #e3f2fd;
-            color: #2196f3;
-        }
-        
-        .request-details {
-            color: #666;
-            font-size: 0.8rem;
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px solid #eee;
-        }
-        
-        .request-date {
-            font-size: 0.7rem;
-            color: #999;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 8px;
-        }
-        
-        .admin-reply {
-            background: #e8f5e9;
-            padding: 10px 15px;
-            border-radius: 10px;
-            margin-top: 10px;
-            font-size: 0.8rem;
-        }
-        
-        .admin-reply i {
-            color: #2d6a4f;
-            margin-right: 5px;
-        }
-        
-        /* ============================================ */
-        /* মোডাল স্টাইল                                */
-        /* ============================================ */
-        .modal {
+        .reply-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -418,386 +144,58 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            animation: fadeIn 0.3s ease;
         }
-        
-        .modal-content {
+        .reply-modal-content {
             background: white;
+            padding: 25px;
             border-radius: 20px;
             width: 90%;
-            max-width: 550px;
-            max-height: 85vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease;
+            max-width: 450px;
         }
+        .reply-modal-content textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 10px; margin: 15px 0; font-family: inherit; }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        .empty-state { text-align: center; padding: 60px; background: white; border-radius: 20px; }
+        .empty-state i { font-size: 4rem; color: #ddd; margin-bottom: 15px; }
         
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 25px;
-            background: #2d6a4f;
-            color: white;
-            border-radius: 20px 20px 0 0;
-        }
-        
-        .modal-header h3 {
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .modal-close {
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: all 0.2s;
-        }
-        
-        .modal-close:hover {
-            opacity: 1;
-        }
-        
-        .modal-body {
-            padding: 25px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #2d6a4f;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #2d6a4f;
-            box-shadow: 0 0 0 3px rgba(45,106,79,0.1);
-        }
-        
-        .image-preview {
-            margin-top: 10px;
-            text-align: center;
-        }
-        
-        .image-preview img {
-            max-width: 100%;
-            max-height: 150px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-        }
-        
-        .upload-hint {
-            font-size: 0.7rem;
-            color: #888;
-            margin-top: 5px;
-        }
-        
-        .modal-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        
-        .modal-buttons button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-submit {
-            background: #2d6a4f;
-            color: white;
-        }
-        
-        .btn-submit:hover {
-            background: #1b4332;
-        }
-        
-        .btn-cancel {
-            background: #e9ecef;
-            color: #555;
-        }
-        
-        .btn-cancel:hover {
-            background: #dee2e6;
-        }
-        
-        /* এম্পটি স্টেট */
-        .empty-state {
-            text-align: center;
-            padding: 60px;
-            background: #f8f9fa;
-            border-radius: 20px;
-        }
-        
-        .empty-state i {
-            font-size: 4rem;
-            color: #ddd;
-            margin-bottom: 15px;
-        }
-        
-        .empty-state h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: #666;
-        }
-        
-        .empty-state p {
-            color: #999;
-            font-size: 0.85rem;
-        }
-        
-        /* ফুটার */
         .vendor-footer {
             background: linear-gradient(180deg, #0d2b1e 0%, #0a1f15 100%);
             border-radius: 20px;
             padding: 25px 30px 20px;
             margin-top: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
         }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-logo { display: flex; align-items: center; gap: 12px; }
+        .footer-logo i { font-size: 1.8rem; color: #2d6a4f; background: rgba(45,106,79,0.15); padding: 10px; border-radius: 15px; }
+        .footer-logo span { font-size: 1.2rem; font-weight: 700; background: linear-gradient(135deg, #2d6a4f, #40916c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .footer-links { display: flex; gap: 25px; flex-wrap: wrap; }
+        .footer-links a { color: #999; text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; }
+        .footer-links a:hover { color: #2d6a4f; }
+        .footer-developer { text-align: center; padding-top: 18px; margin-top: 15px; border-top: 1px solid rgba(45,106,79,0.2); font-size: 0.75rem; color: #888; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+        .footer-developer .developer-name { background: linear-gradient(135deg, #e76f51, #f4a261); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 600; }
+        .footer-developer .version { background: rgba(45,106,79,0.15); padding: 4px 12px; border-radius: 20px; color: #2d6a4f; font-size: 0.7rem; }
+        .footer-developer .heart { color: #e76f51; animation: heartbeat 1.5s ease infinite; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
         
-        .vendor-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #2d6a4f, #e76f51, #f4a261, #2d6a4f);
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .footer-logo i {
-            font-size: 1.8rem;
-            color: #2d6a4f;
-            background: rgba(45,106,79,0.15);
-            padding: 10px;
-            border-radius: 15px;
-        }
-        
-        .footer-logo span {
-            font-size: 1.2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #2d6a4f, #40916c);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .footer-logo small {
-            font-size: 0.7rem;
-            color: #888;
-            background: rgba(255,255,255,0.1);
-            padding: 3px 8px;
-            border-radius: 20px;
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: #999;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .footer-links a:hover {
-            color: #2d6a4f;
-            transform: translateY(-2px);
-        }
-        
-        .footer-developer {
-            text-align: center;
-            padding-top: 18px;
-            margin-top: 15px;
-            border-top: 1px solid rgba(45,106,79,0.2);
-            font-size: 0.75rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            color: #888;
-        }
-        
-        .footer-developer .developer-name {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: linear-gradient(135deg, #e76f51, #f4a261);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 600;
-        }
-        
-        .footer-developer .version {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(45,106,79,0.15);
-            padding: 4px 12px;
-            border-radius: 20px;
-            color: #2d6a4f;
-            font-size: 0.7rem;
-        }
-        
-        .footer-developer .heart {
-            color: #e76f51;
-            animation: heartbeat 1.5s ease infinite;
-        }
-        
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-        
-        /* মোবাইল রেস্পন্সিভ */
-        .menu-toggle {
-            background: #2d6a4f;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        
-        @media (min-width: 769px) {
-            .menu-toggle {
-                display: none;
-            }
-        }
-        
+        .menu-toggle { background: #2d6a4f; color: white; border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+        @media (min-width: 769px) { .menu-toggle { display: none; } }
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                width: 260px;
-            }
-            .sidebar.open {
-                transform: translateX(0);
-            }
-            .main-content {
-                margin-left: 0;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .request-types-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-links {
-                justify-content: center;
-            }
-            .footer-developer {
-                flex-direction: column;
-                gap: 8px;
-            }
+            .sidebar { transform: translateX(-100%); width: 260px; }
+            .sidebar.open { transform: translateX(0); }
+            .main-content { margin-left: 0; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .request-tabs { flex-direction: column; }
+            .action-buttons { flex-direction: column; }
         }
         
-        .notification-toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #2d6a4f;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 10px;
-            z-index: 1001;
-            animation: slideInRight 0.3s ease;
-        }
-        
-        @keyframes slideInRight {
-            from { transform: translateX(100px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #2d6a4f;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        .notification-toast { position: fixed; bottom: 30px; right: 30px; background: #2d6a4f; color: white; padding: 12px 20px; border-radius: 10px; z-index: 1001; animation: slideInRight 0.3s ease; }
+        @keyframes slideInRight { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #2d6a4f; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
 <div class="vendor-wrapper">
-    <!-- সাইডবার -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <i class="fas fa-mountain"></i>
@@ -805,27 +203,13 @@
             <p>ভেন্ডর প্যানেল</p>
         </div>
         <div class="sidebar-menu">
-            <div class="sidebar-menu-item" data-tab="dashboard">
-                <i class="fas fa-tachometer-alt"></i> ড্যাশবোর্ড
-            </div>
-            <div class="sidebar-menu-item" data-tab="products">
-                <i class="fas fa-box"></i> পণ্য
-            </div>
-            <div class="sidebar-menu-item" data-tab="orders">
-                <i class="fas fa-shopping-cart"></i> অর্ডার
-            </div>
-            <div class="sidebar-menu-item" data-tab="payments">
-                <i class="fas fa-money-bill"></i> পেমেন্ট
-            </div>
-            <div class="sidebar-menu-item" data-tab="reports">
-                <i class="fas fa-chart-line"></i> রিপোর্টস
-            </div>
-            <div class="sidebar-menu-item active" data-tab="requests">
-                <i class="fas fa-gem"></i> রিকুয়েস্ট
-            </div>
-            <div class="sidebar-menu-item" data-tab="profile">
-                <i class="fas fa-user"></i> প্রোফাইল
-            </div>
+            <div class="sidebar-menu-item" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> ড্যাশবোর্ড</div>
+            <div class="sidebar-menu-item" data-tab="products"><i class="fas fa-box"></i> পণ্য</div>
+            <div class="sidebar-menu-item" data-tab="orders"><i class="fas fa-shopping-cart"></i> অর্ডার</div>
+            <div class="sidebar-menu-item" data-tab="payments"><i class="fas fa-money-bill"></i> পেমেন্ট</div>
+            <div class="sidebar-menu-item" data-tab="reports"><i class="fas fa-chart-line"></i> রিপোর্টস</div>
+            <div class="sidebar-menu-item active" data-tab="requests"><i class="fas fa-gem"></i> রিকুয়েস্ট</div>
+            <div class="sidebar-menu-item" data-tab="profile"><i class="fas fa-user"></i> প্রোফাইল</div>
         </div>
         <div class="sidebar-footer">
             <p>👨‍💻 <a href="mailto:aungching.jack420@gmail.com">অং চিং</a></p>
@@ -833,380 +217,47 @@
         </div>
     </div>
     
-    <!-- মেইন কন্টেন্ট -->
     <div class="main-content">
         <div class="topbar">
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="page-title">
-                <h2><i class="fas fa-gem"></i> রিকুয়েস্ট ম্যানেজমেন্ট</h2>
-            </div>
-            <div class="vendor-info">
-                <div class="shop-name">
-                    <div class="name" id="vendorShopName">লোড হচ্ছে...</div>
-                    <div class="role">ভেন্ডর অ্যাকাউন্ট</div>
-                </div>
-                <button class="logout-btn" onclick="vendorLogout()">
-                    <i class="fas fa-sign-out-alt"></i> লগআউট
-                </button>
-            </div>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <div class="page-title"><h2><i class="fas fa-gem"></i> কাস্টম অর্ডার রিকুয়েস্ট</h2></div>
+            <button class="logout-btn" onclick="vendorLogout()"><i class="fas fa-sign-out-alt"></i> লগআউট</button>
         </div>
         
-        <div id="dynamicContent">
-            <div style="text-align: center; padding: 50px;">
-                <div class="spinner"></div>
-                <p>লোড হচ্ছে...</p>
-            </div>
-        </div>
+        <div id="dynamicContent"><div style="text-align: center; padding: 50px;"><div class="spinner"></div><p>লোড হচ্ছে...</p></div></div>
         
-        <!-- ফুটার -->
         <div class="vendor-footer">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-mountain"></i>
-                    <span>পাহাড়ি হাট</span>
-                    <small>ভেন্ডর প্যানেল</small>
-                </div>
+                <div class="footer-logo"><i class="fas fa-mountain"></i><span>পাহাড়ি হাট</span><small>ভেন্ডর প্যানেল</small></div>
                 <div class="footer-links">
                     <a href="../index.html" target="_blank"><i class="fas fa-home"></i> ওয়েবসাইট</a>
-                    <a href="mailto:info@paharihat.com"><i class="fas fa-envelope"></i> সাপোর্ট</a>
                     <a href="#" onclick="window.print(); return false;"><i class="fas fa-print"></i> প্রিন্ট</a>
                     <a href="#" id="clearCacheBtn"><i class="fas fa-sync-alt"></i> ক্যাশ ক্লিয়ার</a>
                 </div>
             </div>
             <div class="footer-developer">
-                <span>
-                    <i class="fas fa-code"></i> 
-                    ডেভেলপড বাই 
-                    <span class="developer-name">
-                        <i class="fas fa-user-astronaut"></i> অং চিং
-                    </span>
-                </span>
+                <span><i class="fas fa-code"></i> ডেভেলপড বাই <span class="developer-name"><i class="fas fa-user-astronaut"></i> অং চিং</span></span>
                 <span class="separator">|</span>
-                <span class="version">
-                    <i class="fas fa-mountain"></i> পাহাড়ি হাট v2.0
-                </span>
+                <span class="version"><i class="fas fa-mountain"></i> পাহাড়ি হাট v2.0</span>
                 <span class="separator">|</span>
-                <span>
-                    <i class="fas fa-shield-alt"></i> সিকিউর প্যানেল
-                </span>
+                <span><i class="fas fa-shield-alt"></i> সিকিউর প্যানেল</span>
                 <span class="separator">|</span>
-                <span>
-                    <i class="fas fa-leaf"></i> ১০০% ফরমালিন ফ্রি
-                </span>
-                <span class="separator">|</span>
-                <span class="heart">
-                    <i class="fas fa-heart"></i>
-                </span>
+                <span class="heart"><i class="fas fa-heart"></i></span>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // ============================================
-    // চেক ভেন্ডর লগইন
-    // ============================================
     let currentVendor = JSON.parse(localStorage.getItem('currentVendor'));
-    let vendorRequests = JSON.parse(localStorage.getItem('vendor_requests') || '[]');
+    let allRequests = JSON.parse(localStorage.getItem('product_requests') || '[]');
+    let vendorOwnRequests = JSON.parse(localStorage.getItem('vendor_requests') || '[]');
     
-    if (!currentVendor) {
-        window.location.href = 'vendor-login.html';
-    }
+    if (!currentVendor) window.location.href = 'vendor-login.html';
     
-    document.getElementById('vendorShopName').innerText = currentVendor.shopName || currentVendor.name || 'ভেন্ডর';
+    let activeTab = 'customer';
+    let currentReplyId = null;
     
-    // ============================================
-    // ভেন্ডরের রিকুয়েস্ট ফিল্টার
-    // ============================================
-    function getVendorRequests() {
-        return vendorRequests.filter(r => r.vendorId === currentVendor.id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    }
-    
-    // ============================================
-    // স্ট্যাটস ক্যালকুলেশন
-    // ============================================
-    function getRequestStats() {
-        const vendorReqs = getVendorRequests();
-        const total = vendorReqs.length;
-        const pending = vendorReqs.filter(r => r.status === 'pending').length;
-        const approved = vendorReqs.filter(r => r.status === 'approved').length;
-        const rejected = vendorReqs.filter(r => r.status === 'rejected').length;
-        const processing = vendorReqs.filter(r => r.status === 'processing').length;
-        
-        return { total, pending, approved, rejected, processing };
-    }
-    
-    // ============================================
-    // রিকুয়েস্ট টাইপের নাম
-    // ============================================
-    function getRequestTypeName(type) {
-        const types = {
-            'product_add': 'নতুন পণ্য যোগ',
-            'product_edit': 'পণ্য সম্পাদনা',
-            'special_offer': 'স্পেশাল অফার',
-            'support': 'সাপোর্ট',
-            'complaint': 'অভিযোগ',
-            'other': 'অন্যান্য'
-        };
-        return types[type] || type;
-    }
-    
-    function getRequestTypeIcon(type) {
-        const icons = {
-            'product_add': 'fa-box',
-            'product_edit': 'fa-edit',
-            'special_offer': 'fa-tag',
-            'support': 'fa-headset',
-            'complaint': 'fa-exclamation-triangle',
-            'other': 'fa-question-circle'
-        };
-        return icons[type] || 'fa-file-alt';
-    }
-    
-    // ============================================
-    // রিকুয়েস্ট ভিউ লোড
-    // ============================================
-    function loadRequests() {
-        const vendorReqs = getVendorRequests();
-        const stats = getRequestStats();
-        
-        const container = document.getElementById('dynamicContent');
-        container.innerHTML = `
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-envelope"></i></div>
-                    <div class="stat-info"><h3>${stats.total}</h3><p>মোট রিকুয়েস্ট</p></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
-                    <div class="stat-info"><h3>${stats.pending}</h3><p>পেন্ডিং</p></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-spinner"></i></div>
-                    <div class="stat-info"><h3>${stats.processing}</h3><p>প্রক্রিয়াকরণে</p></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="stat-info"><h3>${stats.approved}</h3><p>অনুমোদিত</p></div>
-                </div>
-            </div>
-            
-            <div class="request-types-grid">
-                <div class="request-type-card" onclick="openRequestModal('product_add')">
-                    <i class="fas fa-box"></i>
-                    <h4>নতুন পণ্য যোগ</h4>
-                    <p>নতুন পণ্য যুক্ত করার অনুরোধ করুন</p>
-                </div>
-                <div class="request-type-card" onclick="openRequestModal('product_edit')">
-                    <i class="fas fa-edit"></i>
-                    <h4>পণ্য সম্পাদনা</h4>
-                    <p>বিদ্যমান পণ্য পরিবর্তনের অনুরোধ</p>
-                </div>
-                <div class="request-type-card" onclick="openRequestModal('special_offer')">
-                    <i class="fas fa-tag"></i>
-                    <h4>স্পেশাল অফার</h4>
-                    <p>ছাড় বা অফারের অনুরোধ করুন</p>
-                </div>
-                <div class="request-type-card" onclick="openRequestModal('support')">
-                    <i class="fas fa-headset"></i>
-                    <h4>সাপোর্ট</h4>
-                    <p>প্রযুক্তিগত সহায়তা চান</p>
-                </div>
-                <div class="request-type-card" onclick="openRequestModal('complaint')">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h4>অভিযোগ</h4>
-                    <p>যেকোনো সমস্যা জানান</p>
-                </div>
-                <div class="request-type-card" onclick="openRequestModal('other')">
-                    <i class="fas fa-question-circle"></i>
-                    <h4>অন্যান্য</h4>
-                    <p>অন্যান্য অনুরোধ</p>
-                </div>
-            </div>
-            
-            <div class="section-card">
-                <div class="section-header">
-                    <h3><i class="fas fa-history"></i> আমার রিকুয়েস্টের ইতিহাস</h3>
-                    <span>মোট ${vendorReqs.length} টি রিকুয়েস্ট</span>
-                </div>
-                ${vendorReqs.length === 0 ? `
-                    <div class="empty-state">
-                        <i class="fas fa-inbox"></i>
-                        <h3>কোনো রিকুয়েস্ট নেই</h3>
-                        <p>উপরের অপশন থেকে নতুন রিকুয়েস্ট তৈরি করুন</p>
-                    </div>
-                ` : `
-                    <div class="requests-list">
-                        ${vendorReqs.map(request => `
-                            <div class="request-item">
-                                <div class="request-header">
-                                    <div class="request-title">
-                                        <i class="fas ${getRequestTypeIcon(request.type)}"></i>
-                                        ${getRequestTypeName(request.type)}
-                                    </div>
-                                    <div>
-                                        <span class="request-id">#${request.id}</span>
-                                        <span class="request-status ${request.status === 'approved' ? 'status-approved' : (request.status === 'rejected' ? 'status-rejected' : (request.status === 'processing' ? 'status-processing' : 'status-pending'))}">
-                                            ${request.status === 'approved' ? '✅ অনুমোদিত' : (request.status === 'rejected' ? '❌ নাকচ' : (request.status === 'processing' ? '🔄 প্রক্রিয়াকরণে' : '⏳ পেন্ডিং'))}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="request-details">
-                                    <strong>বিষয়:</strong> ${request.subject}
-                                </div>
-                                <div class="request-details">
-                                    <strong>বিবরণ:</strong> ${request.description.substring(0, 150)}${request.description.length > 150 ? '...' : ''}
-                                </div>
-                                ${request.image ? `<div class="image-preview"><img src="${request.image}" style="max-width:100px; max-height:100px;"></div>` : ''}
-                                <div class="request-date">
-                                    <i class="far fa-calendar-alt"></i> ${new Date(request.createdAt).toLocaleString('bn-BD')}
-                                </div>
-                                ${request.adminReply ? `
-                                    <div class="admin-reply">
-                                        <i class="fas fa-reply-all"></i> <strong>অ্যাডমিনের জবাব:</strong><br>
-                                        ${request.adminReply}
-                                    </div>
-                                ` : ''}
-                            </div>
-                        `).join('')}
-                    </div>
-                `}
-            </div>
-        `;
-    }
-    
-    // ============================================
-    // ফাইল টু বেস64 কনভার্ট
-    // ============================================
-    function fileToBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = reject;
-        });
-    }
-    
-    let selectedImageBase64 = null;
-    
-    // ============================================
-    // রিকুয়েস্ট মোডাল খোলা
-    // ============================================
-    function openRequestModal(type) {
-        selectedImageBase64 = null;
-        
-        const typeNames = {
-            'product_add': 'নতুন পণ্য যোগ করার অনুরোধ',
-            'product_edit': 'পণ্য সম্পাদনার অনুরোধ',
-            'special_offer': 'স্পেশাল অফারের অনুরোধ',
-            'support': 'সাপোর্ট রিকুয়েস্ট',
-            'complaint': 'অভিযোগ',
-            'other': 'অন্যান্য অনুরোধ'
-        };
-        
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3><i class="fas ${getRequestTypeIcon(type)}"></i> ${typeNames[type]}</h3>
-                    <span class="modal-close" onclick="closeModal(this)">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label><i class="fas fa-heading"></i> বিষয় *</label>
-                        <input type="text" id="requestSubject" placeholder="রিকুয়েস্টের বিষয় লিখুন">
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-align-left"></i> বিস্তারিত বিবরণ *</label>
-                        <textarea id="requestDescription" rows="5" placeholder="আপনার অনুরোধটি বিস্তারিত লিখুন..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-image"></i> ছবি সংযুক্ত করুন (ঐচ্ছিক)</label>
-                        <input type="file" id="requestImage" accept="image/jpeg,image/png,image/jpg">
-                        <div class="upload-hint">JPG, PNG (সর্বোচ্চ 2MB)</div>
-                        <div id="imagePreviewContainer" class="image-preview" style="display: none;">
-                            <img id="previewImage" src="#">
-                        </div>
-                    </div>
-                    <div class="modal-buttons">
-                        <button class="btn-submit" onclick="submitRequest('${type}')">
-                            <i class="fas fa-paper-plane"></i> রিকুয়েস্ট পাঠান
-                        </button>
-                        <button class="btn-cancel" onclick="closeModal(this)">
-                            <i class="fas fa-times"></i> বাতিল
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        modal.style.display = 'flex';
-        
-        // ছবি প্রিভিউ
-        const fileInput = modal.querySelector('#requestImage');
-        fileInput.addEventListener('change', async (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('ছবির সাইজ 2MB এর কম হতে হবে!');
-                    return;
-                }
-                selectedImageBase64 = await fileToBase64(file);
-                const previewContainer = modal.querySelector('#imagePreviewContainer');
-                const previewImage = modal.querySelector('#previewImage');
-                previewImage.src = selectedImageBase64;
-                previewContainer.style.display = 'block';
-            }
-        });
-    }
-    
-    // ============================================
-    // রিকুয়েস্ট সাবমিট
-    // ============================================
-    function submitRequest(type) {
-        const subject = document.getElementById('requestSubject')?.value;
-        const description = document.getElementById('requestDescription')?.value;
-        
-        if (!subject || !description) {
-            alert('দয়া করে বিষয় এবং বিস্তারিত বিবরণ পূরণ করুন!');
-            return;
-        }
-        
-        const newRequest = {
-            id: 'REQ-' + Date.now(),
-            vendorId: currentVendor.id,
-            vendorName: currentVendor.shopName || currentVendor.name,
-            type: type,
-            subject: subject,
-            description: description,
-            image: selectedImageBase64 || null,
-            status: 'pending',
-            adminReply: null,
-            createdAt: new Date().toISOString()
-        };
-        
-        vendorRequests.push(newRequest);
-        localStorage.setItem('vendor_requests', JSON.stringify(vendorRequests));
-        
-        showNotification(`✅ "${subject}" রিকুয়েস্টটি সফলভাবে পাঠানো হয়েছে!`);
-        closeModal(document.querySelector('.modal'));
-        loadRequests();
-    }
-    
-    // ============================================
-    // মোডাল ক্লোজ
-    // ============================================
-    function closeModal(element) {
-        const modal = element.closest('.modal');
-        if (modal) modal.remove();
-    }
-    
-    // ============================================
-    // নোটিফিকেশন
-    // ============================================
     function showNotification(message) {
         const notification = document.createElement('div');
         notification.className = 'notification-toast';
@@ -1215,58 +266,260 @@
         setTimeout(() => notification.remove(), 3000);
     }
     
-    // ============================================
-    // লগআউট ও ট্যাব সুইচ
-    // ============================================
-    function vendorLogout() {
-        localStorage.removeItem('currentVendor');
-        showNotification('আপনি লগআউট করেছেন!');
-        setTimeout(() => window.location.href = 'vendor-login.html', 1000);
+    function getVendorRequests() {
+        // ভেন্ডরের জন্য pending রিকুয়েস্ট (যেগুলো এখনো কোনো ভেন্ডর একসেপ্ট করেনি)
+        return allRequests.filter(r => r.status === 'pending' || r.assignedVendor === currentVendor.id);
     }
     
-    function switchTab(tabName) {
-        const pages = {
-            'dashboard': 'vendor-dashboard.html',
-            'products': 'vendor-products.html',
-            'orders': 'vendor-orders.html',
-            'payments': 'vendor-payments.html',
-            'reports': 'vendor-reports.html',
-            'requests': 'vendor-requests.html',
-            'profile': 'vendor-profile.html'
-        };
-        if (pages[tabName]) window.location.href = pages[tabName];
-    }
-    
-    // ============================================
-    // ইভেন্ট লিসেনার
-    // ============================================
-    document.getElementById('menuToggle')?.addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('open');
-    });
-    
-    document.querySelectorAll('.sidebar-menu-item').forEach(item => {
-        item.addEventListener('click', () => switchTab(item.getAttribute('data-tab')));
-    });
-    
-    document.getElementById('clearCacheBtn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        if(confirm('ক্যাশ ক্লিয়ার করলে পেজ রিফ্রেশ হবে। আপনি কি নিশ্চিত?')) {
-            localStorage.clear();
-            sessionStorage.clear();
-            location.reload();
+    function getStatusBadge(request) {
+        if (request.assignedVendor === currentVendor.id && request.vendorStatus === 'accepted') {
+            return '<span class="request-status status-accepted">✅ আপনি একসেপ্ট করেছেন</span>';
+        } else if (request.assignedVendor === currentVendor.id && request.vendorStatus === 'rejected') {
+            return '<span class="request-status status-rejected">❌ আপনি রিজেক্ট করেছেন</span>';
+        } else if (request.status === 'approved') {
+            return '<span class="request-status status-accepted">✅ অ্যাডমিন অনুমোদন দিয়েছেন</span>';
+        } else if (request.status === 'rejected') {
+            return '<span class="request-status status-rejected">❌ অ্যাডমিন রিজেক্ট করেছেন</span>';
         }
-    });
+        return '<span class="request-status status-pending">⏳ পেন্ডিং</span>';
+    }
     
-    // ============================================
-    // গ্লোবাল ফাংশন
-    // ============================================
-    window.openRequestModal = openRequestModal;
-    window.submitRequest = submitRequest;
-    window.closeModal = closeModal;
+    function getStatusText(request) {
+        if (request.assignedVendor === currentVendor.id && request.vendorStatus === 'accepted') {
+            return 'accepted_by_vendor';
+        } else if (request.assignedVendor === currentVendor.id && request.vendorStatus === 'rejected') {
+            return 'rejected_by_vendor';
+        } else if (request.status === 'approved') {
+            return 'approved_by_admin';
+        } else if (request.status === 'rejected') {
+            return 'rejected_by_admin';
+        }
+        return 'pending';
+    }
+    
+    function acceptRequest(requestId) {
+        const index = allRequests.findIndex(r => r.id === requestId);
+        if (index !== -1) {
+            allRequests[index].vendorStatus = 'accepted';
+            allRequests[index].assignedVendor = currentVendor.id;
+            allRequests[index].vendorReply = `ভেন্ডর ${currentVendor.shopName} আপনার রিকুয়েস্ট একসেপ্ট করেছেন এবং অর্ডার প্রসেসিং শুরু করেছেন।`;
+            allRequests[index].updatedAt = new Date().toISOString();
+            localStorage.setItem('product_requests', JSON.stringify(allRequests));
+            showNotification(`✅ রিকুয়েস্ট একসেপ্ট করেছেন! গ্রাহককে নোটিফিকেশন পাঠানো হবে।`);
+            loadRequests();
+        }
+    }
+    
+    function rejectRequest(requestId) {
+        if (confirm('আপনি কি এই রিকুয়েস্ট রিজেক্ট করতে চান?')) {
+            const index = allRequests.findIndex(r => r.id === requestId);
+            if (index !== -1) {
+                allRequests[index].vendorStatus = 'rejected';
+                allRequests[index].vendorReply = `ভেন্ডর ${currentVendor.shopName} আপনার রিকুয়েস্ট রিজেক্ট করেছেন। অন্য ভেন্ডর থেকে সার্ভিস নিতে পারেন।`;
+                allRequests[index].updatedAt = new Date().toISOString();
+                localStorage.setItem('product_requests', JSON.stringify(allRequests));
+                showNotification(`❌ রিকুয়েস্ট রিজেক্ট করেছেন!`);
+                loadRequests();
+            }
+        }
+    }
+    
+    function openReplyModal(requestId) {
+        currentReplyId = requestId;
+        const modal = document.createElement('div');
+        modal.className = 'reply-modal';
+        modal.innerHTML = `
+            <div class="reply-modal-content">
+                <h3><i class="fas fa-reply-all"></i> গ্রাহককে জবাব দিন</h3>
+                <textarea id="replyMessage" rows="4" placeholder="আপনার জবাব লিখুন..."></textarea>
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button class="btn-accept" onclick="sendReply()">পাঠান</button>
+                    <button class="btn-reject" onclick="closeReplyModal()">বাতিল</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.style.display = 'flex';
+    }
+    
+    function sendReply() {
+        const replyMessage = document.getElementById('replyMessage')?.value;
+        if (!replyMessage) {
+            alert('দয়া করে একটি জবাব দিন!');
+            return;
+        }
+        
+        const index = allRequests.findIndex(r => r.id === currentReplyId);
+        if (index !== -1) {
+            allRequests[index].vendorReply = replyMessage;
+            allRequests[index].updatedAt = new Date().toISOString();
+            localStorage.setItem('product_requests', JSON.stringify(allRequests));
+            showNotification(`✅ জবাব পাঠানো হয়েছে!`);
+        }
+        
+        closeReplyModal();
+        loadRequests();
+    }
+    
+    function closeReplyModal() {
+        const modal = document.querySelector('.reply-modal');
+        if (modal) modal.remove();
+        currentReplyId = null;
+    }
+    
+    function loadRequests() {
+        const customerReqs = getVendorRequests().filter(r => r.status !== 'rejected').sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        const vendorReqs = vendorOwnRequests.filter(r => r.vendorId === currentVendor.id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        
+        const stats = {
+            customerTotal: customerReqs.length,
+            customerPending: customerReqs.filter(r => r.vendorStatus === 'pending' && r.status === 'pending').length,
+            vendorTotal: vendorReqs.length,
+            vendorPending: vendorReqs.filter(r => r.status === 'pending').length
+        };
+        
+        const container = document.getElementById('dynamicContent');
+        container.innerHTML = `
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-info"><h3>${stats.customerTotal}</h3><p>গ্রাহকের রিকুয়েস্ট</p></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-info"><h3>${stats.customerPending}</h3><p>পেন্ডিং রিকুয়েস্ট</p></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-store"></i></div><div class="stat-info"><h3>${stats.vendorTotal}</h3><p>আমার রিকুয়েস্ট</p></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-info"><h3>${stats.vendorPending}</h3><p>পেন্ডিং আমার রিকুয়েস্ট</p></div></div>
+            </div>
+            
+            <div class="request-tabs">
+                <button class="request-tab ${activeTab === 'customer' ? 'active' : ''}" onclick="setActiveTab('customer')">
+                    <i class="fas fa-users"></i> গ্রাহকের রিকুয়েস্ট (${stats.customerTotal})
+                </button>
+                <button class="request-tab ${activeTab === 'vendor' ? 'active' : ''}" onclick="setActiveTab('vendor')">
+                    <i class="fas fa-store"></i> আমার রিকুয়েস্ট (${stats.vendorTotal})
+                </button>
+            </div>
+            
+            <div class="section-card">
+                <div class="section-header">
+                    <h3><i class="fas ${activeTab === 'customer' ? 'fa-users' : 'fa-store'}"></i> ${activeTab === 'customer' ? 'গ্রাহকের রিকুয়েস্ট সমূহ' : 'আমার রিকুয়েস্ট সমূহ'}</h3>
+                </div>
+                ${activeTab === 'customer' ? renderCustomerRequests(customerReqs) : renderVendorRequests(vendorReqs)}
+            </div>
+        `;
+    }
+    
+    function renderCustomerRequests(requests) {
+        if (requests.length === 0) {
+            return `<div class="empty-state"><i class="fas fa-inbox"></i><h3>কোনো রিকুয়েস্ট নেই</h3><p>গ্রাহকরা নতুন রিকুয়েস্ট করলে এখানে দেখাবে</p></div>`;
+        }
+        
+        return `
+            <div class="requests-list">
+                ${requests.map(request => {
+                    const statusText = getStatusText(request);
+                    const canAccept = request.vendorStatus === 'pending' && request.status === 'pending';
+                    const canReply = request.assignedVendor === currentVendor.id && request.vendorStatus === 'accepted';
+                    
+                    return `
+                    <div class="request-item">
+                        <div class="request-header">
+                            <div class="request-title">
+                                <i class="fas fa-box"></i> ${request.productName}
+                                <span class="request-id">#${request.id}</span>
+                            </div>
+                            ${getStatusBadge(request)}
+                        </div>
+                        <div class="request-details">
+                            <strong>গ্রাহকের নাম:</strong> ${request.customerName || '—'}<br>
+                            <strong>মোবাইল:</strong> ${request.customerMobile}<br>
+                            <strong>ক্যাটাগরি:</strong> ${request.categoryName}<br>
+                            <strong>কাঙ্খিত পরিমাণ:</strong> ${request.quantity}<br>
+                            <strong>ডেলিভারি এলাকা:</strong> ${request.deliveryArea}<br>
+                            ${request.comments ? `<strong>মন্তব্য:</strong> ${request.comments}<br>` : ''}
+                            ${request.image ? `<div><img src="${request.image}" style="max-width:100px; max-height:100px; border-radius:8px; margin-top:8px;"></div>` : ''}
+                        </div>
+                        <div class="request-date">
+                            <i class="far fa-calendar-alt"></i> ${new Date(request.createdAt).toLocaleString('bn-BD')}
+                        </div>
+                        ${canAccept ? `
+                            <div class="action-buttons">
+                                <button class="btn-accept" onclick="acceptRequest('${request.id}')"><i class="fas fa-check"></i> একসেপ্ট করুন</button>
+                                <button class="btn-reject" onclick="rejectRequest('${request.id}')"><i class="fas fa-times"></i> রিজেক্ট করুন</button>
+                                <button class="btn-reply" onclick="openReplyModal('${request.id}')"><i class="fas fa-reply"></i> জবাব দিন</button>
+                            </div>
+                        ` : canReply ? `
+                            <div class="action-buttons">
+                                <button class="btn-reply" onclick="openReplyModal('${request.id}')"><i class="fas fa-reply"></i> জবাব দিন</button>
+                            </div>
+                        ` : ''}
+                        ${request.vendorReply ? `
+                            <div class="admin-reply" style="background:#e8f5e9; padding:10px 15px; border-radius:10px; margin-top:10px;">
+                                <i class="fas fa-store"></i> <strong>আপনার জবাব:</strong><br>${request.vendorReply}
+                            </div>
+                        ` : ''}
+                        ${request.adminReply ? `
+                            <div class="admin-reply" style="background:#e3f2fd; padding:10px 15px; border-radius:10px; margin-top:10px;">
+                                <i class="fas fa-user-shield"></i> <strong>অ্যাডমিনের জবাব:</strong><br>${request.adminReply}
+                            </div>
+                        ` : ''}
+                    </div>
+                `}).join('')}
+            </div>
+        `;
+    }
+    
+    function renderVendorRequests(requests) {
+        if (requests.length === 0) {
+            return `<div class="empty-state"><i class="fas fa-inbox"></i><h3>কোনো রিকুয়েস্ট নেই</h3><p>নতুন রিকুয়েস্ট তৈরি করতে "রিকুয়েস্ট" ট্যাবে যান</p></div>`;
+        }
+        
+        return `
+            <div class="requests-list">
+                ${requests.map(request => `
+                    <div class="request-item">
+                        <div class="request-header">
+                            <div class="request-title">
+                                <i class="fas ${request.type === 'product_add' ? 'fa-box' : (request.type === 'product_edit' ? 'fa-edit' : (request.type === 'special_offer' ? 'fa-tag' : (request.type === 'support' ? 'fa-headset' : 'fa-file-alt')))}"></i>
+                                ${request.subject}
+                            </div>
+                            <div>
+                                <span class="request-id">#${request.id}</span>
+                                <span class="request-status ${request.status === 'pending' ? 'status-pending' : (request.status === 'approved' ? 'status-accepted' : 'status-rejected')}">
+                                    ${request.status === 'pending' ? '⏳ পেন্ডিং' : (request.status === 'approved' ? '✅ অনুমোদিত' : '❌ নাকচ')}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="request-details">
+                            <strong>বিবরণ:</strong> ${request.description.substring(0, 150)}${request.description.length > 150 ? '...' : ''}
+                        </div>
+                        <div class="request-date">
+                            <i class="far fa-calendar-alt"></i> ${new Date(request.createdAt).toLocaleString('bn-BD')}
+                        </div>
+                        ${request.adminReply ? `
+                            <div class="admin-reply" style="background:#e8f5e9; padding:10px 15px; border-radius:10px; margin-top:10px;">
+                                <i class="fas fa-user-shield"></i> <strong>অ্যাডমিনের জবাব:</strong><br>${request.adminReply}
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    function setActiveTab(tab) { activeTab = tab; loadRequests(); }
+    function vendorLogout() { localStorage.removeItem('currentVendor'); showNotification('লগআউট!'); setTimeout(() => window.location.href = 'vendor-login.html', 1000); }
+    function switchTab(tabName) { window.location.href = `vendor-${tabName}.html`; }
+    
+    window.setActiveTab = setActiveTab;
+    window.acceptRequest = acceptRequest;
+    window.rejectRequest = rejectRequest;
+    window.openReplyModal = openReplyModal;
+    window.sendReply = sendReply;
+    window.closeReplyModal = closeReplyModal;
     window.vendorLogout = vendorLogout;
     window.switchTab = switchTab;
     
-    // ইনিশিয়াল লোড
+    document.getElementById('menuToggle')?.addEventListener('click', () => document.getElementById('sidebar').classList.toggle('open'));
+    document.querySelectorAll('.sidebar-menu-item').forEach(item => item.addEventListener('click', () => switchTab(item.getAttribute('data-tab'))));
+    document.getElementById('clearCacheBtn')?.addEventListener('click', (e) => { e.preventDefault(); if(confirm('ক্যাশ ক্লিয়ার করবেন?')) { localStorage.clear(); sessionStorage.clear(); location.reload(); } });
+    
     loadRequests();
 </script>
 </body>

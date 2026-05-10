@@ -641,11 +641,14 @@
             <div class="sidebar-menu-item" data-tab="products">
                 <i class="fas fa-box"></i> পণ্য
             </div>
-            <div class="sidebar-menu-item active" data-tab="customers">
+            <div class="sidebar-menu-item" data-tab="customers">
                 <i class="fas fa-users"></i> কাস্টমার
             </div>
             <div class="sidebar-menu-item" data-tab="reports">
                 <i class="fas fa-chart-line"></i> রিপোর্ট
+            </div>
+            <div class="sidebar-menu-item" data-tab="requests">
+                <i class="fas fa-gem"></i> রিকুয়েস্ট
             </div>
             <div class="sidebar-menu-item" data-tab="settings">
                 <i class="fas fa-cog"></i> সেটিংস
@@ -1007,15 +1010,19 @@
     }
     
     function switchTab(tabName) {
-        if (tabName === 'dashboard') window.location.href = 'admin-dashboard.html';
-        else if (tabName === 'vendors') window.location.href = 'admin-vendors.html';
-        else if (tabName === 'payments') window.location.href = 'admin-payments.html';
-        else if (tabName === 'orders') window.location.href = 'admin-orders.html';
-        else if (tabName === 'products') window.location.href = 'admin-products.html';
-        else if (tabName === 'customers') window.location.href = 'admin-customers.html';
-        else if (tabName === 'reports') window.location.href = 'admin-reports.html';
-        else if (tabName === 'settings') window.location.href = 'admin-settings.html';
-    }
+    const pages = {
+        'dashboard': 'admin-dashboard.html',
+        'vendors': 'admin-vendors.html',
+        'payments': 'admin-payments.html',
+        'orders': 'admin-orders.html',
+        'products': 'admin-products.html',
+        'customers': 'admin-customers.html',
+        'reports': 'admin-reports.html',
+        'requests': 'admin-requests.html',
+        'settings': 'admin-settings.html'
+    };
+    if (pages[tabName]) window.location.href = pages[tabName];
+}
     
     function adminLogout() {
         localStorage.removeItem('currentAdmin');

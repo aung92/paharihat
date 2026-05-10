@@ -772,7 +772,7 @@
             <div class="sidebar-menu-item" data-tab="orders">
                 <i class="fas fa-shopping-cart"></i> অর্ডার
             </div>
-            <div class="sidebar-menu-item active" data-tab="products">
+            <div class="sidebar-menu-item" data-tab="products">
                 <i class="fas fa-box"></i> পণ্য
             </div>
             <div class="sidebar-menu-item" data-tab="customers">
@@ -780,6 +780,9 @@
             </div>
             <div class="sidebar-menu-item" data-tab="reports">
                 <i class="fas fa-chart-line"></i> রিপোর্ট
+            </div>
+            <div class="sidebar-menu-item" data-tab="requests">
+                <i class="fas fa-gem"></i> রিকুয়েস্ট
             </div>
             <div class="sidebar-menu-item" data-tab="settings">
                 <i class="fas fa-cog"></i> সেটিংস
@@ -1422,9 +1425,19 @@
     function closeModal(element) { const modal = element.closest('.modal'); if (modal) modal.remove(); }
     
     function switchTab(tabName) {
-        const pages = { 'dashboard': 'admin-dashboard.html', 'vendors': 'admin-vendors.html', 'payments': 'admin-payments.html', 'orders': 'admin-orders.html', 'products': 'admin-products.html', 'customers': 'admin-customers.html', 'reports': 'admin-reports.html', 'settings': 'admin-settings.html' };
-        if (pages[tabName]) window.location.href = pages[tabName];
-    }
+    const pages = {
+        'dashboard': 'admin-dashboard.html',
+        'vendors': 'admin-vendors.html',
+        'payments': 'admin-payments.html',
+        'orders': 'admin-orders.html',
+        'products': 'admin-products.html',
+        'customers': 'admin-customers.html',
+        'reports': 'admin-reports.html',
+        'requests': 'admin-requests.html',
+        'settings': 'admin-settings.html'
+    };
+    if (pages[tabName]) window.location.href = pages[tabName];
+}
     
     function adminLogout() { localStorage.removeItem('currentAdmin'); showNotification('আপনি লগআউট করেছেন!'); setTimeout(() => window.location.href = 'admin-login.html', 1000); }
     

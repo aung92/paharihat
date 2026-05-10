@@ -636,7 +636,7 @@
             <p>অ্যাডমিন প্যানেল</p>
         </div>
         <div class="sidebar-menu">
-            <div class="sidebar-menu-item active" data-tab="dashboard">
+            <div class="sidebar-menu-item" data-tab="dashboard">
                 <i class="fas fa-tachometer-alt"></i> ড্যাশবোর্ড
             </div>
             <div class="sidebar-menu-item" data-tab="vendors">
@@ -657,7 +657,6 @@
             <div class="sidebar-menu-item" data-tab="reports">
                 <i class="fas fa-chart-line"></i> রিপোর্ট
             </div>
-            <!-- 🔴 নতুন রিকুয়েস্ট মেনু যোগ করা হলো 🔴 -->
             <div class="sidebar-menu-item" data-tab="requests">
                 <i class="fas fa-gem"></i> রিকুয়েস্ট
             </div>
@@ -879,24 +878,19 @@
     // ট্যাব সুইচ
     // ============================================
     function switchTab(tabName) {
-        if (tabName === 'dashboard') loadDashboard();
-        else if (tabName === 'vendors') loadVendorsTab();
-        else if (tabName === 'payments') loadPaymentsTab();
-        else if (tabName === 'orders') loadOrdersTab();
-        else if (tabName === 'products') loadProductsTab();
-        else if (tabName === 'customers') loadCustomersTab();
-        else if (tabName === 'reports') loadReportsTab();
-        else if (tabName === 'requests') loadRequestsTab();
-        else if (tabName === 'settings') loadSettingsTab();
-        
-        document.querySelectorAll('.sidebar-menu-item').forEach(item => {
-            if(item.getAttribute('data-tab') === tabName) item.classList.add('active');
-            else item.classList.remove('active');
-        });
-        
-        if(tabName === 'dashboard') document.getElementById('pageTitle').innerHTML = '<i class="fas fa-tachometer-alt"></i> ড্যাশবোর্ড';
-        else document.getElementById('pageTitle').innerHTML = `<i class="fas fa-arrow-right"></i> ${tabName} ম্যানেজ`;
-    }
+    const pages = {
+        'dashboard': 'admin-dashboard.html',
+        'vendors': 'admin-vendors.html',
+        'payments': 'admin-payments.html',
+        'orders': 'admin-orders.html',
+        'products': 'admin-products.html',
+        'customers': 'admin-customers.html',
+        'reports': 'admin-reports.html',
+        'requests': 'admin-requests.html',
+        'settings': 'admin-settings.html'
+    };
+    if (pages[tabName]) window.location.href = pages[tabName];
+}
     
     window.switchTab = switchTab;
     
